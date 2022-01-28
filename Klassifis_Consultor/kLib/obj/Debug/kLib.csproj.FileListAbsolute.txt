@@ -1,0 +1,6 @@
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\bin\Debug\kLib.dll
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\bin\Debug\kLib.pdb
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Debug\kLib.csproj.AssemblyReference.cache
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Debug\kLib.csproj.CoreCompileInputs.cache
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Debug\kLib.dll
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Debug\kLib.pdb

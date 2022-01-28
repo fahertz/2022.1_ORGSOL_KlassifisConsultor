@@ -1,0 +1,16 @@
+{
+  "Version": 1,
+  "ProjectMap": {
+    "3b371c60-08d7-4427-9484-6d090454dd17": {
+      "ProjectGuid": "3b371c60-08d7-4427-9484-6d090454dd17",
+      "DisplayName": "Klassifis_Consultor",
+      "ColorIndex": 0
+    },
+    "09234ff5-77b4-47b7-ae5a-52bf779ec68a": {
+      "ProjectGuid": "09234ff5-77b4-47b7-ae5a-52bf779ec68a",
+      "DisplayName": "kLib",
+      "ColorIndex": 1
+    }
+  },
+  "NextColorIndex": 2
+}
