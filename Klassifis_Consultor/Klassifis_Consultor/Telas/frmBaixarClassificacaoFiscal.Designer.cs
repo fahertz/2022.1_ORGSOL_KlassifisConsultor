@@ -28,9 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblFiltrarCNPJ = new System.Windows.Forms.Label();
-            this.txtFiltro = new System.Windows.Forms.TextBox();
             this.btnCarregar = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
             this.btnDownload = new System.Windows.Forms.Button();
@@ -40,6 +39,8 @@
             this.lblCarregando = new System.Windows.Forms.Label();
             this.btnLimpar = new System.Windows.Forms.Button();
             this.btnBaixados = new System.Windows.Forms.Button();
+            this.txtFiltrar = new System.Windows.Forms.Button();
+            this.mtxCNPJ = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvDados)).BeginInit();
             this.SuspendLayout();
             // 
@@ -49,17 +50,9 @@
             this.lblFiltrarCNPJ.Location = new System.Drawing.Point(13, 66);
             this.lblFiltrarCNPJ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblFiltrarCNPJ.Name = "lblFiltrarCNPJ";
-            this.lblFiltrarCNPJ.Size = new System.Drawing.Size(78, 16);
+            this.lblFiltrarCNPJ.Size = new System.Drawing.Size(62, 13);
             this.lblFiltrarCNPJ.TabIndex = 56;
             this.lblFiltrarCNPJ.Text = "Filtrar CNPJ";
-            // 
-            // txtFiltro
-            // 
-            this.txtFiltro.Location = new System.Drawing.Point(14, 86);
-            this.txtFiltro.Margin = new System.Windows.Forms.Padding(4);
-            this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(249, 22);
-            this.txtFiltro.TabIndex = 55;
             // 
             // btnCarregar
             // 
@@ -106,11 +99,11 @@
             // 
             this.dgvDados.AllowUserToAddRows = false;
             this.dgvDados.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvDados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle7.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle7.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvDados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle7;
             this.dgvDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -144,7 +137,7 @@
             this.lblBaixando.AutoSize = true;
             this.lblBaixando.Location = new System.Drawing.Point(17, 550);
             this.lblBaixando.Name = "lblBaixando";
-            this.lblBaixando.Size = new System.Drawing.Size(108, 16);
+            this.lblBaixando.Size = new System.Drawing.Size(92, 13);
             this.lblBaixando.TabIndex = 57;
             this.lblBaixando.Text = "Baixando .... (0/0)";
             // 
@@ -154,7 +147,7 @@
             this.lblCarregando.AutoSize = true;
             this.lblCarregando.Location = new System.Drawing.Point(751, 65);
             this.lblCarregando.Name = "lblCarregando";
-            this.lblCarregando.Size = new System.Drawing.Size(123, 16);
+            this.lblCarregando.Size = new System.Drawing.Size(103, 13);
             this.lblCarregando.TabIndex = 58;
             this.lblCarregando.Text = "Carregando .... (0/0)";
             // 
@@ -182,17 +175,39 @@
             this.btnBaixados.UseVisualStyleBackColor = true;
             this.btnBaixados.Click += new System.EventHandler(this.btnBaixados_Click);
             // 
+            // txtFiltrar
+            // 
+            this.txtFiltrar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.txtFiltrar.Location = new System.Drawing.Point(132, 82);
+            this.txtFiltrar.Margin = new System.Windows.Forms.Padding(4);
+            this.txtFiltrar.Name = "txtFiltrar";
+            this.txtFiltrar.Size = new System.Drawing.Size(63, 24);
+            this.txtFiltrar.TabIndex = 61;
+            this.txtFiltrar.Text = "Filtrar";
+            this.txtFiltrar.UseVisualStyleBackColor = true;
+            this.txtFiltrar.Click += new System.EventHandler(this.txtFiltrar_Click);
+            // 
+            // mtxCNPJ
+            // 
+            this.mtxCNPJ.Location = new System.Drawing.Point(16, 84);
+            this.mtxCNPJ.Mask = "00.000.000/0000-00";
+            this.mtxCNPJ.Name = "mtxCNPJ";
+            this.mtxCNPJ.Size = new System.Drawing.Size(110, 20);
+            this.mtxCNPJ.TabIndex = 62;
+            this.mtxCNPJ.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtxCNPJ_KeyDown);            
+            // 
             // frmBaixarClassificacaoFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(867, 572);
+            this.Controls.Add(this.mtxCNPJ);
+            this.Controls.Add(this.txtFiltrar);
             this.Controls.Add(this.btnBaixados);
             this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.lblCarregando);
             this.Controls.Add(this.lblBaixando);
             this.Controls.Add(this.lblFiltrarCNPJ);
-            this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.btnCarregar);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnDownload);
@@ -212,7 +227,6 @@
         #endregion
 
         private System.Windows.Forms.Label lblFiltrarCNPJ;
-        private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Button btnCarregar;
         private System.Windows.Forms.Button btnFechar;
         private System.Windows.Forms.Button btnDownload;
@@ -222,5 +236,7 @@
         private System.Windows.Forms.Label lblCarregando;
         private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnBaixados;
+        private System.Windows.Forms.Button txtFiltrar;
+        private System.Windows.Forms.MaskedTextBox mtxCNPJ;
     }
 }

@@ -24,8 +24,10 @@ namespace Klassifis_Consultor
 
 
 
-
-        //////////////Abrindo o form para Baixar a classificação fiscal
+        
+        ///////////////////////Funções internas do Formulário
+        
+        //Abrindo o form para Baixar a classificação fiscal
         private void abrir_BaixcarClassFiscal()
         {
             Application.Run(new frmBaixarClassificacaoFiscal());
@@ -39,9 +41,19 @@ namespace Klassifis_Consultor
             
         }
 
+
+        //Abrindo o form para listar as classificações fiscais baixadas
+        private void abrir_ListaDeClassificacoes()
+        {
+            Application.Run(new frmListaLayoutFiscal());
+        }
+
+
         private void frmListaDeClassificacoes_Click(object sender, EventArgs e)
         {
-
+            Thread t2 = new Thread(abrir_ListaDeClassificacoes);
+            t2.SetApartmentState(ApartmentState.STA);
+            t2.Start();
         }
     }
 }

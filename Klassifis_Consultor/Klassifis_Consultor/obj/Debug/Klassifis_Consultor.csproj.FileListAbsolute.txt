@@ -15,3 +15,7 @@ C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consult
 C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\Debug\Klassifis_Consultor.csproj.CopyComplete
 C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\Debug\Klassifis_Consultor.exe
 C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\Debug\Klassifis_Consultor.pdb
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\Debug\Klassifis_Consultor.Telas.frmListaLayoutFiscal.resources
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\Debug\Klassifis_Consultor.Telas.frmEditarLayoutFiscal.resources
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\bin\Debug\Newtonsoft.Json.dll
+C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\bin\Debug\Newtonsoft.Json.xml

@@ -33,11 +33,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="OpenPop, Version=2.0.6.2, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\OpenPop.2.0.6.2\lib\net20\OpenPop.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -54,6 +61,12 @@
     </Compile>
     <Compile Include="Telas\frmBaixarClassificacaoFiscal.Designer.cs">
       <DependentUpon>frmBaixarClassificacaoFiscal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\frmEditarLayoutFiscal.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\frmEditarLayoutFiscal.Designer.cs">
+      <DependentUpon>frmEditarLayoutFiscal.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\frmListaLayoutFiscal.cs">
       <SubType>Form</SubType>
@@ -80,6 +93,12 @@
     </Compile>
     <EmbeddedResource Include="Telas\frmBaixarClassificacaoFiscal.resx">
       <DependentUpon>frmBaixarClassificacaoFiscal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\frmEditarLayoutFiscal.resx">
+      <DependentUpon>frmEditarLayoutFiscal.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\frmListaLayoutFiscal.resx">
+      <DependentUpon>frmListaLayoutFiscal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>

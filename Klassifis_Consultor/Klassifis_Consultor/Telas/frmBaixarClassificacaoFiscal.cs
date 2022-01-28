@@ -351,9 +351,47 @@ namespace Klassifis_Consultor.Telas
             dgvDados.Rows.Clear();
         }
 
+
+
+        //Abrir tela dos layouts baixados
+        //Abrindo o form para listar as classificações fiscais baixadas
+        private void abrir_ListaDeClassificacoes()
+        {
+            Application.Run(new frmListaLayoutFiscal());
+        }
         private void btnBaixados_Click(object sender, EventArgs e)
         {
-            
+            Thread t3 = new Thread(abrir_ListaDeClassificacoes);
+            t3.SetApartmentState (ApartmentState.STA);
+            t3.Start();
+        }
+
+        //Botão Filtrar CNPJ
+        private void txtFiltrar_Click(object sender, EventArgs e)
+        {   
+            this.Cursor = Cursors.WaitCursor;
+            foreach (DataGridViewRow row in dgvDados.Rows)
+            {                
+                if (row.Cells[2].Value.ToString().Contains(mtxCNPJ.Text.ToString().Replace(",","").Replace("-","").Replace("/","").Replace(".","").Trim()))                
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    row.Visible = false;
+                }
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        
+        //Pesquisar o CNPJ com o enter
+        private void mtxCNPJ_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                txtFiltrar_Click(txtFiltrar, new EventArgs());
+            }
         }
 
 
