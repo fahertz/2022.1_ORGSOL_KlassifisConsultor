@@ -1,0 +1,6 @@
+C:\Users\rafael\Documents\paralelo\klassifis_consultor\Klassifis_Consultor\kLib\bin\Release\kLib.dll
+C:\Users\rafael\Documents\paralelo\klassifis_consultor\Klassifis_Consultor\kLib\bin\Release\kLib.pdb
+C:\Users\rafael\Documents\paralelo\klassifis_consultor\Klassifis_Consultor\kLib\obj\Release\kLib.csproj.AssemblyReference.cache
+C:\Users\rafael\Documents\paralelo\klassifis_consultor\Klassifis_Consultor\kLib\obj\Release\kLib.csproj.CoreCompileInputs.cache
+C:\Users\rafael\Documents\paralelo\klassifis_consultor\Klassifis_Consultor\kLib\obj\Release\kLib.dll
+C:\Users\rafael\Documents\paralelo\klassifis_consultor\Klassifis_Consultor\kLib\obj\Release\kLib.pdb
