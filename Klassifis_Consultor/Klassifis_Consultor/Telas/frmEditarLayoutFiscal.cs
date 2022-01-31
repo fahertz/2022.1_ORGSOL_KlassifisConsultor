@@ -13,6 +13,10 @@ using System.Windows.Forms;
 using Excel = Microsoft.Office.Interop.Excel;
 using kLib;
 using System.Web.Script.Serialization;
+using System.Net;
+using System.Text.RegularExpressions;
+using System.Threading;
+using System.Net.Mail;
 
 namespace Klassifis_Consultor.Telas
 {
@@ -24,7 +28,8 @@ namespace Klassifis_Consultor.Telas
         }
 
         //////////////////// Instância do form
-        Cliente cliente = new Cliente();
+        Parametros_Excel pExcel = new Parametros_Excel();
+        Funcoes_Sistema fSistema = new Funcoes_Sistema();
 
         //Variáveis Text box
         private String mMessage, mTittle;
@@ -33,13 +38,15 @@ namespace Klassifis_Consultor.Telas
         DialogResult result;
         
         //Caminhos dos arquivos para serem carregados de acordo com a tela anterior
-        public string sPathCliente, sPathProdutos;
+        public string sPathCliente, sPathProdutos,sPathReduzido;
 
         //Lista dos produtos que já possuem o código cadastrado
         List<String> lCodigos_Produto = new List<String>();
         
         //Ativa a validação por código
         int flg_Ativo = 0;
+
+        int cep_Exception;
 
 
 
@@ -49,6 +56,10 @@ namespace Klassifis_Consultor.Telas
         //Configuracoes Iniciais
         private void configuracoes_Iniciais()
         {
+
+            //Icon
+            this.Icon = Properties.Resources.klassifis_logo_azulado;
+
             //Carrega os bloqueios, pois como é uma tela de conferência não diz respeito aos dados do cabeçalho
             //Texts box e Masked Texts box
             mtxCNPJ.ReadOnly = true;
@@ -75,12 +86,39 @@ namespace Klassifis_Consultor.Telas
             //Carregar Produtos
             carregar_Produtos(dgvProdutos,sPathProdutos);
 
+            //Limpa as linhas nulas
+            foreach (DataGridViewRow row in dgvProdutos.Rows)
+            {
+                if (row.Cells[0].Value.ToString().Trim().Equals(String.Empty))
+                {
+                    dgvProdutos.Rows.Remove(row);
+                }
+                else
+                {
+                    lCodigos_Produto.Add(row.Cells[0].Value.ToString());
+                    
+                }
+            }
+
+          
+            //flg_Ativo = 1;
+
+            
 
 
             //Carrega dados do Cliente
             carregar_Cliente(sPathCliente);
+
+            Thread t1 = new Thread(buscar_CEP_Cliente);
+            t1.SetApartmentState(ApartmentState.STA);
+            t1.Start();
+            
         }
 
+        private void buscar_CEP_Cliente() {
+            //Busca as informações do CEP
+            buscar_CEP(mtxCEP.Text);
+        }
         //Carregar informações do Layout de produtos
         private void carregar_Produtos(DataGridView _dgv, String path)
         {
@@ -89,6 +127,962 @@ namespace Klassifis_Consultor.Telas
             _dgv.DataSource = (DataTable)JsonConvert.DeserializeObject(linhasDoArquivo, (typeof(DataTable)));
             
         }
+
+        //Buscar pelo CEP        
+        private void buscar_CEP(string cep)
+        {
+            try
+            {
+                HttpWebRequest request = (HttpWebRequest)WebRequest.Create("https://viacep.com.br/ws/" + cep + "/json/");
+                request.AllowAutoRedirect = false;
+                HttpWebResponse ChecaServidor = (HttpWebResponse)request.GetResponse();
+
+                if (ChecaServidor.StatusCode != HttpStatusCode.OK)
+                {
+                    mMessage = "Preencha o campo CEP";
+                    mTittle = "Autacont";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Warning;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    txtUF.ReadOnly = true;
+                    txtCidade.ReadOnly = true;
+                    txtBairro.ReadOnly = true;
+                    txtLogradouro.ReadOnly = true;
+                    //cep_Exception = 1;
+                    return; // Sai da rotina
+                }
+                using (Stream webStream = ChecaServidor.GetResponseStream())
+                {
+                    if (webStream != null)
+                    {
+                        using (StreamReader responseReader = new StreamReader(webStream))
+                        {
+                            string response = responseReader.ReadToEnd();
+                            response = Regex.Replace(response, "[{},]", string.Empty);
+                            response = response.Replace("\"", "");
+
+                            String[] substrings = response.Split('\n');
+
+                            int cont = 0;
+                            foreach (var substring in substrings)
+                            {
+                                if (cont == 1)
+                                {
+                                    string[] valor = substring.Split(":".ToCharArray());
+                                    if (valor[0] == "  erro")
+                                    {
+                                        mMessage = "CEP não encontrado!";
+                                        mTittle = "Autacont";
+                                        mButton = MessageBoxButtons.OK;
+                                        mIcon = MessageBoxIcon.Warning;
+                                        MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                                        mtxCEP.Focus();
+                                        lblCEP.ForeColor = Color.Red;
+                                        return;
+                                    }
+                                }
+
+                                //Logradouro
+                                if (cont == 2)
+                                {
+                                    txtLogradouro.Invoke((MethodInvoker)delegate
+                                    {
+                                        string[] valor = substring.Split(":".ToCharArray());                                   
+                                        txtLogradouro.Text = valor[1];
+                                   });
+                                    
+
+                                }
+
+                                if (cont == 4)
+                                {
+
+                                    txtBairro.Invoke((MethodInvoker)delegate
+                                    {
+                                        string[] valor = substring.Split(":".ToCharArray());
+                                    txtBairro.Text = valor[1];
+                                    });
+                                }
+
+                                //Localidade (Cidade)
+                                if (cont == 5)
+                                {
+
+                                    txtCidade.Invoke((MethodInvoker)delegate
+                                    {
+                                        string[] valor = substring.Split(":".ToCharArray());
+                                    txtCidade.Text = valor[1];
+                                    });
+                                }
+
+                                //Estado (UF)
+                                if (cont == 6)
+                                {
+                                        txtUF.Invoke((MethodInvoker)delegate
+                                        {
+                                            string[] valor = substring.Split(":".ToCharArray());
+                                            txtUF.Text = valor[1];
+                                        });
+                                }
+
+                                cont++;
+                            }
+                        }
+                    }
+                }
+            }
+            catch (WebException we)
+            {
+                MessageBox.Show(we.Message.ToString());
+            }
+
+        }
+
+
+
+
+        private void dgvProdutos_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            //Apagar a célula toda com o delete
+            if (e.KeyData == Keys.Delete)
+            {
+                dgvProdutos.CurrentCell.Value = string.Empty;
+            }
+            
+            //Ativando o CTRL C para a célula
+            if (e.KeyCode == Keys.V && e.Modifiers == Keys.Control)
+            {
+                if (!dgvProdutos.CurrentRow.Cells[0].Selected)
+                dgvProdutos.CurrentCell.Value = Clipboard.GetText();
+            }
+
+        }
+
+        private void dgvProdutos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            if (dgvProdutos.CurrentRow.Cells[0].Selected && lCodigos_Produto.Contains(dgvProdutos.CurrentCell.Value.ToString().Trim()) && lCodigos_Produto.IndexOf(dgvProdutos.CurrentCell.Value.ToString()) != dgvProdutos.CurrentCell.RowIndex)
+            {
+                mMessage = "Código do cliente não pode ser repetido para relação.";
+                mTittle = "Klassifis Error";
+                mIcon = MessageBoxIcon.Warning;
+                mButton = MessageBoxButtons.OK;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value + "+";
+                lCodigos_Produto.Add(dgvProdutos.CurrentCell.Value.ToString());                
+            }
+
+            //0     Cod_Produto    
+            //1     Des_Produto
+            //2     Cod_GTIN
+            //3     Cod_NCM
+            //4     Cod_CEST
+            //5     Cod_NCM_Ex
+            //6     ICMS_CST
+            //7     ICMS_ALQ
+            //8     ICMS_MVA
+            //9     ICMS_CSOSN
+            //10    PIS_CST
+            //11    PIS_ALQ
+            //12    PIS_CSOSN
+            //13    COFINS_CST
+            //14    COFINS_ALQ
+            //15    COFINS_CSOSN
+            //16    IPI_CST
+            //17    IPI_ALQ
+            //18    IPI_CSOSN
+
+
+            // [0] Validiação se o Produto foi preenchido
+            if (dgvProdutos.CurrentRow.Cells[0].Value != null)
+            {
+                if (dgvProdutos.CurrentRow.Cells[0].Style.BackColor == Color.Red)
+                    dgvProdutos.CurrentRow.Cells[0].Style.BackColor = Color.White;
+
+                // [2] Validação do código GTIN
+                if (dgvProdutos.CurrentRow.Cells[2].Selected && dgvProdutos.CurrentRow.Cells[2].Value?.ToString().Trim().Length < 7)
+                {
+                    mMessage = "O código GTIN precisa ser maior que 7";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+
+                }
+                else if (dgvProdutos.CurrentRow.Cells[2].Selected)
+                {
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                }
+
+                // [4] Validação do Cest
+                if (dgvProdutos.CurrentRow.Cells[4].Selected && dgvProdutos.CurrentRow.Cells[4].Value?.ToString().Trim().Length != 7)
+                {
+                    mMessage = "CEST inválido.";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                }
+                else if (dgvProdutos.CurrentRow.Cells[4].Selected)
+                {
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                }
+
+                // [6] Validação do CST de ICMS
+                if (dgvProdutos.CurrentRow.Cells[6].Selected && dgvProdutos.CurrentRow.Cells[6].Value?.ToString().Trim().Length != 2)
+                {
+                    mMessage = "CST inválido.";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                }
+                else if (dgvProdutos.CurrentRow.Cells[6].Selected)
+                {
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                }
+
+
+                // [7] Validação da Alíquota de ICMS
+                if (dgvProdutos.CurrentRow.Cells[7].Selected && dgvProdutos.CurrentRow.Cells[7].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+
+                }
+
+                // [8] Validação do MVA de ICMS
+                if (dgvProdutos.CurrentRow.Cells[8].Selected && dgvProdutos.CurrentRow.Cells[8].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+
+                }
+                // [9] Validação do CSOSN de ICMS
+                if (dgvProdutos.CurrentRow.Cells[9].Selected && dgvProdutos.CurrentRow.Cells[9].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+
+                }
+
+                // [10] Validação do CST de PIS
+                if (dgvProdutos.CurrentRow.Cells[10].Selected && dgvProdutos.CurrentRow.Cells[10].Value?.ToString().Trim().Length != 2)
+                {
+                    mMessage = "CST inválido.";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                }
+                else if (dgvProdutos.CurrentRow.Cells[10].Selected)
+                {
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                }
+
+
+                // [11] Validação da Alíquota de PIS
+                if (dgvProdutos.CurrentRow.Cells[11].Selected && dgvProdutos.CurrentRow.Cells[11].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+
+                }
+
+                // [12] Validação do CSOSN de PIS
+                if (dgvProdutos.CurrentRow.Cells[12].Selected && dgvProdutos.CurrentRow.Cells[12].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+
+                }
+
+                // [13] Validação do CST de COFINS
+                if (dgvProdutos.CurrentRow.Cells[13].Selected && dgvProdutos.CurrentRow.Cells[13].Value?.ToString().Trim().Length != 2)
+                {
+                    mMessage = "CST inválido.";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                }
+                else if (dgvProdutos.CurrentRow.Cells[13].Selected)
+                {
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                }
+
+
+                // [14] Validação da Alíquota de Cofins
+                if (dgvProdutos.CurrentRow.Cells[14].Selected && dgvProdutos.CurrentRow.Cells[14].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+
+                }
+
+                // [15] Validação do CSOSN de Cofins
+                if (dgvProdutos.CurrentRow.Cells[15].Selected && dgvProdutos.CurrentRow.Cells[15].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+
+                }
+
+                // [16] Validação do CST de IPI
+                if (dgvProdutos.CurrentRow.Cells[16].Selected && dgvProdutos.CurrentRow.Cells[16].Value?.ToString().Trim().Length != 2)
+                {
+                    mMessage = "CST inválido.";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                }
+                else if (dgvProdutos.CurrentRow.Cells[16].Selected)
+                {
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                }
+
+
+                // [17] Validação da Alíquota de IPI
+                if (dgvProdutos.CurrentRow.Cells[17].Selected && dgvProdutos.CurrentRow.Cells[17].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+
+                }
+
+                // [18] Validação do CSOSN de IPI
+                if (dgvProdutos.CurrentRow.Cells[18].Selected && dgvProdutos.CurrentRow.Cells[18].Value?.ToString().Trim() != String.Empty)
+                {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                    }
+
+                }
+
+
+
+
+            }
+            else
+            {
+                mMessage = "Preencha o código do produto";
+                mTittle = "Klassifis validation";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                dgvProdutos.CurrentRow.Cells[0].Style.BackColor = Color.Red;
+                dgvProdutos.CurrentCell.Value = String.Empty;
+            }
+
+        }
+
+        private void dgvProdutos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
+        {
+
+        }
+
+        private void btnExportarExcel_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            pExcel.exportar_ParaExcel("Layout Fiscal", dgvProdutos);
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnAbrirExcel_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            pExcel.abrir_Grid_Excel(dgvProdutos, "Layout Fiscal" + DateTime.Now.ToString("ddMMyyyy"), "Layout Fiscal");
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnEntradaManual_Click(object sender, EventArgs e)
+        {
+            frmEditarLayoutFiscal_Manual form = new frmEditarLayoutFiscal_Manual();
+          
+
+            form.txtCod_Produto.Text = dgvProdutos.CurrentRow.Cells[0].Value.ToString();
+            form.txtCod_Produto.ReadOnly = true;
+            form.txtDesc_Produto.Text = dgvProdutos.CurrentRow.Cells[1].Value.ToString();
+
+            form.txtCod_GTIN.Text = dgvProdutos.CurrentRow.Cells[2].Value.ToString();
+            form.txtCod_NCM.Text = dgvProdutos.CurrentRow.Cells[3].Value.ToString();
+            form.txtCod_CEST.Text = dgvProdutos.CurrentRow.Cells[4].Value.ToString();
+            form.txtCod_NCM_Ex.Text = dgvProdutos.CurrentRow.Cells[5].Value.ToString();
+
+            form.txtICMS_CST.Text = dgvProdutos.CurrentRow.Cells[6].Value.ToString();
+            form.txtICMS_Alq.Text = dgvProdutos.CurrentRow.Cells[7].Value.ToString();
+            form.txtICMS_MVA.Text = dgvProdutos.CurrentRow.Cells[8].Value.ToString();
+            form.txtICMS_CSOSN.Text = dgvProdutos.CurrentRow.Cells[9].Value.ToString();
+
+            form.txtPIS_CST.Text = dgvProdutos.CurrentRow.Cells[10].Value.ToString();
+            form.txtPIS_Alq.Text = dgvProdutos.CurrentRow.Cells[11].Value.ToString();
+            form.txtPIS_CSOSN.Text = dgvProdutos.CurrentRow.Cells[12].Value.ToString();
+
+            form.txtCOFINS_CST.Text = dgvProdutos.CurrentRow.Cells[13].Value.ToString();
+            form.txtCOFINS_Alq.Text = dgvProdutos.CurrentRow.Cells[14].Value.ToString();
+            form.txtCOFINS_CSOSN.Text = dgvProdutos.CurrentRow.Cells[15].Value.ToString();
+
+            form.txtIPI_CST.Text = dgvProdutos.CurrentRow.Cells[16].Value.ToString();
+            form.txtIPI_Alq.Text = dgvProdutos.CurrentRow.Cells[17].Value.ToString();
+            form.txtIPI_CSOSN.Text = dgvProdutos.CurrentRow.Cells[18].Value.ToString();
+            form.ShowDialog();
+
+            dgvProdutos.CurrentRow.Cells[0].Value = form.txtCod_Produto.Text;            
+            dgvProdutos.CurrentRow.Cells[1].Value = form.txtDesc_Produto.Text;
+
+            dgvProdutos.CurrentRow.Cells[2].Value = form.txtCod_GTIN.Text;
+            dgvProdutos.CurrentRow.Cells[3].Value = form.txtCod_NCM.Text;
+            dgvProdutos.CurrentRow.Cells[4].Value = form.txtCod_CEST.Text;
+            dgvProdutos.CurrentRow.Cells[5].Value = form.txtCod_NCM_Ex.Text;
+
+            dgvProdutos.CurrentRow.Cells[6].Value = form.txtICMS_CST.Text;
+            dgvProdutos.CurrentRow.Cells[7].Value = form.txtICMS_Alq.Text;
+            dgvProdutos.CurrentRow.Cells[8].Value = form.txtICMS_MVA.Text;
+            dgvProdutos.CurrentRow.Cells[9].Value = form.txtICMS_CSOSN.Text;
+
+            dgvProdutos.CurrentRow.Cells[10].Value = form.txtPIS_CST.Text;
+            dgvProdutos.CurrentRow.Cells[11].Value = form.txtPIS_Alq.Text;
+            dgvProdutos.CurrentRow.Cells[12].Value = form.txtPIS_CSOSN.Text;
+
+            dgvProdutos.CurrentRow.Cells[13].Value = form.txtCOFINS_CST.Text;
+            dgvProdutos.CurrentRow.Cells[14].Value = form.txtCOFINS_Alq.Text;
+            dgvProdutos.CurrentRow.Cells[15].Value = form.txtCOFINS_CSOSN.Text;
+
+            dgvProdutos.CurrentRow.Cells[16].Value = form.txtIPI_CST.Text;
+            dgvProdutos.CurrentRow.Cells[17].Value = form.txtIPI_Alq.Text;
+            dgvProdutos.CurrentRow.Cells[18].Value = form.txtIPI_CSOSN.Text;
+        }
+
+        private void dgvProdutos_KeyPress(object sender, KeyPressEventArgs e)
+        {
+
+        }
+
+        //Função que converte um DataGridView em DataTable
+        private DataTable ToDataTable(DataGridView _dgv)
+        {
+            var dt = new DataTable();
+            foreach (DataGridViewColumn dataGridViewColumn in _dgv.Columns)
+            {
+                if (dataGridViewColumn.Visible)
+                {
+                    dt.Columns.Add(dataGridViewColumn.Name);
+                }
+            }
+            var cell = new object[_dgv.Columns.Count];
+            foreach (DataGridViewRow dataGridViewRow in _dgv.Rows)
+            {
+                for (int i = 0; i < dataGridViewRow.Cells.Count; i++)
+                {
+                    cell[i] = dataGridViewRow.Cells[i].Value;
+                }
+                dt.Rows.Add(cell);
+            }
+            return dt;
+        }
+
+        //Envio de E-mail com anexos
+        protected void Enviar_Email(object sender, EventArgs e, DataGridView dgv_Produto, String destino)
+        {
+
+            ///////Definição do laço de envio]
+
+            //Título do e-mail            
+            String titulo_Email = sPathReduzido.Replace("LF", "LFR").Replace(".klp", "").Replace("_PRODUTOS","");
+            //Arquivo 1 (Será o arquivo Fiscal dos Produtos)            
+            String archive_Produtos = sPathReduzido.Replace("LF","LFR");
+            
+            
+
+            ///////Definição do caminho Salvo
+            //Pega a raiz bin para salvar o arquivo produtos
+            string wpath = System.IO.Path.GetDirectoryName(Application.ExecutablePath).ToString();
+
+            string folder = wpath + "\\" + "Layouts_Respondidos\\"; //nome do diretorio a ser criado            
+
+            //Cria a pasta se ela não existir            
+            if (!Directory.Exists(folder))
+            {
+                Directory.CreateDirectory(folder);
+            }
+
+            //Table dados para o Produto
+            DataTable dtProdutos = null;
+            dtProdutos = ToDataTable(dgvProdutos);
+            MessageBox.Show(archive_Produtos);
+            //Escrevendo arquivo json Produtos                        
+            StreamWriter writer_Produtos = new StreamWriter(folder + archive_Produtos);
+            writer_Produtos.Close();
+            File.WriteAllText(folder + archive_Produtos, JsonConvert.SerializeObject(dtProdutos, Formatting.Indented), Encoding.UTF8);
+
+
+
+
+            //Enviar e-mail
+            ///                                        //Origem         //Destino
+            using (MailMessage mm = new MailMessage(Email._smtpusername, Email._smtpusername))
+            {
+                try
+                {
+                    mm.Subject = titulo_Email;
+                    mm.IsBodyHtml = true;
+
+                    mm.BodyEncoding = Encoding.GetEncoding("ISO-8859-1"); // <-- Define o Encoding para aceitar caracteres especiais                    
+
+                    //Adicionando anexos ao e-mail
+                    mm.Attachments.Add(new Attachment(folder + archive_Produtos));
+                    
+
+                    SmtpClient smtp = new SmtpClient();
+                    smtp.Host = Email._smtphostname;
+
+                    smtp.EnableSsl = true;
+                    System.Net.NetworkCredential credentials = new System.Net.NetworkCredential();
+                    credentials.UserName = Email._smtpusername;
+                    credentials.Password = Email._password;
+
+                    smtp.UseDefaultCredentials = true;
+                    smtp.Credentials = credentials;
+                    smtp.Port = Email._smtpport;
+                    smtp.Send(mm);
+                }
+
+
+                catch (SmtpException except)
+                {
+                    MessageBox.Show(except.ToString());
+                }
+                finally
+                {
+                    mMessage = "E-mail enviado para deseja armazenar o Layout enviado?"; mTittle = "Klassifis Information";
+                    mButton = MessageBoxButtons.YesNo;
+                    mIcon = MessageBoxIcon.Information;
+                    this.Cursor = Cursors.Default;
+                    result = MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    if (result == DialogResult.Yes)
+                    {
+                        pExcel.exportar_ParaExcel("Class. Fiscal", dgvProdutos);
+                    }
+                    this.Close();
+                }
+            }
+        }
+
+        //Função que valida o Layout em Excel, ela aceita o número de colunas e o grid de onde os dados são apresentados
+
+        //A função verifica a ordem, número de colunas e descrição do cabeçalho
+        private bool validar_Layout(int _nColunas, DataGridView _dgv)
+        {
+            if (dgvProdutos.Columns.Count != _nColunas)
+            {
+                mMessage = "Layout Inválido";
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+
+            }
+            String nome_Coluna = null;
+            int index_Coluna = 0;
+
+            index_Coluna = 0;
+            nome_Coluna = "Cod_Produto";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 1;
+            nome_Coluna = "Des_Produto";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+
+            index_Coluna = 2;
+            nome_Coluna = "Cod_GTIN";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+
+            index_Coluna = 3;
+            nome_Coluna = "Cod_NCM";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 4;
+            nome_Coluna = "Cod_CEST";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 5;
+            nome_Coluna = "Cod_NCM_Ex";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 6;
+            nome_Coluna = "ICMS_CST";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 7;
+            nome_Coluna = "ICMS_ALQ";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 8;
+            nome_Coluna = "ICMS_MVA";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 9;
+            nome_Coluna = "ICMS_CSOSN";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 10;
+            nome_Coluna = "PIS_CST";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 11;
+            nome_Coluna = "PIS_ALQ";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 12;
+            nome_Coluna = "PIS_CSOSN";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 13;
+            nome_Coluna = "COFINS_CST";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 14;
+            nome_Coluna = "COFINS_ALQ";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 15;
+            nome_Coluna = "COFINS_CSOSN";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 16;
+            nome_Coluna = "IPI_CST";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 17;
+            nome_Coluna = "IPI_ALQ";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+            index_Coluna = 18;
+            nome_Coluna = "IPI_CSOSN";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+
+            return true;
+        }
+
+
+        //Enviar Layout fiscal
+        private void btnEnviar_Click(object sender, EventArgs e)
+        {
+
+            this.Cursor = Cursors.WaitCursor;
+            //Validação CNPJ
+            if (!mtxCNPJ.MaskFull)
+            {
+                mMessage = "Preencha o campo CNPJ";
+                mTittle = "Autacont";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                mtxCNPJ.Focus();
+                return;
+            }
+
+            //Validação CEP
+            //Serviços de busca de CPF ON
+            if (cep_Exception == 0)
+            {
+                if (!mtxCEP.MaskFull)
+                {
+                    mMessage = "Preencha o campo CEP";
+                    mTittle = "Autacont Error";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    mtxCEP.Focus();
+                    return;
+                }
+            }
+
+            //Serviços de busca de CPF OFF
+            else
+            {
+                if (!mtxCEP.MaskFull)
+                {
+                    mMessage = "Preencha o campo CEP";
+                    mTittle = "Autacont Error";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    mtxCEP.Focus();
+                    return;
+                }
+
+                if (txtUF.Text.Equals(String.Empty))
+                {
+                    mMessage = "Preencha o campo UF";
+                    mTittle = "Autacont";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    mtxCEP.Focus();
+                    return;
+                }
+
+                if (txtCidade.Text.Equals(String.Empty))
+                {
+                    mMessage = "Preencha o campo Cidade";
+                    mTittle = "Autacont";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    mtxCEP.Focus();
+                    return;
+                }
+                if (txtBairro.Text.Equals(String.Empty))
+                {
+                    mMessage = "Preencha o campo Bairro";
+                    mTittle = "Autacont";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    mtxCEP.Focus();
+                    return;
+                }
+
+            }
+            //Valida o Layout, verifica se corresponde às 19 casas      
+            if (validar_Layout(19, dgvProdutos) == true)
+            {
+                
+                Enviar_Email(btnEnviar, new EventArgs(), dgvProdutos, Email._smtpusername);
+            }
+            this.Cursor = Cursors.Default;
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+
+            mMessage = "Tem certeza que deseja cancelar a operação?";
+            mTittle = "Klassifis";
+            mButton = MessageBoxButtons.YesNo;
+            mIcon = MessageBoxIcon.Warning;
+            result = MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+
+            if (result == DialogResult.Yes) 
+            {
+                this.Close();
+            }          
+        }
+
         //Carrega informações do Cliente
         private void carregar_Cliente(String path)
         {

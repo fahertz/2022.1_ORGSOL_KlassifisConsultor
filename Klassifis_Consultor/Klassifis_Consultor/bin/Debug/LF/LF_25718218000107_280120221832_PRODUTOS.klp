@@ -1,10 +1,10 @@
 ﻿[
   {
-    "Cod_Produto": "1",
+    "Cod_Produto": "PROD01",
     "Des_Produto": "Produto 1",
-    "Cod_GTIN": "300523654",
-    "Cod_NCM": null,
-    "Cod_CEST": null,
+    "Cod_GTIN": "12325648",
+    "Cod_NCM": "40",
+    "Cod_CEST": "1256478",
     "Cod_NCM_Ex": null,
     "ICMS_CST": null,
     "ICMS_ALQ": null,
@@ -21,11 +21,11 @@
     "IPI_CSOSN": null
   },
   {
-    "Cod_Produto": "2",
+    "Cod_Produto": "PROD02",
     "Des_Produto": "Produto 2",
-    "Cod_GTIN": "300423065",
-    "Cod_NCM": null,
-    "Cod_CEST": null,
+    "Cod_GTIN": "15487455",
+    "Cod_NCM": "50",
+    "Cod_CEST": "4185484",
     "Cod_NCM_Ex": null,
     "ICMS_CST": null,
     "ICMS_ALQ": null,

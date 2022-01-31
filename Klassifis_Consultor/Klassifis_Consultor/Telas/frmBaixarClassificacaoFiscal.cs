@@ -36,6 +36,9 @@ namespace Klassifis_Consultor.Telas
         //Configurações Iniciais
         private void configuracoes_Iniciais()
         {
+            //Icon
+            this.Icon = Properties.Resources.klassifis_logo_azulado;
+
             //Deixando como falso a visibilidade dos informativos de Listagem
             lblCarregando.Visible = false;
             lblBaixando.Visible = false;

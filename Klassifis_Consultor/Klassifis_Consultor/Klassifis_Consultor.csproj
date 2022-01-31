@@ -44,6 +44,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.ServiceModel" />
     <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -56,6 +58,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Connected Services\consultarCEP\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
     <Compile Include="Telas\frmBaixarClassificacaoFiscal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -67,6 +74,18 @@
     </Compile>
     <Compile Include="Telas\frmEditarLayoutFiscal.Designer.cs">
       <DependentUpon>frmEditarLayoutFiscal.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\frmEditarLayoutFiscal_Manual.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\frmEditarLayoutFiscal_Manual.Designer.cs">
+      <DependentUpon>frmEditarLayoutFiscal_Manual.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\frmLayoutsEnviados.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\frmLayoutsEnviados.Designer.cs">
+      <DependentUpon>frmLayoutsEnviados.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\frmListaLayoutFiscal.cs">
       <SubType>Form</SubType>
@@ -82,6 +101,12 @@
     </Compile>
     <Compile Include="Configuracoes\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Telas\frmVisualizarLayout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\frmVisualizarLayout.Designer.cs">
+      <DependentUpon>frmVisualizarLayout.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -90,6 +115,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Telas\frmBaixarClassificacaoFiscal.resx">
       <DependentUpon>frmBaixarClassificacaoFiscal.cs</DependentUpon>
@@ -97,12 +123,188 @@
     <EmbeddedResource Include="Telas\frmEditarLayoutFiscal.resx">
       <DependentUpon>frmEditarLayoutFiscal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\frmEditarLayoutFiscal_Manual.resx">
+      <DependentUpon>frmEditarLayoutFiscal_Manual.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\frmLayoutsEnviados.resx">
+      <DependentUpon>frmLayoutsEnviados.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\frmListaLayoutFiscal.resx">
       <DependentUpon>frmListaLayoutFiscal.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\frmMainMenu.resx">
       <DependentUpon>frmMainMenu.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Telas\frmVisualizarLayout.resx">
+      <DependentUpon>frmVisualizarLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config" />
+    <None Include="Connected Services\consultarCEP\AtendeClienteService.wsdl" />
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.atualizaPagamentoNaEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.atualizaRemessaAgrupadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.bloquearObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaClienteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaContratoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaDataAtualResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaOpcoesResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaPagamentoEntregaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaServicosAdicionaisAtivosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaServicosValorDeclaradoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaServicosXServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.buscaTarifaValeResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.calculaTarifaServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.cancelarObjetoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.cancelarPedidoScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.clienteERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.consultaCEPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.contratoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.dimensaoTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.embalagemLRSMaster.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.enderecoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.fechaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.fechaPlpVariosServicosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.geraDigitoVerificadorEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.getStatusCartaoPostagemResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.getStatusPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.integrarUsuarioScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.mensagemParametrizadaTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.obterClienteAtualizacaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.obterEmbalagemLRSResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.obterMensagemParametrizadaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.pesquisarDimensoesServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.pesquisarEmbalagensPorServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.pesquisarParametrosPorDescricaoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.pesquisarServicosAdicionaisResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.retornoCancelamento.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.servicoAdicionalTO.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.servicoAdicionalXML.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.servicoERP.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.solicitaEtiquetasResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.solicitaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.solicitarPostagemScolResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.solicitaXmlPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.statusCartao.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.statusPlp.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.tipoEmbalagem.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.valePostal.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.validaEtiquetaPLPResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.validaPlpResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.validarPostagemReversaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.validarPostagemSimultaneaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.verificaDisponibilidadeServicoResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.verificaModalTransporteResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="Connected Services\consultarCEP\Klassifis_Consultor.consultarCEP.VerificaSeTodosObjetosCanceladosResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -122,6 +324,30 @@
       <Project>{09234ff5-77b4-47b7-ae5a-52bf779ec68a}</Project>
       <Name>kLib</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\consultarCEP\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\consultarCEP\configuration91.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\consultarCEP\configuration.svcinfo" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\consultarCEP\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\klassifis_main_menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\klassifis_logo_azulado.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

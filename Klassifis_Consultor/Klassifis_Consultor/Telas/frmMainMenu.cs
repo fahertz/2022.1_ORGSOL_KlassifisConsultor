@@ -20,13 +20,40 @@ namespace Klassifis_Consultor
         }
 
         ////////////////////////////Instância
+          
+        //Variáveis da caixa de texto
+        String mMessage;
+        String mTittle;
+        MessageBoxButtons mButton;
+        MessageBoxIcon mIcon;
+        DialogResult result;
 
 
 
 
-        
+
         ///////////////////////Funções internas do Formulário
-        
+
+        //Configurações Iniciais
+        private void configuracoes_Iniciais()
+        {
+            //Icon
+            this.Icon = Properties.Resources.klassifis_logo_azulado;
+
+
+            //Background
+            this.BackgroundImage = Properties.Resources.klassifis_main_menu;
+            this.BackgroundImageLayout = ImageLayout.Stretch;
+            
+        }
+
+        //Load do form
+        private void frmMainMenu_Load(object sender, EventArgs e)
+        {
+            configuracoes_Iniciais();
+        }
+
+
         //Abrindo o form para Baixar a classificação fiscal
         private void abrir_BaixcarClassFiscal()
         {
@@ -55,5 +82,40 @@ namespace Klassifis_Consultor
             t2.SetApartmentState(ApartmentState.STA);
             t2.Start();
         }
+
+
+
+
+        //Abrindo o form para listar as classificações fiscais baixadas
+        private void abrir_LayoutsEnviados()
+        {
+            Application.Run(new frmLayoutsEnviados());
+        }
+        private void btnLayoutsEnvados_Click(object sender, EventArgs e)
+        {
+            Thread t3 = new Thread(abrir_LayoutsEnviados);
+            t3.SetApartmentState (ApartmentState.STA);
+            t3.Start();
+        }
+
+
+        //Fechar form
+        
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            mMessage = "Tem certeza que deseja encerrar a aplciação?";
+            mTittle = "Encerrar sistema";
+            mButton = MessageBoxButtons.YesNo;
+            mIcon = MessageBoxIcon.Warning;
+            result = MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+
+            if (result == DialogResult.Yes)
+            {
+                Application.Exit();
+            }
+
+        }
+
+        
     }
 }

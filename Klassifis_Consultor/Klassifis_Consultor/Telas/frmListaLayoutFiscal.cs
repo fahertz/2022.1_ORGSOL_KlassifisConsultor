@@ -34,6 +34,9 @@ namespace Klassifis_Consultor.Telas
         /////////////////////Métodos internos do form
         private void configuracoes_Iniciais()
         {
+            //Icon
+            this.Icon = Properties.Resources.klassifis_logo_azulado;
+
             //Configura o Grid para receber as informações
             configurar_dgv(dgvDados);
 
@@ -49,12 +52,14 @@ namespace Klassifis_Consultor.Telas
         private void configurar_dgv(DataGridView _dgv)
         {
             _dgv.Columns.Add("arch_Full_Name", "Full_Name");
+            _dgv.Columns.Add("arch_Name", "Name");
             _dgv.Columns.Add("CNPJ", "CNPJ");
             _dgv.Columns.Add("Data_Hora", "Data Envio");
 
             //Deixa como invisível a coluna onde consta o documento            
             _dgv.Columns[0].Visible = false;
-            _dgv.Columns[2].Width = 150;
+            _dgv.Columns[1].Visible = false;
+            _dgv.Columns[3].Width = 150;
 
         }
 
@@ -80,7 +85,7 @@ namespace Klassifis_Consultor.Telas
                 string[] add = File.Name.ToString().Split('_');
                 if (File.Name.Contains(".klp") && !File.Name.Contains("~"))
                 {
-                    _dgv.Rows.Add(File.FullName, add[1], Convert.ToDateTime(add[2].Substring(0, 2) + "/" + add[2].Substring(2, 2) + "/" + add[2].Substring(4, 4)
+                    _dgv.Rows.Add(File.FullName,File.Name, add[1], Convert.ToDateTime(add[2].Substring(0, 2) + "/" + add[2].Substring(2, 2) + "/" + add[2].Substring(4, 4)
                                                + " " + add[2].Substring(8, 2) + ":" + add[2].Substring(10, 2))
                         );
                 }
@@ -139,7 +144,8 @@ namespace Klassifis_Consultor.Telas
             if (dgvDados.CurrentRow != null) {
                 frmEditarLayoutFiscal form = new frmEditarLayoutFiscal();
                 form.sPathCliente = dgvDados.CurrentRow.Cells[0].Value.ToString().Replace("PRODUTOS", "CLIENTE").Replace(".klp", ".klc");
-                form.sPathProdutos = dgvDados.CurrentRow.Cells[0].Value.ToString();                
+                form.sPathProdutos = dgvDados.CurrentRow.Cells[0].Value.ToString();
+                form.sPathReduzido = dgvDados.CurrentRow.Cells[1].Value.ToString();
                 form.ShowDialog();
             }
         }
