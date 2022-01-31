@@ -90,6 +90,30 @@ namespace Klassifis_Consultor.Telas
             }
         }
 
+        private void ncm_Validation(TextBox textbox, Label label)
+        {
+            if (textbox.Text.Length != 8)
+            {
+                mMessage = "NCM inválido.";
+                mTittle = "Klassifis validation";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                textbox.ForeColor = Color.Red;
+                label.ForeColor = Color.Red;
+                textbox.Focus();
+            }
+            else
+            {
+                if (textbox.ForeColor == Color.Red)
+                {
+                    textbox.ForeColor = Color.Black;
+                    label.ForeColor = Color.Black;
+                    textbox.Focus();
+                }
+            }
+        }
+
 
 
 
@@ -121,6 +145,17 @@ namespace Klassifis_Consultor.Telas
                 }
             }
         }
+
+        private void txtCod_NCM_Validating(object sender, CancelEventArgs e)
+        {
+            ncm_Validation(txtCod_NCM, lblCod_NCM);
+        }
+
+        private void txtCod_NCM_Ex_Validating(object sender, CancelEventArgs e)
+        {
+            ncm_Validation(txtCod_NCM_Ex, lblCod_NCM_Ex);
+        }
+
 
         ///////////////////ICMS
         private void txtICMS_CST_Validating(object sender, CancelEventArgs e)
@@ -193,6 +228,7 @@ namespace Klassifis_Consultor.Telas
             this.Close();
         }
 
+      
         private void txtCOFINS_CSOSN_Validating(object sender, CancelEventArgs e)
         {
             txtCOFINS_CSOSN.Text = fSistema.mascara_Double(txtCOFINS_CSOSN.Text);

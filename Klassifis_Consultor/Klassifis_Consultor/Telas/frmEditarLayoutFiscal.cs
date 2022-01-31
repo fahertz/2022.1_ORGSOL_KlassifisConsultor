@@ -315,6 +315,24 @@ namespace Klassifis_Consultor.Telas
                     dgvProdutos.CurrentCell.Style.BackColor = Color.White;
                 }
 
+                // [3] Validação NCM
+                if (dgvProdutos.CurrentRow.Cells[3].Selected && dgvProdutos.CurrentRow.Cells[3].Value?.ToString().Trim().Length != 8)
+                {
+                    mMessage = "O código NCM precisa ter que 8 valores";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+
+                }
+                else if (dgvProdutos.CurrentRow.Cells[3].Selected)
+                {
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                }
+
+
+
                 // [4] Validação do Cest
                 if (dgvProdutos.CurrentRow.Cells[4].Selected && dgvProdutos.CurrentRow.Cells[4].Value?.ToString().Trim().Length != 7)
                 {
@@ -329,6 +347,23 @@ namespace Klassifis_Consultor.Telas
                 {
                     dgvProdutos.CurrentCell.Style.BackColor = Color.White;
                 }
+
+                // [5] Validação NCM
+                if (dgvProdutos.CurrentRow.Cells[5].Selected && dgvProdutos.CurrentRow.Cells[5].Value?.ToString().Trim().Length != 8)
+                {
+                    mMessage = "O código NCM precisa ter que 8 valores";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+
+                }
+                else if (dgvProdutos.CurrentRow.Cells[5].Selected)
+                {
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                }
+
 
                 // [6] Validação do CST de ICMS
                 if (dgvProdutos.CurrentRow.Cells[6].Selected && dgvProdutos.CurrentRow.Cells[6].Value?.ToString().Trim().Length != 2)
