@@ -197,9 +197,12 @@ namespace Klassifis_Consultor.Telas
         //////////////////PIS
         private void txtPIS_CST_Validating(object sender, CancelEventArgs e)
         {
-            cst_Validation(txtPIS_CST, lblPIS_CST);
+            cst_Validation(txtPIS_CST_Entrada, lblPIS_CST_Entrada);
         }
-
+        private void txtPIS_CST_Saida_TextChanged(object sender, EventArgs e)
+        {
+            cst_Validation(txtPIS_CST_Saida, lblPIS_CST_Saida);
+        }
         private void txtPIS_CSOSN_Validating(object sender, CancelEventArgs e)
         {
             txtPIS_CSOSN.Text = txtPIS_CSOSN.Text.mascarar_Double();
@@ -214,7 +217,12 @@ namespace Klassifis_Consultor.Telas
         /////////////////////////COFINS
         private void txtCOFINS_CST_Validating(object sender, CancelEventArgs e)
         {
-            cst_Validation(txtCOFINS_CST, lblCOFINS_CST);
+            cst_Validation(txtCOFINS_CST_Entrada, lblCOFINS_CST_Entrada);
+        }
+
+        private void txtCOFINS_CST_Saida_Validating(object sender, CancelEventArgs e)
+        {
+            cst_Validation(txtCOFINS_CST_Saida, lblCOFINS_CST_Saida);
         }
 
         private void txtCOFINS_Alq_Validating(object sender, CancelEventArgs e)
@@ -222,12 +230,15 @@ namespace Klassifis_Consultor.Telas
             txtCOFINS_Alq.Text = txtCOFINS_Alq.Text.mascarar_Double();
         }
 
+      
+
         private void btnFechar_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
-      
+     
+
         private void txtCOFINS_CSOSN_Validating(object sender, CancelEventArgs e)
         {
             txtCOFINS_CSOSN.Text = txtCOFINS_CSOSN.Text.mascarar_Double();
