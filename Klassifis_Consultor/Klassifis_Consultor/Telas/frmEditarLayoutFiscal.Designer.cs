@@ -68,6 +68,8 @@
             this.txtUF = new System.Windows.Forms.TextBox();
             this.lblCidade = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
+            this.lsbRegras = new System.Windows.Forms.ListBox();
+            this.lblRegras = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.gpbDadosDoCliente.SuspendLayout();
             this.gpbAtividade.SuspendLayout();
@@ -78,8 +80,7 @@
             // 
             this.lblArquivo.AutoSize = true;
             this.lblArquivo.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblArquivo.Location = new System.Drawing.Point(12, 267);
-            this.lblArquivo.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblArquivo.Location = new System.Drawing.Point(9, 217);
             this.lblArquivo.Name = "lblArquivo";
             this.lblArquivo.Size = new System.Drawing.Size(62, 16);
             this.lblArquivo.TabIndex = 93;
@@ -87,20 +88,18 @@
             // 
             // btnSelecionar
             // 
-            this.btnSelecionar.Location = new System.Drawing.Point(411, 288);
-            this.btnSelecionar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSelecionar.Location = new System.Drawing.Point(308, 234);
             this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(100, 28);
+            this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
             this.btnSelecionar.TabIndex = 92;
             this.btnSelecionar.Text = "Selecionar";
             this.btnSelecionar.UseVisualStyleBackColor = true;
             // 
             // txtArquivo
             // 
-            this.txtArquivo.Location = new System.Drawing.Point(16, 290);
-            this.txtArquivo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtArquivo.Location = new System.Drawing.Point(12, 236);
             this.txtArquivo.Name = "txtArquivo";
-            this.txtArquivo.Size = new System.Drawing.Size(385, 22);
+            this.txtArquivo.Size = new System.Drawing.Size(290, 20);
             this.txtArquivo.TabIndex = 91;
             // 
             // btnAbrirExcel
@@ -111,10 +110,9 @@
             this.btnAbrirExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnAbrirExcel.Font = new System.Drawing.Font("Century Schoolbook", 7F, System.Drawing.FontStyle.Bold);
             this.btnAbrirExcel.ForeColor = System.Drawing.Color.White;
-            this.btnAbrirExcel.Location = new System.Drawing.Point(181, 689);
-            this.btnAbrirExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAbrirExcel.Location = new System.Drawing.Point(136, 560);
             this.btnAbrirExcel.Name = "btnAbrirExcel";
-            this.btnAbrirExcel.Size = new System.Drawing.Size(156, 30);
+            this.btnAbrirExcel.Size = new System.Drawing.Size(117, 24);
             this.btnAbrirExcel.TabIndex = 90;
             this.btnAbrirExcel.Text = "Abrir em Excel";
             this.btnAbrirExcel.UseVisualStyleBackColor = false;
@@ -128,10 +126,9 @@
             this.btnEntradaManual.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnEntradaManual.Font = new System.Drawing.Font("Century Schoolbook", 7F, System.Drawing.FontStyle.Bold);
             this.btnEntradaManual.ForeColor = System.Drawing.Color.White;
-            this.btnEntradaManual.Location = new System.Drawing.Point(345, 689);
-            this.btnEntradaManual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEntradaManual.Location = new System.Drawing.Point(259, 560);
             this.btnEntradaManual.Name = "btnEntradaManual";
-            this.btnEntradaManual.Size = new System.Drawing.Size(156, 30);
+            this.btnEntradaManual.Size = new System.Drawing.Size(117, 24);
             this.btnEntradaManual.TabIndex = 89;
             this.btnEntradaManual.Text = "Alterar visão";
             this.btnEntradaManual.UseVisualStyleBackColor = false;
@@ -145,10 +142,9 @@
             this.btnExportarExcel.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
             this.btnExportarExcel.Font = new System.Drawing.Font("Century Schoolbook", 7F, System.Drawing.FontStyle.Bold);
             this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExportarExcel.Location = new System.Drawing.Point(17, 689);
-            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportarExcel.Location = new System.Drawing.Point(13, 560);
             this.btnExportarExcel.Name = "btnExportarExcel";
-            this.btnExportarExcel.Size = new System.Drawing.Size(156, 30);
+            this.btnExportarExcel.Size = new System.Drawing.Size(117, 24);
             this.btnExportarExcel.TabIndex = 88;
             this.btnExportarExcel.Text = "Exportar em Excel";
             this.btnExportarExcel.UseVisualStyleBackColor = false;
@@ -162,10 +158,9 @@
             this.btnCancelar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCancelar.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
-            this.btnCancelar.Location = new System.Drawing.Point(784, 689);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Location = new System.Drawing.Point(1051, 560);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(121, 43);
+            this.btnCancelar.Size = new System.Drawing.Size(91, 35);
             this.btnCancelar.TabIndex = 86;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = false;
@@ -179,10 +174,9 @@
             this.btnEnviar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEnviar.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnviar.ForeColor = System.Drawing.Color.White;
-            this.btnEnviar.Location = new System.Drawing.Point(913, 689);
-            this.btnEnviar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnviar.Location = new System.Drawing.Point(1148, 560);
             this.btnEnviar.Name = "btnEnviar";
-            this.btnEnviar.Size = new System.Drawing.Size(121, 43);
+            this.btnEnviar.Size = new System.Drawing.Size(91, 35);
             this.btnEnviar.TabIndex = 85;
             this.btnEnviar.Text = "Enviar";
             this.btnEnviar.UseVisualStyleBackColor = false;
@@ -202,13 +196,12 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutos.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvProdutos.Location = new System.Drawing.Point(16, 322);
-            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProdutos.Location = new System.Drawing.Point(12, 262);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1017, 359);
+            this.dgvProdutos.Size = new System.Drawing.Size(1226, 292);
             this.dgvProdutos.TabIndex = 84;
             this.dgvProdutos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellEndEdit);
             this.dgvProdutos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvProdutos_CellValidating);
@@ -220,8 +213,7 @@
             this.lblEnviarClassificacaoFiscal.AutoSize = true;
             this.lblEnviarClassificacaoFiscal.BackColor = System.Drawing.Color.DarkGray;
             this.lblEnviarClassificacaoFiscal.Font = new System.Drawing.Font("Century Schoolbook", 25F, System.Drawing.FontStyle.Bold);
-            this.lblEnviarClassificacaoFiscal.Location = new System.Drawing.Point(16, 15);
-            this.lblEnviarClassificacaoFiscal.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEnviarClassificacaoFiscal.Location = new System.Drawing.Point(12, 12);
             this.lblEnviarClassificacaoFiscal.Name = "lblEnviarClassificacaoFiscal";
             this.lblEnviarClassificacaoFiscal.Size = new System.Drawing.Size(384, 40);
             this.lblEnviarClassificacaoFiscal.TabIndex = 83;
@@ -251,40 +243,35 @@
             this.gpbDadosDoCliente.Controls.Add(this.txtUF);
             this.gpbDadosDoCliente.Controls.Add(this.lblCidade);
             this.gpbDadosDoCliente.Controls.Add(this.label2);
-            this.gpbDadosDoCliente.Location = new System.Drawing.Point(15, 68);
-            this.gpbDadosDoCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbDadosDoCliente.Location = new System.Drawing.Point(11, 55);
             this.gpbDadosDoCliente.Name = "gpbDadosDoCliente";
-            this.gpbDadosDoCliente.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gpbDadosDoCliente.Size = new System.Drawing.Size(1019, 196);
+            this.gpbDadosDoCliente.Size = new System.Drawing.Size(764, 159);
             this.gpbDadosDoCliente.TabIndex = 94;
             this.gpbDadosDoCliente.TabStop = false;
             this.gpbDadosDoCliente.Text = "Dados do Cliente";
             // 
             // mtxCNAE
             // 
-            this.mtxCNAE.Location = new System.Drawing.Point(11, 100);
-            this.mtxCNAE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxCNAE.Location = new System.Drawing.Point(8, 81);
             this.mtxCNAE.Mask = "0000-0/00";
             this.mtxCNAE.Name = "mtxCNAE";
-            this.mtxCNAE.Size = new System.Drawing.Size(84, 22);
+            this.mtxCNAE.Size = new System.Drawing.Size(64, 20);
             this.mtxCNAE.TabIndex = 1;
             // 
             // txtIE
             // 
             this.txtIE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtIE.Location = new System.Drawing.Point(11, 154);
-            this.txtIE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIE.Location = new System.Drawing.Point(8, 125);
             this.txtIE.MaxLength = 20;
             this.txtIE.Name = "txtIE";
-            this.txtIE.Size = new System.Drawing.Size(223, 20);
+            this.txtIE.Size = new System.Drawing.Size(168, 20);
             this.txtIE.TabIndex = 2;
             // 
             // lblIE
             // 
             this.lblIE.AutoSize = true;
             this.lblIE.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIE.Location = new System.Drawing.Point(7, 130);
-            this.lblIE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIE.Location = new System.Drawing.Point(5, 106);
             this.lblIE.Name = "lblIE";
             this.lblIE.Size = new System.Drawing.Size(170, 16);
             this.lblIE.TabIndex = 102;
@@ -294,8 +281,7 @@
             // 
             this.lblContato.AutoSize = true;
             this.lblContato.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblContato.Location = new System.Drawing.Point(881, 23);
-            this.lblContato.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblContato.Location = new System.Drawing.Point(661, 19);
             this.lblContato.Name = "lblContato";
             this.lblContato.Size = new System.Drawing.Size(62, 16);
             this.lblContato.TabIndex = 101;
@@ -303,28 +289,25 @@
             // 
             // mtxContato
             // 
-            this.mtxContato.Location = new System.Drawing.Point(885, 47);
-            this.mtxContato.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxContato.Location = new System.Drawing.Point(664, 38);
             this.mtxContato.Mask = "(99) 00000-0000";
             this.mtxContato.Name = "mtxContato";
-            this.mtxContato.Size = new System.Drawing.Size(116, 22);
+            this.mtxContato.Size = new System.Drawing.Size(88, 20);
             this.mtxContato.TabIndex = 7;
             // 
             // txtEmail
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtEmail.Location = new System.Drawing.Point(595, 47);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Location = new System.Drawing.Point(446, 38);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(281, 20);
+            this.txtEmail.Size = new System.Drawing.Size(212, 20);
             this.txtEmail.TabIndex = 6;
             // 
             // lblEmail
             // 
             this.lblEmail.AutoSize = true;
             this.lblEmail.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmail.Location = new System.Drawing.Point(591, 23);
-            this.lblEmail.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblEmail.Location = new System.Drawing.Point(443, 19);
             this.lblEmail.Name = "lblEmail";
             this.lblEmail.Size = new System.Drawing.Size(47, 16);
             this.lblEmail.TabIndex = 99;
@@ -336,11 +319,9 @@
             this.gpbAtividade.Controls.Add(this.rdbComercio);
             this.gpbAtividade.Controls.Add(this.rdbAtacado);
             this.gpbAtividade.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gpbAtividade.Location = new System.Drawing.Point(164, 20);
-            this.gpbAtividade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbAtividade.Location = new System.Drawing.Point(123, 16);
             this.gpbAtividade.Name = "gpbAtividade";
-            this.gpbAtividade.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gpbAtividade.Size = new System.Drawing.Size(165, 112);
+            this.gpbAtividade.Size = new System.Drawing.Size(124, 91);
             this.gpbAtividade.TabIndex = 3;
             this.gpbAtividade.TabStop = false;
             this.gpbAtividade.Text = "Atividade";
@@ -349,8 +330,7 @@
             // 
             this.rdbVarejo.AutoSize = true;
             this.rdbVarejo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.rdbVarejo.Location = new System.Drawing.Point(9, 84);
-            this.rdbVarejo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbVarejo.Location = new System.Drawing.Point(7, 68);
             this.rdbVarejo.Name = "rdbVarejo";
             this.rdbVarejo.Size = new System.Drawing.Size(55, 17);
             this.rdbVarejo.TabIndex = 2;
@@ -361,8 +341,7 @@
             // 
             this.rdbComercio.AutoSize = true;
             this.rdbComercio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.rdbComercio.Location = new System.Drawing.Point(9, 55);
-            this.rdbComercio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbComercio.Location = new System.Drawing.Point(7, 45);
             this.rdbComercio.Name = "rdbComercio";
             this.rdbComercio.Size = new System.Drawing.Size(69, 17);
             this.rdbComercio.TabIndex = 1;
@@ -374,8 +353,7 @@
             this.rdbAtacado.AutoSize = true;
             this.rdbAtacado.Checked = true;
             this.rdbAtacado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.rdbAtacado.Location = new System.Drawing.Point(9, 27);
-            this.rdbAtacado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbAtacado.Location = new System.Drawing.Point(7, 22);
             this.rdbAtacado.Name = "rdbAtacado";
             this.rdbAtacado.Size = new System.Drawing.Size(65, 17);
             this.rdbAtacado.TabIndex = 0;
@@ -389,11 +367,9 @@
             this.gpbRegime.Controls.Add(this.rdbPresumido);
             this.gpbRegime.Controls.Add(this.rdbSimples);
             this.gpbRegime.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gpbRegime.Location = new System.Drawing.Point(337, 20);
-            this.gpbRegime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbRegime.Location = new System.Drawing.Point(253, 16);
             this.gpbRegime.Name = "gpbRegime";
-            this.gpbRegime.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.gpbRegime.Size = new System.Drawing.Size(165, 112);
+            this.gpbRegime.Size = new System.Drawing.Size(124, 91);
             this.gpbRegime.TabIndex = 4;
             this.gpbRegime.TabStop = false;
             this.gpbRegime.Text = "Regime";
@@ -402,8 +378,7 @@
             // 
             this.rdbReal.AutoSize = true;
             this.rdbReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.rdbReal.Location = new System.Drawing.Point(9, 84);
-            this.rdbReal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbReal.Location = new System.Drawing.Point(7, 68);
             this.rdbReal.Name = "rdbReal";
             this.rdbReal.Size = new System.Drawing.Size(77, 17);
             this.rdbReal.TabIndex = 2;
@@ -414,8 +389,7 @@
             // 
             this.rdbPresumido.AutoSize = true;
             this.rdbPresumido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.rdbPresumido.Location = new System.Drawing.Point(9, 55);
-            this.rdbPresumido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbPresumido.Location = new System.Drawing.Point(7, 45);
             this.rdbPresumido.Name = "rdbPresumido";
             this.rdbPresumido.Size = new System.Drawing.Size(104, 17);
             this.rdbPresumido.TabIndex = 1;
@@ -427,8 +401,7 @@
             this.rdbSimples.AutoSize = true;
             this.rdbSimples.Checked = true;
             this.rdbSimples.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.rdbSimples.Location = new System.Drawing.Point(9, 27);
-            this.rdbSimples.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbSimples.Location = new System.Drawing.Point(7, 22);
             this.rdbSimples.Name = "rdbSimples";
             this.rdbSimples.Size = new System.Drawing.Size(106, 17);
             this.rdbSimples.TabIndex = 0;
@@ -440,8 +413,7 @@
             // 
             this.lblCNAE.AutoSize = true;
             this.lblCNAE.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCNAE.Location = new System.Drawing.Point(7, 76);
-            this.lblCNAE.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCNAE.Location = new System.Drawing.Point(5, 62);
             this.lblCNAE.Name = "lblCNAE";
             this.lblCNAE.Size = new System.Drawing.Size(47, 16);
             this.lblCNAE.TabIndex = 94;
@@ -449,19 +421,17 @@
             // 
             // mtxCNPJ
             // 
-            this.mtxCNPJ.Location = new System.Drawing.Point(9, 43);
-            this.mtxCNPJ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxCNPJ.Location = new System.Drawing.Point(7, 35);
             this.mtxCNPJ.Mask = "00.000.000/0000-00";
             this.mtxCNPJ.Name = "mtxCNPJ";
-            this.mtxCNPJ.Size = new System.Drawing.Size(145, 22);
+            this.mtxCNPJ.Size = new System.Drawing.Size(110, 20);
             this.mtxCNPJ.TabIndex = 0;
             // 
             // lblCNPJ
             // 
             this.lblCNPJ.AutoSize = true;
             this.lblCNPJ.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCNPJ.Location = new System.Drawing.Point(7, 20);
-            this.lblCNPJ.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCNPJ.Location = new System.Drawing.Point(5, 16);
             this.lblCNPJ.Name = "lblCNPJ";
             this.lblCNPJ.Size = new System.Drawing.Size(53, 16);
             this.lblCNPJ.TabIndex = 90;
@@ -469,20 +439,18 @@
             // 
             // mtxCEP
             // 
-            this.mtxCEP.Location = new System.Drawing.Point(511, 47);
-            this.mtxCEP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxCEP.Location = new System.Drawing.Point(383, 38);
             this.mtxCEP.Mask = "00000-000";
             this.mtxCEP.Name = "mtxCEP";
-            this.mtxCEP.Size = new System.Drawing.Size(75, 22);
+            this.mtxCEP.Size = new System.Drawing.Size(57, 20);
             this.mtxCEP.TabIndex = 5;
             // 
             // txtCidade
             // 
             this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCidade.Location = new System.Drawing.Point(808, 100);
-            this.txtCidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCidade.Location = new System.Drawing.Point(606, 81);
             this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(193, 20);
+            this.txtCidade.Size = new System.Drawing.Size(146, 20);
             this.txtCidade.TabIndex = 82;
             this.txtCidade.TabStop = false;
             // 
@@ -490,8 +458,7 @@
             // 
             this.lblCEP.AutoSize = true;
             this.lblCEP.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCEP.Location = new System.Drawing.Point(507, 23);
-            this.lblCEP.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCEP.Location = new System.Drawing.Point(380, 19);
             this.lblCEP.Name = "lblCEP";
             this.lblCEP.Size = new System.Drawing.Size(43, 16);
             this.lblCEP.TabIndex = 78;
@@ -500,10 +467,9 @@
             // txtBairro
             // 
             this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtBairro.Location = new System.Drawing.Point(511, 100);
-            this.txtBairro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBairro.Location = new System.Drawing.Point(383, 81);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(245, 20);
+            this.txtBairro.Size = new System.Drawing.Size(185, 20);
             this.txtBairro.TabIndex = 86;
             this.txtBairro.TabStop = false;
             // 
@@ -511,8 +477,7 @@
             // 
             this.lblBairro.AutoSize = true;
             this.lblBairro.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBairro.Location = new System.Drawing.Point(507, 76);
-            this.lblBairro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblBairro.Location = new System.Drawing.Point(380, 62);
             this.lblBairro.Name = "lblBairro";
             this.lblBairro.Size = new System.Drawing.Size(52, 16);
             this.lblBairro.TabIndex = 85;
@@ -521,10 +486,9 @@
             // txtLogradouro
             // 
             this.txtLogradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtLogradouro.Location = new System.Drawing.Point(511, 154);
-            this.txtLogradouro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLogradouro.Location = new System.Drawing.Point(383, 125);
             this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.Size = new System.Drawing.Size(491, 20);
+            this.txtLogradouro.Size = new System.Drawing.Size(369, 20);
             this.txtLogradouro.TabIndex = 84;
             this.txtLogradouro.TabStop = false;
             // 
@@ -532,8 +496,7 @@
             // 
             this.lblLogradouro.AutoSize = true;
             this.lblLogradouro.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogradouro.Location = new System.Drawing.Point(507, 130);
-            this.lblLogradouro.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblLogradouro.Location = new System.Drawing.Point(380, 106);
             this.lblLogradouro.Name = "lblLogradouro";
             this.lblLogradouro.Size = new System.Drawing.Size(86, 16);
             this.lblLogradouro.TabIndex = 83;
@@ -542,11 +505,10 @@
             // txtUF
             // 
             this.txtUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtUF.Location = new System.Drawing.Point(765, 100);
-            this.txtUF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUF.Location = new System.Drawing.Point(574, 81);
             this.txtUF.MaxLength = 2;
             this.txtUF.Name = "txtUF";
-            this.txtUF.Size = new System.Drawing.Size(33, 20);
+            this.txtUF.Size = new System.Drawing.Size(26, 20);
             this.txtUF.TabIndex = 80;
             this.txtUF.TabStop = false;
             // 
@@ -554,8 +516,7 @@
             // 
             this.lblCidade.AutoSize = true;
             this.lblCidade.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCidade.Location = new System.Drawing.Point(800, 76);
-            this.lblCidade.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCidade.Location = new System.Drawing.Point(600, 62);
             this.lblCidade.Name = "lblCidade";
             this.lblCidade.Size = new System.Drawing.Size(53, 16);
             this.lblCidade.TabIndex = 81;
@@ -565,18 +526,37 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(760, 76);
-            this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label2.Location = new System.Drawing.Point(570, 62);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(27, 16);
             this.label2.TabIndex = 79;
             this.label2.Text = "UF";
             // 
+            // lsbRegras
+            // 
+            this.lsbRegras.FormattingEnabled = true;
+            this.lsbRegras.Location = new System.Drawing.Point(781, 90);
+            this.lsbRegras.Name = "lsbRegras";
+            this.lsbRegras.Size = new System.Drawing.Size(457, 121);
+            this.lsbRegras.TabIndex = 95;
+            // 
+            // lblRegras
+            // 
+            this.lblRegras.AutoSize = true;
+            this.lblRegras.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRegras.Location = new System.Drawing.Point(778, 71);
+            this.lblRegras.Name = "lblRegras";
+            this.lblRegras.Size = new System.Drawing.Size(128, 16);
+            this.lblRegras.TabIndex = 103;
+            this.lblRegras.Text = "Regras Utilizadas";
+            // 
             // frmEditarLayoutFiscal
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1049, 747);
+            this.ClientSize = new System.Drawing.Size(1250, 607);
+            this.Controls.Add(this.lblRegras);
+            this.Controls.Add(this.lsbRegras);
             this.Controls.Add(this.gpbDadosDoCliente);
             this.Controls.Add(this.lblArquivo);
             this.Controls.Add(this.btnSelecionar);
@@ -588,8 +568,7 @@
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.lblEnviarClassificacaoFiscal);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(1065, 786);
+            this.MinimumSize = new System.Drawing.Size(803, 646);
             this.Name = "frmEditarLayoutFiscal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Klassifis Consultor";
@@ -648,5 +627,7 @@
         private System.Windows.Forms.TextBox txtUF;
         private System.Windows.Forms.Label lblCidade;
         private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ListBox lsbRegras;
+        private System.Windows.Forms.Label lblRegras;
     }
 }

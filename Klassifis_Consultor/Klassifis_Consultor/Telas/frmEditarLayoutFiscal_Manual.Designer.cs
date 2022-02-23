@@ -36,15 +36,15 @@
             this.txtIPI_Alq = new System.Windows.Forms.TextBox();
             this.lblIPI_CSOSN = new System.Windows.Forms.Label();
             this.gpbCOFINS = new System.Windows.Forms.GroupBox();
-            this.txtCOFINS_CST = new System.Windows.Forms.TextBox();
-            this.lblCOFINS_CST = new System.Windows.Forms.Label();
+            this.txtCOFINS_CST_Entrada = new System.Windows.Forms.TextBox();
+            this.lblCOFINS_CST_Entrada = new System.Windows.Forms.Label();
             this.lblCOFINS_Alq = new System.Windows.Forms.Label();
             this.txtCOFINS_CSOSN = new System.Windows.Forms.TextBox();
             this.txtCOFINS_Alq = new System.Windows.Forms.TextBox();
             this.lblCOFINS_CSOSN = new System.Windows.Forms.Label();
             this.gpbPIS = new System.Windows.Forms.GroupBox();
-            this.txtPIS_CST = new System.Windows.Forms.TextBox();
-            this.lblPIS_CST = new System.Windows.Forms.Label();
+            this.txtPIS_CST_Entrada = new System.Windows.Forms.TextBox();
+            this.lblPIS_CST_Entrada = new System.Windows.Forms.Label();
             this.lblPIS_Alq = new System.Windows.Forms.Label();
             this.txtPIS_CSOSN = new System.Windows.Forms.TextBox();
             this.txtPIS_Alq = new System.Windows.Forms.TextBox();
@@ -73,6 +73,10 @@
             this.txtCod_Produto = new System.Windows.Forms.TextBox();
             this.lblCod_Produto = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.txtCOFINS_CST_Saida = new System.Windows.Forms.TextBox();
+            this.lblCOFINS_CST_Saida = new System.Windows.Forms.Label();
+            this.txtPIS_CST_Saida = new System.Windows.Forms.TextBox();
+            this.lblPIS_CST_Saida = new System.Windows.Forms.Label();
             this.gpbIPI.SuspendLayout();
             this.gpbCOFINS.SuspendLayout();
             this.gpbPIS.SuspendLayout();
@@ -160,8 +164,10 @@
             // 
             // gpbCOFINS
             // 
-            this.gpbCOFINS.Controls.Add(this.txtCOFINS_CST);
-            this.gpbCOFINS.Controls.Add(this.lblCOFINS_CST);
+            this.gpbCOFINS.Controls.Add(this.txtCOFINS_CST_Saida);
+            this.gpbCOFINS.Controls.Add(this.lblCOFINS_CST_Saida);
+            this.gpbCOFINS.Controls.Add(this.txtCOFINS_CST_Entrada);
+            this.gpbCOFINS.Controls.Add(this.lblCOFINS_CST_Entrada);
             this.gpbCOFINS.Controls.Add(this.lblCOFINS_Alq);
             this.gpbCOFINS.Controls.Add(this.txtCOFINS_CSOSN);
             this.gpbCOFINS.Controls.Add(this.txtCOFINS_Alq);
@@ -173,26 +179,26 @@
             this.gpbCOFINS.TabStop = false;
             this.gpbCOFINS.Text = "COFINS";
             // 
-            // txtCOFINS_CST
+            // txtCOFINS_CST_Entrada
             // 
-            this.txtCOFINS_CST.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCOFINS_CST.Location = new System.Drawing.Point(6, 37);
-            this.txtCOFINS_CST.MaxLength = 14;
-            this.txtCOFINS_CST.Name = "txtCOFINS_CST";
-            this.txtCOFINS_CST.Size = new System.Drawing.Size(139, 20);
-            this.txtCOFINS_CST.TabIndex = 0;
-            this.txtCOFINS_CST.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.aceita_Numeros);
-            this.txtCOFINS_CST.Validating += new System.ComponentModel.CancelEventHandler(this.txtCOFINS_CST_Validating);
+            this.txtCOFINS_CST_Entrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtCOFINS_CST_Entrada.Location = new System.Drawing.Point(6, 37);
+            this.txtCOFINS_CST_Entrada.MaxLength = 14;
+            this.txtCOFINS_CST_Entrada.Name = "txtCOFINS_CST_Entrada";
+            this.txtCOFINS_CST_Entrada.Size = new System.Drawing.Size(139, 20);
+            this.txtCOFINS_CST_Entrada.TabIndex = 0;
+            this.txtCOFINS_CST_Entrada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.aceita_Numeros);
+            this.txtCOFINS_CST_Entrada.Validating += new System.ComponentModel.CancelEventHandler(this.txtCOFINS_CST_Validating);
             // 
-            // lblCOFINS_CST
+            // lblCOFINS_CST_Entrada
             // 
-            this.lblCOFINS_CST.AutoSize = true;
-            this.lblCOFINS_CST.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCOFINS_CST.Location = new System.Drawing.Point(3, 18);
-            this.lblCOFINS_CST.Name = "lblCOFINS_CST";
-            this.lblCOFINS_CST.Size = new System.Drawing.Size(35, 16);
-            this.lblCOFINS_CST.TabIndex = 99;
-            this.lblCOFINS_CST.Text = "CST";
+            this.lblCOFINS_CST_Entrada.AutoSize = true;
+            this.lblCOFINS_CST_Entrada.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCOFINS_CST_Entrada.Location = new System.Drawing.Point(3, 18);
+            this.lblCOFINS_CST_Entrada.Name = "lblCOFINS_CST_Entrada";
+            this.lblCOFINS_CST_Entrada.Size = new System.Drawing.Size(94, 16);
+            this.lblCOFINS_CST_Entrada.TabIndex = 99;
+            this.lblCOFINS_CST_Entrada.Text = "CST Entrada";
             // 
             // lblCOFINS_Alq
             // 
@@ -207,7 +213,7 @@
             // txtCOFINS_CSOSN
             // 
             this.txtCOFINS_CSOSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCOFINS_CSOSN.Location = new System.Drawing.Point(151, 37);
+            this.txtCOFINS_CSOSN.Location = new System.Drawing.Point(151, 81);
             this.txtCOFINS_CSOSN.MaxLength = 8;
             this.txtCOFINS_CSOSN.Name = "txtCOFINS_CSOSN";
             this.txtCOFINS_CSOSN.Size = new System.Drawing.Size(139, 20);
@@ -230,7 +236,7 @@
             // 
             this.lblCOFINS_CSOSN.AutoSize = true;
             this.lblCOFINS_CSOSN.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCOFINS_CSOSN.Location = new System.Drawing.Point(148, 18);
+            this.lblCOFINS_CSOSN.Location = new System.Drawing.Point(148, 62);
             this.lblCOFINS_CSOSN.Name = "lblCOFINS_CSOSN";
             this.lblCOFINS_CSOSN.Size = new System.Drawing.Size(57, 16);
             this.lblCOFINS_CSOSN.TabIndex = 105;
@@ -238,8 +244,10 @@
             // 
             // gpbPIS
             // 
-            this.gpbPIS.Controls.Add(this.txtPIS_CST);
-            this.gpbPIS.Controls.Add(this.lblPIS_CST);
+            this.gpbPIS.Controls.Add(this.txtPIS_CST_Saida);
+            this.gpbPIS.Controls.Add(this.lblPIS_CST_Saida);
+            this.gpbPIS.Controls.Add(this.txtPIS_CST_Entrada);
+            this.gpbPIS.Controls.Add(this.lblPIS_CST_Entrada);
             this.gpbPIS.Controls.Add(this.lblPIS_Alq);
             this.gpbPIS.Controls.Add(this.txtPIS_CSOSN);
             this.gpbPIS.Controls.Add(this.txtPIS_Alq);
@@ -251,26 +259,26 @@
             this.gpbPIS.TabStop = false;
             this.gpbPIS.Text = "PIS";
             // 
-            // txtPIS_CST
+            // txtPIS_CST_Entrada
             // 
-            this.txtPIS_CST.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtPIS_CST.Location = new System.Drawing.Point(6, 37);
-            this.txtPIS_CST.MaxLength = 14;
-            this.txtPIS_CST.Name = "txtPIS_CST";
-            this.txtPIS_CST.Size = new System.Drawing.Size(139, 20);
-            this.txtPIS_CST.TabIndex = 0;
-            this.txtPIS_CST.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.aceita_Numeros);
-            this.txtPIS_CST.Validating += new System.ComponentModel.CancelEventHandler(this.txtPIS_CST_Validating);
+            this.txtPIS_CST_Entrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtPIS_CST_Entrada.Location = new System.Drawing.Point(6, 37);
+            this.txtPIS_CST_Entrada.MaxLength = 14;
+            this.txtPIS_CST_Entrada.Name = "txtPIS_CST_Entrada";
+            this.txtPIS_CST_Entrada.Size = new System.Drawing.Size(139, 20);
+            this.txtPIS_CST_Entrada.TabIndex = 0;
+            this.txtPIS_CST_Entrada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.aceita_Numeros);
+            this.txtPIS_CST_Entrada.Validating += new System.ComponentModel.CancelEventHandler(this.txtPIS_CST_Validating);
             // 
-            // lblPIS_CST
+            // lblPIS_CST_Entrada
             // 
-            this.lblPIS_CST.AutoSize = true;
-            this.lblPIS_CST.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPIS_CST.Location = new System.Drawing.Point(3, 18);
-            this.lblPIS_CST.Name = "lblPIS_CST";
-            this.lblPIS_CST.Size = new System.Drawing.Size(35, 16);
-            this.lblPIS_CST.TabIndex = 99;
-            this.lblPIS_CST.Text = "CST";
+            this.lblPIS_CST_Entrada.AutoSize = true;
+            this.lblPIS_CST_Entrada.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPIS_CST_Entrada.Location = new System.Drawing.Point(3, 18);
+            this.lblPIS_CST_Entrada.Name = "lblPIS_CST_Entrada";
+            this.lblPIS_CST_Entrada.Size = new System.Drawing.Size(94, 16);
+            this.lblPIS_CST_Entrada.TabIndex = 99;
+            this.lblPIS_CST_Entrada.Text = "CST Entrada";
             // 
             // lblPIS_Alq
             // 
@@ -285,7 +293,7 @@
             // txtPIS_CSOSN
             // 
             this.txtPIS_CSOSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtPIS_CSOSN.Location = new System.Drawing.Point(151, 37);
+            this.txtPIS_CSOSN.Location = new System.Drawing.Point(151, 81);
             this.txtPIS_CSOSN.MaxLength = 8;
             this.txtPIS_CSOSN.Name = "txtPIS_CSOSN";
             this.txtPIS_CSOSN.Size = new System.Drawing.Size(139, 20);
@@ -308,7 +316,7 @@
             // 
             this.lblPIS_CSOSN.AutoSize = true;
             this.lblPIS_CSOSN.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPIS_CSOSN.Location = new System.Drawing.Point(148, 18);
+            this.lblPIS_CSOSN.Location = new System.Drawing.Point(148, 62);
             this.lblPIS_CSOSN.Name = "lblPIS_CSOSN";
             this.lblPIS_CSOSN.Size = new System.Drawing.Size(57, 16);
             this.lblPIS_CSOSN.TabIndex = 105;
@@ -580,6 +588,46 @@
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // txtCOFINS_CST_Saida
+            // 
+            this.txtCOFINS_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtCOFINS_CST_Saida.Location = new System.Drawing.Point(151, 37);
+            this.txtCOFINS_CST_Saida.MaxLength = 14;
+            this.txtCOFINS_CST_Saida.Name = "txtCOFINS_CST_Saida";
+            this.txtCOFINS_CST_Saida.Size = new System.Drawing.Size(139, 20);
+            this.txtCOFINS_CST_Saida.TabIndex = 106;
+            this.txtCOFINS_CST_Saida.Validating += new System.ComponentModel.CancelEventHandler(this.txtCOFINS_CST_Saida_Validating);
+            // 
+            // lblCOFINS_CST_Saida
+            // 
+            this.lblCOFINS_CST_Saida.AutoSize = true;
+            this.lblCOFINS_CST_Saida.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCOFINS_CST_Saida.Location = new System.Drawing.Point(148, 18);
+            this.lblCOFINS_CST_Saida.Name = "lblCOFINS_CST_Saida";
+            this.lblCOFINS_CST_Saida.Size = new System.Drawing.Size(77, 16);
+            this.lblCOFINS_CST_Saida.TabIndex = 107;
+            this.lblCOFINS_CST_Saida.Text = "CST Saída";
+            // 
+            // txtPIS_CST_Saida
+            // 
+            this.txtPIS_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtPIS_CST_Saida.Location = new System.Drawing.Point(151, 37);
+            this.txtPIS_CST_Saida.MaxLength = 14;
+            this.txtPIS_CST_Saida.Name = "txtPIS_CST_Saida";
+            this.txtPIS_CST_Saida.Size = new System.Drawing.Size(139, 20);
+            this.txtPIS_CST_Saida.TabIndex = 106;
+            this.txtPIS_CST_Saida.TextChanged += new System.EventHandler(this.txtPIS_CST_Saida_TextChanged);
+            // 
+            // lblPIS_CST_Saida
+            // 
+            this.lblPIS_CST_Saida.AutoSize = true;
+            this.lblPIS_CST_Saida.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPIS_CST_Saida.Location = new System.Drawing.Point(148, 18);
+            this.lblPIS_CST_Saida.Name = "lblPIS_CST_Saida";
+            this.lblPIS_CST_Saida.Size = new System.Drawing.Size(77, 16);
+            this.lblPIS_CST_Saida.TabIndex = 107;
+            this.lblPIS_CST_Saida.Text = "CST Saída";
+            // 
             // frmEditarLayoutFiscal_Manual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -626,15 +674,15 @@
         public System.Windows.Forms.TextBox txtIPI_Alq;
         private System.Windows.Forms.Label lblIPI_CSOSN;
         private System.Windows.Forms.GroupBox gpbCOFINS;
-        public System.Windows.Forms.TextBox txtCOFINS_CST;
-        private System.Windows.Forms.Label lblCOFINS_CST;
+        public System.Windows.Forms.TextBox txtCOFINS_CST_Entrada;
+        private System.Windows.Forms.Label lblCOFINS_CST_Entrada;
         private System.Windows.Forms.Label lblCOFINS_Alq;
         public System.Windows.Forms.TextBox txtCOFINS_CSOSN;
         public System.Windows.Forms.TextBox txtCOFINS_Alq;
         private System.Windows.Forms.Label lblCOFINS_CSOSN;
         private System.Windows.Forms.GroupBox gpbPIS;
-        public System.Windows.Forms.TextBox txtPIS_CST;
-        private System.Windows.Forms.Label lblPIS_CST;
+        public System.Windows.Forms.TextBox txtPIS_CST_Entrada;
+        private System.Windows.Forms.Label lblPIS_CST_Entrada;
         private System.Windows.Forms.Label lblPIS_Alq;
         public System.Windows.Forms.TextBox txtPIS_CSOSN;
         public System.Windows.Forms.TextBox txtPIS_Alq;
@@ -663,5 +711,9 @@
         public System.Windows.Forms.TextBox txtCod_Produto;
         private System.Windows.Forms.Label lblCod_Produto;
         private System.Windows.Forms.Button btnFechar;
+        public System.Windows.Forms.TextBox txtCOFINS_CST_Saida;
+        private System.Windows.Forms.Label lblCOFINS_CST_Saida;
+        public System.Windows.Forms.TextBox txtPIS_CST_Saida;
+        private System.Windows.Forms.Label lblPIS_CST_Saida;
     }
 }
