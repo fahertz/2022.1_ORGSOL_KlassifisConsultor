@@ -28,8 +28,7 @@ namespace Klassifis_Consultor.Telas
         }
 
         //////////////////// Instância do form
-        Parametros_Excel pExcel = new Parametros_Excel();
-        Funcoes_Sistema fSistema = new Funcoes_Sistema();
+        Parametros_Excel pExcel = new Parametros_Excel();        
 
         //Variáveis Text box
         private String mMessage, mTittle;
@@ -391,7 +390,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -407,7 +406,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -422,7 +421,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -454,7 +453,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -470,7 +469,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -502,7 +501,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -518,7 +517,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -550,7 +549,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -566,7 +565,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
                 }

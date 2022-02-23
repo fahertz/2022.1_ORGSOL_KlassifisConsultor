@@ -17,8 +17,7 @@ namespace Klassifis_Consultor.Telas
         {
             InitializeComponent();
         }
-        //////////////////////////// Instância
-        Funcoes_Sistema fSistema = new Funcoes_Sistema();
+        //////////////////////////// Instância        
 
         //Variáveis Text box
         private String mMessage, mTittle;
@@ -125,7 +124,7 @@ namespace Klassifis_Consultor.Telas
 
         private void txtCod_CEST_Validating(object sender, CancelEventArgs e)
         {
-            if (fSistema.contar_Numeros(txtCod_CEST.Text) != 7)
+            if (txtCod_CEST.Text.contar_Numeros() != 7)
             {
                 mMessage = "CEST inválido.";
                 mTittle = "Klassifis validation";
@@ -165,17 +164,17 @@ namespace Klassifis_Consultor.Telas
 
         private void txtICMS_Alq_Validating(object sender, CancelEventArgs e)
         {
-            txtICMS_Alq.Text = fSistema.mascara_Double(txtICMS_Alq.Text);
+            txtICMS_Alq.Text = txtICMS_Alq.Text.mascarar_Double();
         }
 
         private void txtICMS_CSOSN_Validating(object sender, CancelEventArgs e)
         {
-            txtICMS_CSOSN.Text = fSistema.mascara_Double(txtICMS_CSOSN.Text);
+            txtICMS_CSOSN.Text = txtICMS_CSOSN.Text.mascarar_Double();
         }
         
         private void txtICMS_MVA_Validating(object sender, CancelEventArgs e)
         {
-            txtICMS_MVA.Text = fSistema.mascara_Double(txtICMS_MVA.Text);
+            txtICMS_MVA.Text = txtICMS_MVA.Text.mascarar_Double();
         }
 
         //////////////////IPI
@@ -186,12 +185,12 @@ namespace Klassifis_Consultor.Telas
 
         private void txtIPI_CSOSN_Validating(object sender, CancelEventArgs e)
         {
-            txtIPI_CSOSN.Text = fSistema.mascara_Double(txtIPI_CSOSN.Text);
+            txtIPI_CSOSN.Text = txtIPI_CSOSN.Text.mascarar_Double();
         }
 
         private void txtIPI_Alq_Validating(object sender, CancelEventArgs e)
         {
-            txtIPI_Alq.Text = fSistema.mascara_Double(txtIPI_Alq.Text);
+            txtIPI_Alq.Text = txtIPI_Alq.Text.mascarar_Double();
         }
 
 
@@ -203,12 +202,12 @@ namespace Klassifis_Consultor.Telas
 
         private void txtPIS_CSOSN_Validating(object sender, CancelEventArgs e)
         {
-            txtPIS_CSOSN.Text = fSistema.mascara_Double(txtPIS_CSOSN.Text);
+            txtPIS_CSOSN.Text = txtPIS_CSOSN.Text.mascarar_Double();
         }
 
         private void txtPIS_Alq_Validating(object sender, CancelEventArgs e)
         {
-            txtPIS_Alq.Text = fSistema.mascara_Double(txtPIS_Alq.Text);
+            txtPIS_Alq.Text = txtPIS_Alq.Text.mascarar_Double();
         }
 
 
@@ -220,7 +219,7 @@ namespace Klassifis_Consultor.Telas
 
         private void txtCOFINS_Alq_Validating(object sender, CancelEventArgs e)
         {
-            txtCOFINS_Alq.Text = fSistema.mascara_Double(txtCOFINS_Alq.Text);
+            txtCOFINS_Alq.Text = txtCOFINS_Alq.Text.mascarar_Double();
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
@@ -231,7 +230,7 @@ namespace Klassifis_Consultor.Telas
       
         private void txtCOFINS_CSOSN_Validating(object sender, CancelEventArgs e)
         {
-            txtCOFINS_CSOSN.Text = fSistema.mascara_Double(txtCOFINS_CSOSN.Text);
+            txtCOFINS_CSOSN.Text = txtCOFINS_CSOSN.Text.mascarar_Double();
         }
 
 

@@ -6,20 +6,22 @@ using System.Threading.Tasks;
 
 namespace kLib
 {
-    public class Funcoes_Sistema
+    public static class Funcoes_Sistema
+    {
 
-    {            
-            public int contar_Numeros(string texto)
-            {
-                return texto.Where(c => char.IsNumber(c)).Count();
-            }
+        public static string CNPJ_Cliente = "25.718.218/0001-07";
 
-            public string mascara_Double(string texto)
+
+        public static int contar_Numeros(this String str)
+        {
+            return str.Where(c => char.IsNumber(c)).Count();
+        }
+
+        public static string mascarar_Double(this String str)
+        {
+            if (str != String.Empty && Convert.ToDouble(str) != 0)
             {
-            if (texto != String.Empty && Convert.ToDouble(texto) != 0)
-            {
-                string converter = texto.Replace(".", ",");
-                //double numero = Math.Round(Convert.ToDouble(converter), casas_Decimais);
+                string converter = str.Replace(".", ",");
                 string numero = Convert.ToDouble(converter).ToString("#.#0");
                 return numero;
             }
@@ -27,9 +29,7 @@ namespace kLib
             {
                 return "0,00";
             }
-                
+        }
 
-            }
-        
     }
 }
