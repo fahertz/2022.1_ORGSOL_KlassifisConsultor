@@ -17,6 +17,7 @@ using System.Net;
 using System.Text.RegularExpressions;
 using System.Threading;
 using System.Net.Mail;
+using Klassifis_Consultor.Telas.Tabelas;
 
 namespace Klassifis_Consultor.Telas
 {
@@ -28,8 +29,7 @@ namespace Klassifis_Consultor.Telas
         }
 
         //////////////////// Instância do form
-        Parametros_Excel pExcel = new Parametros_Excel();
-        Funcoes_Sistema fSistema = new Funcoes_Sistema();
+        Parametros_Excel pExcel = new Parametros_Excel();        
 
         //Variáveis Text box
         private String mMessage, mTittle;
@@ -128,16 +128,16 @@ namespace Klassifis_Consultor.Telas
 
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["PIS_CST_Entrada"])].Value = Fiscal.PIS_CST_Entrada(flg_Tipo);
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["PIS_CST_Saida"])].Value = Fiscal.PIS_CST_Saida(flg_Tipo);
-                row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["PIS_Alq"])].Value = fSistema.mascara_Double(Fiscal.PIS_Aliquota(flg_Tipo).ToString());
+                row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["PIS_Alq"])].Value = Fiscal.PIS_Aliquota(flg_Tipo).ToString().mascarar_Double();
                                                       
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["COFINS_CST_Entrada"])].Value = Fiscal.COFINS_CST_Entrada(flg_Tipo);
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["COFINS_CST_Saida"])].Value = Fiscal.COFINS_CST_Saida(flg_Tipo);
-                row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["COFINS_Alq"])].Value = fSistema.mascara_Double(Fiscal.COFINS_Aliquota(flg_Tipo).ToString());
+                row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["COFINS_Alq"])].Value = Fiscal.COFINS_Aliquota(flg_Tipo).ToString().mascarar_Double();
                 
             }
 
-            lsbRegras.Items.Add(tipo_Empresa + " PIS E/S " + Fiscal.PIS_CST_Entrada(flg_Tipo) + "/" + Fiscal.PIS_CST_Saida(flg_Tipo) + " com Alíquota de " + fSistema.mascara_Double(Fiscal.PIS_Aliquota(flg_Tipo).ToString()).ToString());
-            lsbRegras.Items.Add(tipo_Empresa + " COFINS E/S " + Fiscal.COFINS_CST_Entrada(flg_Tipo) + "/" + Fiscal.COFINS_CST_Entrada(flg_Tipo) + " com Alíquota de " + fSistema.mascara_Double(Fiscal.COFINS_Aliquota(flg_Tipo).ToString()).ToString());
+            lsbRegras.Items.Add(tipo_Empresa + " PIS E/S " + Fiscal.PIS_CST_Entrada(flg_Tipo) + "/" + Fiscal.PIS_CST_Saida(flg_Tipo) + " com Alíquota de " + Fiscal.PIS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
+            lsbRegras.Items.Add(tipo_Empresa + " COFINS E/S " + Fiscal.COFINS_CST_Entrada(flg_Tipo) + "/" + Fiscal.COFINS_CST_Entrada(flg_Tipo) + " com Alíquota de " + Fiscal.COFINS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
 
 
 
@@ -453,7 +453,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -469,7 +469,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -484,7 +484,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -507,6 +507,15 @@ namespace Klassifis_Consultor.Telas
                 //[11] Validação do CST de Saída PIS
                 if (dgvProdutos.CurrentRow.Cells[11].Selected && dgvProdutos.CurrentRow.Cells[11].Value?.ToString().Trim().Length != 2)
                 {
+                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    {
+                        dgvProdutos.CurrentCell.Value = "0,00";
+                    }
+
+                    else
+                    {
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
+                    }
                     mMessage = "CST inválido.";
                     mTittle = "Klassifis validation";
                     mButton = MessageBoxButtons.OK;
@@ -517,6 +526,7 @@ namespace Klassifis_Consultor.Telas
                 else if (dgvProdutos.CurrentRow.Cells[11].Selected)
                 {
                     dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+
                 }
 
 
@@ -530,7 +540,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -546,7 +556,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -593,7 +603,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -609,7 +619,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -641,7 +651,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
 
@@ -657,7 +667,7 @@ namespace Klassifis_Consultor.Telas
 
                     else
                     {
-                        dgvProdutos.CurrentCell.Value = fSistema.mascara_Double(dgvProdutos.CurrentCell.Value.ToString());
+                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
                 }
@@ -1223,6 +1233,13 @@ namespace Klassifis_Consultor.Telas
                 Enviar_Email(btnEnviar, new EventArgs(), dgvProdutos, Email._smtpusername);
             }
             this.Cursor = Cursors.Default;
+        }
+
+        private void btnTabCest_Click(object sender, EventArgs e)
+        {
+            frmTabelaCest form = new frmTabelaCest();            
+                form.Show();
+            
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)
