@@ -30,7 +30,7 @@ namespace Klassifis_Consultor.Telas
         private String mMessage, mTittle;
         private MessageBoxButtons mButton;
         private new MessageBoxIcon mIcon = MessageBoxIcon.Asterisk;
-        DialogResult result;
+        //DialogResult result;
 
         ////////////////////Métodos internos da tela
         //Configurações Iniciais
@@ -45,6 +45,8 @@ namespace Klassifis_Consultor.Telas
 
             //Configura o dgvDados para verificar
             configurar_DataGridView(dgvDados);
+            Task.Factory.StartNew(() => carregar_Lista_Emails());
+
             //btnCarregar_Click(btnCarregar, new EventArgs());
         }
 
@@ -277,6 +279,8 @@ namespace Klassifis_Consultor.Telas
         private void frmBaixarClassificacaoFiscal_Load(object sender, EventArgs e)
         {
             configuracoes_Iniciais();
+            
+            
         }
 
         //Baixar e-mails
@@ -329,7 +333,12 @@ namespace Klassifis_Consultor.Telas
         private void carregar_Lista_Emails()
         {
             this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.WaitCursor; });
-            carregar_Emails_Grid(dgvDados);
+            this.Invoke((MethodInvoker)delegate 
+            { 
+                btnCarregar.Enabled = false;
+                btnCarregar.Text = "Carregando...";               
+            });
+            carregar_Emails_Grid(dgvDados);            
             mMessage = "Listagem realizada com sucesso!";
             mTittle = "Klassifis Information";
             mButton = MessageBoxButtons.OK;
@@ -337,7 +346,13 @@ namespace Klassifis_Consultor.Telas
             this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.Default; });
             MessageBox.Show(mMessage, mTittle, mButton, mIcon);
             lblCarregando.Invoke((MethodInvoker)(delegate { lblCarregando.Visible = false; }));
-                
+
+            this.Invoke((MethodInvoker)delegate
+            {
+                btnCarregar.Enabled = true;
+                btnCarregar.Text = "Carregar";
+            });
+
 
         }
         private void btnCarregar_Click(object sender, EventArgs e)
@@ -371,8 +386,11 @@ namespace Klassifis_Consultor.Telas
 
         //Botão Filtrar CNPJ
         private void txtFiltrar_Click(object sender, EventArgs e)
-        {   
+        {                                       
             this.Cursor = Cursors.WaitCursor;
+
+            var listaEmail = 
+
             foreach (DataGridViewRow row in dgvDados.Rows)
             {                
                 if (row.Cells[2].Value.ToString().Contains(mtxCNPJ.Text.ToString().Replace(",","").Replace("-","").Replace("/","").Replace(".","").Trim()))                
