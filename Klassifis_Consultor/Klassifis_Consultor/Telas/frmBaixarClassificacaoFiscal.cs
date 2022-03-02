@@ -23,14 +23,13 @@ namespace Klassifis_Consultor.Telas
 
         ///////////////Instância
 
-
-
-
         //Variáveis Text box
         private String mMessage, mTittle;
         private MessageBoxButtons mButton;
         private new MessageBoxIcon mIcon = MessageBoxIcon.Asterisk;
-        //DialogResult result;
+        
+        List<Baixar_Classificacao> lBaixar_Classificacao = new List<Baixar_Classificacao>();
+
 
         ////////////////////Métodos internos da tela
         //Configurações Iniciais
@@ -59,21 +58,21 @@ namespace Klassifis_Consultor.Telas
             _dgv.Columns.Add("Data_Recebimento", "Data"); //2
             _dgv.Columns.Add("Status", "Resposta");
             //Cria coluna Checável para o DataGridView
-            var col = new DataGridViewCheckBoxColumn();
-            col.Name = "Download";
-            col.HeaderText = "Download";
-            col.FalseValue = "0";
-            col.TrueValue = "1";
+            //var col = new DataGridViewCheckBoxColumn();
+            //col.Name = "Download";
+            //col.HeaderText = "Download";
+            //col.FalseValue = "0";
+            //col.TrueValue = "1";
             //Faz a marcação padrão
-            col.CellTemplate.Value = true;
-            col.CellTemplate.Style.NullValue = true;
-            //Insere a coluna 1
-            _dgv.Columns.Insert(1, col);
+            //col.CellTemplate.Value = true;
+            //col.CellTemplate.Style.NullValue = true;
+            ////Insere a coluna 1
+            //_dgv.Columns.Insert(1, col);
             //Deixa a coluna Invisível
             _dgv.Columns[0].Visible = false;
             //Coluna inativada, será reativada em versões posteriores
-            _dgv.Columns[1].Visible = false;
-            _dgv.Columns[3].Width = 150;
+            //_dgv.Columns[1].Visible = false;
+            _dgv.Columns[2].Width = 150;
         }
 
 
@@ -161,29 +160,30 @@ namespace Klassifis_Consultor.Telas
                             //}
                             String[] add = null;
                             add = popEmail.Headers.Subject.ToString().Split('_');
-                            _dgv.Invoke((MethodInvoker)(delegate {
+                            _dgv.Invoke((MethodInvoker)(delegate
+                            {                               
                                 if (resp == 1)
                                 {
+                                    lBaixar_Classificacao.Add(new Baixar_Classificacao
+                                    {
+                                        Id = popEmail.Headers.MessageId,
+                                        CNPJ_Cliente = add[1],
+                                        Data_Recebimento = Convert.ToDateTime((popEmail.Headers.Date).Replace("(PDT)", "").Replace("(PST)", "")),
+                                        Status = "Respondido"
+                                    });
 
-
-                                    _dgv.Rows.Add(
-                                        popEmail.Headers.MessageId
-                                        , 0
-                                        , add[1]
-                                        , Convert.ToDateTime((popEmail.Headers.Date).Replace("(PDT)", "").Replace("(PST)", ""))
-                                        , "Respondido"
-                                        );
                                 }
                                 else
                                 {
-                                    _dgv.Rows.Add(
-                                          popEmail.Headers.MessageId
-                                        , 0
-                                        , add[1]
-                                        , Convert.ToDateTime((popEmail.Headers.Date).Replace("(PDT)", "").Replace("(PST)", ""))
-                                        , "Não Respondido"
-                                        );
+                                    lBaixar_Classificacao.Add(new Baixar_Classificacao
+                                    {
+                                        Id = popEmail.Headers.MessageId,
+                                        CNPJ_Cliente = add[1],
+                                        Data_Recebimento = Convert.ToDateTime((popEmail.Headers.Date).Replace("(PDT)", "").Replace("(PST)", "")),
+                                        Status = "Não Respondido"
+                                    });
                                 }
+
                             }));
                             mensagensCarregadas++;
                             lblCarregando.Invoke((MethodInvoker)delegate { lblCarregando.Text = "Carregando....(" + mensagensCarregadas + " / " + mensagens_aCarregar + ")"; });
@@ -195,20 +195,30 @@ namespace Klassifis_Consultor.Telas
             finally
             {
 
+                //var filtro_Inicial = lBaixar_Classificacao.Select(x => x.Data_Recebimento).OrderByDescending(x=> x.Date);
+
+                var filtro_Inicial = from Classificacao in lBaixar_Classificacao
+                                     orderby Classificacao.Data_Recebimento descending
+                                     select new { Classificacao }
+                                      ;
+
                 _dgv.Invoke((MethodInvoker)(delegate
                {
-
+                   foreach (var classi in filtro_Inicial)
+                   {
+                       _dgv.Rows.Add(classi.Classificacao.Id, classi.Classificacao.CNPJ_Cliente, classi.Classificacao.Data_Recebimento, classi.Classificacao.Status);
+                   }
                    foreach (DataGridViewRow row in _dgv.Rows)
                    {
-                       if (row.Cells[4].Value.ToString().Equals("Respondido"))
+                       if (row.Cells["Status"].Value.ToString().Equals("Respondido"))
                        {
                            row.DefaultCellStyle.BackColor = Color.DarkSeaGreen;
                        }
                    }
-                   _dgv.Sort(_dgv.Columns[3], ListSortDirection.Descending);
-               }));
+               }));               
             }
         }
+        
 
 
         //Baixa o arquivo para a pasta Raiz do Projeto
@@ -279,8 +289,7 @@ namespace Klassifis_Consultor.Telas
         private void frmBaixarClassificacaoFiscal_Load(object sender, EventArgs e)
         {
             configuracoes_Iniciais();
-            
-            
+                        
         }
 
         //Baixar e-mails
@@ -288,6 +297,11 @@ namespace Klassifis_Consultor.Telas
         private void baixar_Emails()
         {
             this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.WaitCursor; });
+
+            btnCarregar.Invoke((MethodInvoker)delegate { btnCarregar.Enabled = false; });
+            btnFiltrar.Invoke((MethodInvoker)delegate { btnFiltrar.Enabled = false; });
+
+
             if (dgvDados.SelectedRows != null && dgvDados.CurrentRow!= null)
             {
                 lblBaixando.Invoke((MethodInvoker)delegate { lblBaixando.Visible = true; });
@@ -316,23 +330,30 @@ namespace Klassifis_Consultor.Telas
                 MessageBox.Show(mMessage, mTittle, mButton, mIcon);
             }
 
+
+
+            btnCarregar.Invoke((MethodInvoker)delegate { btnCarregar.Enabled = true; });
+            btnFiltrar.Invoke((MethodInvoker)delegate { btnFiltrar.Enabled = true; });
+
             this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.Default; });
         }
         private void btnDownload_Click(object sender, EventArgs e)
         {
-            
-                Thread t1 = new Thread(baixar_Emails);
-                t1.SetApartmentState(ApartmentState.STA);
-                t1.Start();
-            
-
+            Task.Factory.StartNew(() => baixar_Emails());
         }
 
         //Botão para carregar os e-mails na Grid
 
         private void carregar_Lista_Emails()
         {
+            lBaixar_Classificacao.Clear();
             this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.WaitCursor; });
+            btnFiltrar.Invoke((MethodInvoker)delegate
+            {
+                btnFiltrar.Enabled = false;
+            });
+
+
             this.Invoke((MethodInvoker)delegate 
             { 
                 btnCarregar.Enabled = false;
@@ -353,14 +374,16 @@ namespace Klassifis_Consultor.Telas
                 btnCarregar.Text = "Carregar";
             });
 
+            btnFiltrar.Invoke((MethodInvoker)delegate
+            {
+                btnFiltrar.Enabled = true;
+            });
+
 
         }
         private void btnCarregar_Click(object sender, EventArgs e)
         {
-            
-            Thread t2 = new Thread(carregar_Lista_Emails);                         
-            t2.SetApartmentState(ApartmentState.STA);
-            t2.Start();                                                
+            Task.Factory.StartNew(() => carregar_Lista_Emails());
         }
 
         //Limpa as linhas do Grid
@@ -387,19 +410,25 @@ namespace Klassifis_Consultor.Telas
         //Botão Filtrar CNPJ
         private void txtFiltrar_Click(object sender, EventArgs e)
         {                                       
+            
             this.Cursor = Cursors.WaitCursor;
+            dgvDados.Rows.Clear();
 
-            var listaEmail = 
+            var listaEmail = from Classificacao in lBaixar_Classificacao
+                             where Classificacao.CNPJ_Cliente.Contains(mtxCNPJ.Text.ToString().Replace(",", "").Replace("-", "").Replace("/", "").Replace(".", "").Trim())
+                             orderby Classificacao.Data_Recebimento descending
+                             select new { Classificacao };
 
+            foreach (var lista_Filtrada in listaEmail)
+            {
+                dgvDados.Rows.Add(lista_Filtrada.Classificacao.Id, lista_Filtrada.Classificacao.CNPJ_Cliente, lista_Filtrada.Classificacao.Data_Recebimento, lista_Filtrada.Classificacao.Status);
+            }
+            
             foreach (DataGridViewRow row in dgvDados.Rows)
-            {                
-                if (row.Cells[2].Value.ToString().Contains(mtxCNPJ.Text.ToString().Replace(",","").Replace("-","").Replace("/","").Replace(".","").Trim()))                
+            {
+                if (row.Cells["Status"].Value.ToString().Equals("Respondido"))
                 {
-                    row.Visible = true;
-                }
-                else
-                {
-                    row.Visible = false;
+                    row.DefaultCellStyle.BackColor = Color.DarkSeaGreen;
                 }
             }
             this.Cursor = Cursors.Default;
@@ -409,10 +438,15 @@ namespace Klassifis_Consultor.Telas
         //Pesquisar o CNPJ com o enter
         private void mtxCNPJ_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyCode == Keys.Enter)
+            if (e.KeyCode == Keys.Enter && btnFiltrar.Enabled == true)
             {
-                txtFiltrar_Click(txtFiltrar, new EventArgs());
-            }
+                txtFiltrar_Click(btnFiltrar, new EventArgs());
+            }            
+        }
+
+        private void mtxCNPJ_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
+        {
+
         }
 
 

@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Classes_Sistema.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Fiscal.cs" />
     <Compile Include="Funcoes_Sistema.cs" />

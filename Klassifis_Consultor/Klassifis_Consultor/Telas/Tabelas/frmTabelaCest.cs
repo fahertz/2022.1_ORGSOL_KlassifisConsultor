@@ -100,5 +100,10 @@ namespace Klassifis_Consultor.Telas.Tabelas
                 filtrar_Dados();
             }
         }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
