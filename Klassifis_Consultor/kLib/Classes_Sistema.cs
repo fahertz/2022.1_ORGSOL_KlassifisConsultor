@@ -11,6 +11,17 @@ namespace kLib
 
     }
 
+    public class Tabela_Cest
+    {
+        public String Id { get; set; }
+        public String Descricao { get; set; }
+
+    }
+
+
+
+
+
     public class Baixar_Classificacao
     {
         public String Id { get; set; }

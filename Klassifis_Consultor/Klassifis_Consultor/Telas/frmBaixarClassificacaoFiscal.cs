@@ -444,11 +444,7 @@ namespace Klassifis_Consultor.Telas
             }            
         }
 
-        private void mtxCNPJ_MaskInputRejected(object sender, MaskInputRejectedEventArgs e)
-        {
-
-        }
-
+      
 
 
         //Fechar Form

@@ -192,8 +192,7 @@
             this.mtxCNPJ.Mask = "00.000.000/0000-00";
             this.mtxCNPJ.Name = "mtxCNPJ";
             this.mtxCNPJ.Size = new System.Drawing.Size(110, 20);
-            this.mtxCNPJ.TabIndex = 62;
-            this.mtxCNPJ.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.mtxCNPJ_MaskInputRejected);
+            this.mtxCNPJ.TabIndex = 62;            
             this.mtxCNPJ.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtxCNPJ_KeyDown);
             // 
             // frmBaixarClassificacaoFiscal
