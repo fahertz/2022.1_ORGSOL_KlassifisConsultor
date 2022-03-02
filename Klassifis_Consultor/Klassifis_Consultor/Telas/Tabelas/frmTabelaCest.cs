@@ -132,6 +132,8 @@ namespace Klassifis_Consultor.Telas.Tabelas
             }
         }
 
+
+        //Pesquisa com TextChanged
         private void txtPesquisar_TextChanged(object sender, EventArgs e)
         {
             filtrar_Dados(dgvDados);

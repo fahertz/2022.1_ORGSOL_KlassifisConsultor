@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblFiltrarCNPJ = new System.Windows.Forms.Label();
             this.btnCarregar = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
@@ -58,7 +58,7 @@
             // 
             this.btnCarregar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnCarregar.Location = new System.Drawing.Point(754, 82);
-            this.btnCarregar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCarregar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCarregar.Name = "btnCarregar";
             this.btnCarregar.Size = new System.Drawing.Size(100, 28);
             this.btnCarregar.TabIndex = 54;
@@ -75,7 +75,7 @@
             this.btnFechar.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFechar.ForeColor = System.Drawing.Color.White;
             this.btnFechar.Location = new System.Drawing.Point(733, 516);
-            this.btnFechar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(121, 43);
             this.btnFechar.TabIndex = 53;
@@ -87,7 +87,7 @@
             // 
             this.btnDownload.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnDownload.Location = new System.Drawing.Point(13, 516);
-            this.btnDownload.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnDownload.Margin = new System.Windows.Forms.Padding(4);
             this.btnDownload.Name = "btnDownload";
             this.btnDownload.Size = new System.Drawing.Size(100, 28);
             this.btnDownload.TabIndex = 52;
@@ -99,18 +99,18 @@
             // 
             this.dgvDados.AllowUserToAddRows = false;
             this.dgvDados.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvDados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvDados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDados.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvDados.Location = new System.Drawing.Point(13, 118);
-            this.dgvDados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvDados.Margin = new System.Windows.Forms.Padding(4);
             this.dgvDados.Name = "dgvDados";
             this.dgvDados.ReadOnly = true;
             this.dgvDados.RowHeadersVisible = false;
@@ -155,7 +155,7 @@
             // 
             this.btnLimpar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnLimpar.Location = new System.Drawing.Point(121, 516);
-            this.btnLimpar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnLimpar.Margin = new System.Windows.Forms.Padding(4);
             this.btnLimpar.Name = "btnLimpar";
             this.btnLimpar.Size = new System.Drawing.Size(100, 28);
             this.btnLimpar.TabIndex = 59;
@@ -167,7 +167,7 @@
             // 
             this.btnBaixados.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.btnBaixados.Location = new System.Drawing.Point(229, 516);
-            this.btnBaixados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnBaixados.Margin = new System.Windows.Forms.Padding(4);
             this.btnBaixados.Name = "btnBaixados";
             this.btnBaixados.Size = new System.Drawing.Size(123, 28);
             this.btnBaixados.TabIndex = 60;
@@ -178,7 +178,7 @@
             // btnFiltrar
             // 
             this.btnFiltrar.Location = new System.Drawing.Point(132, 82);
-            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFiltrar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFiltrar.Name = "btnFiltrar";
             this.btnFiltrar.Size = new System.Drawing.Size(63, 24);
             this.btnFiltrar.TabIndex = 61;
@@ -192,7 +192,8 @@
             this.mtxCNPJ.Mask = "00.000.000/0000-00";
             this.mtxCNPJ.Name = "mtxCNPJ";
             this.mtxCNPJ.Size = new System.Drawing.Size(110, 20);
-            this.mtxCNPJ.TabIndex = 62;            
+            this.mtxCNPJ.TabIndex = 62;
+            this.mtxCNPJ.TextChanged += new System.EventHandler(this.mtxCNPJ_TextChanged);
             this.mtxCNPJ.KeyDown += new System.Windows.Forms.KeyEventHandler(this.mtxCNPJ_KeyDown);
             // 
             // frmBaixarClassificacaoFiscal

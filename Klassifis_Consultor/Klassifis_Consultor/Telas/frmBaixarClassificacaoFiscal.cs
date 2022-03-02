@@ -392,6 +392,39 @@ namespace Klassifis_Consultor.Telas
             dgvDados.Rows.Clear();
         }
 
+        //Filtrar dados
+
+        private void filtrar_Dados(DataGridView _dgv, string Pesquisa)
+        {
+
+
+            this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.WaitCursor; });
+
+            
+            _dgv.Invoke((MethodInvoker)delegate { 
+            _dgv.Rows.Clear();
+
+            var listaEmail = from Classificacao in lBaixar_Classificacao
+                             where Classificacao.CNPJ_Cliente.Contains(Pesquisa)
+                             orderby Classificacao.Data_Recebimento descending
+                             select new { Classificacao };
+
+            foreach (var lista_Filtrada in listaEmail)
+            {
+                _dgv.Rows.Add(lista_Filtrada.Classificacao.Id, lista_Filtrada.Classificacao.CNPJ_Cliente, lista_Filtrada.Classificacao.Data_Recebimento, lista_Filtrada.Classificacao.Status);
+            }
+
+            foreach (DataGridViewRow row in dgvDados.Rows)
+            {
+                if (row.Cells["Status"].Value.ToString().Equals("Respondido"))
+                {
+                    row.DefaultCellStyle.BackColor = Color.DarkSeaGreen;
+                }
+            }
+
+            });
+            this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.Default; });
+        }
 
 
         //Abrir tela dos layouts baixados
@@ -407,31 +440,17 @@ namespace Klassifis_Consultor.Telas
             t3.Start();
         }
 
+
+
+
+
         //Botão Filtrar CNPJ
         private void txtFiltrar_Click(object sender, EventArgs e)
-        {                                       
-            
-            this.Cursor = Cursors.WaitCursor;
-            dgvDados.Rows.Clear();
-
-            var listaEmail = from Classificacao in lBaixar_Classificacao
-                             where Classificacao.CNPJ_Cliente.Contains(mtxCNPJ.Text.ToString().Replace(",", "").Replace("-", "").Replace("/", "").Replace(".", "").Trim())
-                             orderby Classificacao.Data_Recebimento descending
-                             select new { Classificacao };
-
-            foreach (var lista_Filtrada in listaEmail)
+        {
+            if ( btnFiltrar.Enabled == true)
             {
-                dgvDados.Rows.Add(lista_Filtrada.Classificacao.Id, lista_Filtrada.Classificacao.CNPJ_Cliente, lista_Filtrada.Classificacao.Data_Recebimento, lista_Filtrada.Classificacao.Status);
+                filtrar_Dados(dgvDados, mtxCNPJ.Text.ToString().Replace(",", "").Replace("-", "").Replace("/", "").Replace(".", "").Trim());
             }
-            
-            foreach (DataGridViewRow row in dgvDados.Rows)
-            {
-                if (row.Cells["Status"].Value.ToString().Equals("Respondido"))
-                {
-                    row.DefaultCellStyle.BackColor = Color.DarkSeaGreen;
-                }
-            }
-            this.Cursor = Cursors.Default;
         }
 
         
@@ -440,11 +459,20 @@ namespace Klassifis_Consultor.Telas
         {
             if (e.KeyCode == Keys.Enter && btnFiltrar.Enabled == true)
             {
-                txtFiltrar_Click(btnFiltrar, new EventArgs());
+                filtrar_Dados(dgvDados, mtxCNPJ.Text.ToString().Replace(",", "").Replace("-", "").Replace("/", "").Replace(".", "").Trim());
             }            
         }
 
-      
+        //Text changed pesquisa
+        private void mtxCNPJ_TextChanged(object sender, EventArgs e)
+        {
+            if (btnFiltrar.Enabled == true)
+            {
+                filtrar_Dados(dgvDados, mtxCNPJ.Text.ToString().Replace(",", "").Replace("-", "").Replace("/", "").Replace(".", "").Trim());
+            }
+        }
+
+
 
 
         //Fechar Form
