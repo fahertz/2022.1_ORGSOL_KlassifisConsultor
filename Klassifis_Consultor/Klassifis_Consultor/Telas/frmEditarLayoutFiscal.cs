@@ -147,16 +147,12 @@ namespace Klassifis_Consultor.Telas
             //Carrega dados do Cliente
             carregar_Cliente(sPathCliente);
 
-            Thread t1 = new Thread(buscar_CEP_Cliente);
-            t1.SetApartmentState(ApartmentState.STA);
-            t1.Start();
+            
+            Task.Factory.StartNew(() => buscar_CEP(mtxCEP.Text));
+            Task.Factory.StartNew(() => validar_Dados(dgvProdutos));
             
         }
-
-        private void buscar_CEP_Cliente() {
-            //Busca as informações do CEP
-            buscar_CEP(mtxCEP.Text);
-        }
+      
         //Carregar informações do Layout de produtos
         private void carregar_Produtos(DataGridView _dgv, String path)
         {
@@ -164,6 +160,37 @@ namespace Klassifis_Consultor.Telas
             string linhasDoArquivo = reader.ReadToEnd();
             _dgv.DataSource = (DataTable)JsonConvert.DeserializeObject(linhasDoArquivo, (typeof(DataTable)));
             
+            
+        }
+
+        private void validar_Dados(DataGridView _dgv)
+        {
+
+            _dgv.Invoke((MethodInvoker)delegate
+           {
+               foreach (DataGridViewRow row in _dgv.Rows)
+               {
+
+                   if (!row.Cells[3].Value.ToString().Equals(String.Empty) && Fiscal.Validar_NCM(row.Cells[3].Value.ToString()) != true)
+                   {
+                       row.Cells[3].Style.BackColor = Color.Red;
+                   }
+                   else
+                   {
+                       row.Cells[3].Style.BackColor = Color.White;
+                   }
+
+                   if (!row.Cells[5].Value.ToString().Equals(String.Empty) && Fiscal.Validar_NCM(row.Cells[5].Value.ToString()) != true)
+                   {
+                       row.Cells[5].Style.BackColor = Color.Red;
+                   }
+                   else 
+                   {
+                       row.Cells[5].Style.BackColor = Color.White;
+                   }
+
+               }
+           });
         }
 
         //Buscar pelo CEP        
@@ -390,6 +417,15 @@ namespace Klassifis_Consultor.Telas
                     MessageBox.Show(mMessage, mTittle, mButton, mIcon);
 
                 }
+                else if (!dgvProdutos.CurrentRow.Cells[3].Value.ToString().Equals(String.Empty) && Fiscal.Validar_NCM(dgvProdutos.CurrentRow.Cells[3].Value.ToString()) != true)
+                {
+                    mMessage = "Código NCM inválido, consulte a tabela TIPI para mais informações";
+                    mTittle = "Klassifis warning";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Warning;
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                }
                 else if (dgvProdutos.CurrentRow.Cells[3].Selected)
                 {
                     dgvProdutos.CurrentCell.Style.BackColor = Color.White;
@@ -421,6 +457,17 @@ namespace Klassifis_Consultor.Telas
                     dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
                     MessageBox.Show(mMessage, mTittle, mButton, mIcon);
 
+
+
+                }
+                else if (!dgvProdutos.CurrentRow.Cells[5].Value.ToString().Equals(String.Empty) && Fiscal.Validar_NCM(dgvProdutos.CurrentRow.Cells[5].Value.ToString()) != true)
+                {
+                    mMessage = "Código NCM inválido, consulte a tabela TIPI para mais informações";
+                    mTittle = "Klassifis warning";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Warning;
+                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
                 }
                 else if (dgvProdutos.CurrentRow.Cells[5].Selected)
                 {
@@ -710,9 +757,7 @@ namespace Klassifis_Consultor.Telas
 
         private void btnEntradaManual_Click(object sender, EventArgs e)
         {
-            frmEditarLayoutFiscal_Manual form = new frmEditarLayoutFiscal_Manual();
-          
-
+            frmEditarLayoutFiscal_Manual form = new frmEditarLayoutFiscal_Manual();          
             form.txtCod_Produto.Text = dgvProdutos.CurrentRow.Cells[0].Value.ToString();
             form.txtCod_Produto.ReadOnly = true;
             form.txtDesc_Produto.Text = dgvProdutos.CurrentRow.Cells[1].Value.ToString();
@@ -768,6 +813,10 @@ namespace Klassifis_Consultor.Telas
             dgvProdutos.CurrentRow.Cells[18].Value = form.txtIPI_CST.Text;
             dgvProdutos.CurrentRow.Cells[19].Value = form.txtIPI_Alq.Text;
             dgvProdutos.CurrentRow.Cells[20].Value = form.txtIPI_CSOSN.Text;
+
+
+
+            validar_Dados(dgvProdutos);
         }
 
         private void dgvProdutos_KeyPress(object sender, KeyPressEventArgs e)
@@ -1266,6 +1315,7 @@ namespace Klassifis_Consultor.Telas
             this.Cursor = Cursors.Default;
 
         }
+   
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

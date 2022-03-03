@@ -5,8 +5,10 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Klassifis_Consultor.Telas.Tabelas;
 using kLib;
 
 namespace Klassifis_Consultor.Telas
@@ -91,24 +93,38 @@ namespace Klassifis_Consultor.Telas
 
         private void ncm_Validation(TextBox textbox, Label label)
         {
-            if (textbox.Text.Length != 8)
-            {
-                mMessage = "NCM inválido.";
-                mTittle = "Klassifis validation";
-                mButton = MessageBoxButtons.OK;
-                mIcon = MessageBoxIcon.Error;
-                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
-                textbox.ForeColor = Color.Red;
-                label.ForeColor = Color.Red;
-                textbox.Focus();
-            }
-            else
-            {
-                if (textbox.ForeColor == Color.Red)
+            if (!textbox.Text.Trim().Equals(String.Empty)) {
+                if (textbox.Text.Length != 8)
                 {
-                    textbox.ForeColor = Color.Black;
-                    label.ForeColor = Color.Black;
+                    mMessage = "O NCM deve ter 8 dígitos.";
+                    mTittle = "Klassifis validation";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    textbox.ForeColor = Color.Red;
+                    label.ForeColor = Color.Red;
                     textbox.Focus();
+                }
+                else if (!textbox.Text.Equals(String.Empty) && Fiscal.Validar_NCM(textbox.Text) != true)
+                {
+                    mMessage = "NCM incorreto, para dúvidas verifique a tabela TIPI.";
+                    mTittle = "Klassifis warming";
+                    mButton = MessageBoxButtons.OK;
+                    mIcon = MessageBoxIcon.Error;
+                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                    textbox.ForeColor = Color.Red;
+                    label.ForeColor = Color.Red;
+                    btnTipi_Click(btnTipi, new EventArgs());
+                    textbox.Focus();
+                }
+                else
+                {
+                    if (textbox.ForeColor == Color.Red)
+                    {
+                        textbox.ForeColor = Color.Black;
+                        label.ForeColor = Color.Black;
+                        textbox.Focus();
+                    }
                 }
             }
         }
@@ -237,7 +253,41 @@ namespace Klassifis_Consultor.Telas
             this.Close();
         }
 
-     
+
+
+
+
+        private void abrir_TabelaCest()
+        {
+            Application.Run(new frmTabelaCest());
+        }
+
+        private void btnTabCest_Click(object sender, EventArgs e)
+        {
+            Thread t1 = new Thread(abrir_TabelaCest);
+            t1.SetApartmentState(ApartmentState.STA);
+            t1.Start();
+
+        }
+
+
+
+        private void abrir_TabelaTipi()
+        {
+            Application.Run(new frmTabelaTipi());
+        }
+
+        private void btnTipi_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;
+            Thread t1 = new Thread(abrir_TabelaTipi);
+            t1.SetApartmentState(ApartmentState.STA);
+            t1.Start();
+            Thread.Sleep(3000);
+            this.Cursor = Cursors.Default;
+
+        }
+
 
         private void txtCOFINS_CSOSN_Validating(object sender, CancelEventArgs e)
         {

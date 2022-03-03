@@ -36,6 +36,8 @@
             this.txtIPI_Alq = new System.Windows.Forms.TextBox();
             this.lblIPI_CSOSN = new System.Windows.Forms.Label();
             this.gpbCOFINS = new System.Windows.Forms.GroupBox();
+            this.txtCOFINS_CST_Saida = new System.Windows.Forms.TextBox();
+            this.lblCOFINS_CST_Saida = new System.Windows.Forms.Label();
             this.txtCOFINS_CST_Entrada = new System.Windows.Forms.TextBox();
             this.lblCOFINS_CST_Entrada = new System.Windows.Forms.Label();
             this.lblCOFINS_Alq = new System.Windows.Forms.Label();
@@ -43,6 +45,8 @@
             this.txtCOFINS_Alq = new System.Windows.Forms.TextBox();
             this.lblCOFINS_CSOSN = new System.Windows.Forms.Label();
             this.gpbPIS = new System.Windows.Forms.GroupBox();
+            this.txtPIS_CST_Saida = new System.Windows.Forms.TextBox();
+            this.lblPIS_CST_Saida = new System.Windows.Forms.Label();
             this.txtPIS_CST_Entrada = new System.Windows.Forms.TextBox();
             this.lblPIS_CST_Entrada = new System.Windows.Forms.Label();
             this.lblPIS_Alq = new System.Windows.Forms.Label();
@@ -73,10 +77,8 @@
             this.txtCod_Produto = new System.Windows.Forms.TextBox();
             this.lblCod_Produto = new System.Windows.Forms.Label();
             this.btnFechar = new System.Windows.Forms.Button();
-            this.txtCOFINS_CST_Saida = new System.Windows.Forms.TextBox();
-            this.lblCOFINS_CST_Saida = new System.Windows.Forms.Label();
-            this.txtPIS_CST_Saida = new System.Windows.Forms.TextBox();
-            this.lblPIS_CST_Saida = new System.Windows.Forms.Label();
+            this.btnTipi = new System.Windows.Forms.Button();
+            this.btnTabCest = new System.Windows.Forms.Button();
             this.gpbIPI.SuspendLayout();
             this.gpbCOFINS.SuspendLayout();
             this.gpbPIS.SuspendLayout();
@@ -179,6 +181,26 @@
             this.gpbCOFINS.TabStop = false;
             this.gpbCOFINS.Text = "COFINS";
             // 
+            // txtCOFINS_CST_Saida
+            // 
+            this.txtCOFINS_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtCOFINS_CST_Saida.Location = new System.Drawing.Point(151, 37);
+            this.txtCOFINS_CST_Saida.MaxLength = 14;
+            this.txtCOFINS_CST_Saida.Name = "txtCOFINS_CST_Saida";
+            this.txtCOFINS_CST_Saida.Size = new System.Drawing.Size(139, 20);
+            this.txtCOFINS_CST_Saida.TabIndex = 106;
+            this.txtCOFINS_CST_Saida.Validating += new System.ComponentModel.CancelEventHandler(this.txtCOFINS_CST_Saida_Validating);
+            // 
+            // lblCOFINS_CST_Saida
+            // 
+            this.lblCOFINS_CST_Saida.AutoSize = true;
+            this.lblCOFINS_CST_Saida.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCOFINS_CST_Saida.Location = new System.Drawing.Point(148, 18);
+            this.lblCOFINS_CST_Saida.Name = "lblCOFINS_CST_Saida";
+            this.lblCOFINS_CST_Saida.Size = new System.Drawing.Size(77, 16);
+            this.lblCOFINS_CST_Saida.TabIndex = 107;
+            this.lblCOFINS_CST_Saida.Text = "CST Saída";
+            // 
             // txtCOFINS_CST_Entrada
             // 
             this.txtCOFINS_CST_Entrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
@@ -258,6 +280,26 @@
             this.gpbPIS.TabIndex = 140;
             this.gpbPIS.TabStop = false;
             this.gpbPIS.Text = "PIS";
+            // 
+            // txtPIS_CST_Saida
+            // 
+            this.txtPIS_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtPIS_CST_Saida.Location = new System.Drawing.Point(151, 37);
+            this.txtPIS_CST_Saida.MaxLength = 14;
+            this.txtPIS_CST_Saida.Name = "txtPIS_CST_Saida";
+            this.txtPIS_CST_Saida.Size = new System.Drawing.Size(139, 20);
+            this.txtPIS_CST_Saida.TabIndex = 106;
+            this.txtPIS_CST_Saida.TextChanged += new System.EventHandler(this.txtPIS_CST_Saida_TextChanged);
+            // 
+            // lblPIS_CST_Saida
+            // 
+            this.lblPIS_CST_Saida.AutoSize = true;
+            this.lblPIS_CST_Saida.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPIS_CST_Saida.Location = new System.Drawing.Point(148, 18);
+            this.lblPIS_CST_Saida.Name = "lblPIS_CST_Saida";
+            this.lblPIS_CST_Saida.Size = new System.Drawing.Size(77, 16);
+            this.lblPIS_CST_Saida.TabIndex = 107;
+            this.lblPIS_CST_Saida.Text = "CST Saída";
             // 
             // txtPIS_CST_Entrada
             // 
@@ -588,51 +630,33 @@
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
-            // txtCOFINS_CST_Saida
+            // btnTipi
             // 
-            this.txtCOFINS_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtCOFINS_CST_Saida.Location = new System.Drawing.Point(151, 37);
-            this.txtCOFINS_CST_Saida.MaxLength = 14;
-            this.txtCOFINS_CST_Saida.Name = "txtCOFINS_CST_Saida";
-            this.txtCOFINS_CST_Saida.Size = new System.Drawing.Size(139, 20);
-            this.txtCOFINS_CST_Saida.TabIndex = 106;
-            this.txtCOFINS_CST_Saida.Validating += new System.ComponentModel.CancelEventHandler(this.txtCOFINS_CST_Saida_Validating);
+            this.btnTipi.Location = new System.Drawing.Point(560, 44);
+            this.btnTipi.Name = "btnTipi";
+            this.btnTipi.Size = new System.Drawing.Size(75, 28);
+            this.btnTipi.TabIndex = 144;
+            this.btnTipi.Text = "Tab. TIPI";
+            this.btnTipi.UseVisualStyleBackColor = true;
+            this.btnTipi.Click += new System.EventHandler(this.btnTipi_Click);
             // 
-            // lblCOFINS_CST_Saida
+            // btnTabCest
             // 
-            this.lblCOFINS_CST_Saida.AutoSize = true;
-            this.lblCOFINS_CST_Saida.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCOFINS_CST_Saida.Location = new System.Drawing.Point(148, 18);
-            this.lblCOFINS_CST_Saida.Name = "lblCOFINS_CST_Saida";
-            this.lblCOFINS_CST_Saida.Size = new System.Drawing.Size(77, 16);
-            this.lblCOFINS_CST_Saida.TabIndex = 107;
-            this.lblCOFINS_CST_Saida.Text = "CST Saída";
-            // 
-            // txtPIS_CST_Saida
-            // 
-            this.txtPIS_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtPIS_CST_Saida.Location = new System.Drawing.Point(151, 37);
-            this.txtPIS_CST_Saida.MaxLength = 14;
-            this.txtPIS_CST_Saida.Name = "txtPIS_CST_Saida";
-            this.txtPIS_CST_Saida.Size = new System.Drawing.Size(139, 20);
-            this.txtPIS_CST_Saida.TabIndex = 106;
-            this.txtPIS_CST_Saida.TextChanged += new System.EventHandler(this.txtPIS_CST_Saida_TextChanged);
-            // 
-            // lblPIS_CST_Saida
-            // 
-            this.lblPIS_CST_Saida.AutoSize = true;
-            this.lblPIS_CST_Saida.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPIS_CST_Saida.Location = new System.Drawing.Point(148, 18);
-            this.lblPIS_CST_Saida.Name = "lblPIS_CST_Saida";
-            this.lblPIS_CST_Saida.Size = new System.Drawing.Size(77, 16);
-            this.lblPIS_CST_Saida.TabIndex = 107;
-            this.lblPIS_CST_Saida.Text = "CST Saída";
+            this.btnTabCest.Location = new System.Drawing.Point(479, 44);
+            this.btnTabCest.Name = "btnTabCest";
+            this.btnTabCest.Size = new System.Drawing.Size(75, 28);
+            this.btnTabCest.TabIndex = 143;
+            this.btnTabCest.Text = "Tab. CEST";
+            this.btnTabCest.UseVisualStyleBackColor = true;
+            this.btnTabCest.Click += new System.EventHandler(this.btnTabCest_Click);
             // 
             // frmEditarLayoutFiscal_Manual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(959, 359);
+            this.Controls.Add(this.btnTipi);
+            this.Controls.Add(this.btnTabCest);
             this.Controls.Add(this.gpbIPI);
             this.Controls.Add(this.gpbCOFINS);
             this.Controls.Add(this.gpbPIS);
@@ -715,5 +739,7 @@
         private System.Windows.Forms.Label lblCOFINS_CST_Saida;
         public System.Windows.Forms.TextBox txtPIS_CST_Saida;
         private System.Windows.Forms.Label lblPIS_CST_Saida;
+        private System.Windows.Forms.Button btnTipi;
+        private System.Windows.Forms.Button btnTabCest;
     }
 }

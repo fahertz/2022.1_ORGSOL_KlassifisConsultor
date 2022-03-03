@@ -10879,4 +10879,30 @@ namespace kLib
         }
 
     }
+
+    public class LayoutFiscal
+    {
+            public String Cod_Produto               {get;set;}
+            public String Des_Produto               {get;set;}
+            public String Cod_GTIN                  {get;set;}
+            public String Cod_NCM                   {get;set;}
+            public String Cod_CEST                  {get;set;}
+            public String Cod_NCM_Ex                {get;set;}
+            public String ICMS_CST                  {get;set;}
+            public String ICMS_ALQ                  {get;set;}
+            public String ICMS_MVA                  {get;set;}
+            public String ICMS_CSOSN                {get;set;}
+            public String PIS_CST_Entrada           {get;set;}
+            public String PIS_CST_Saida             {get;set;}
+            public String PIS_ALQ { get; set; }
+        public String PIS_CSOSN         {get;set;}
+            public String COFINS_CST_Entrada        {get;set;}
+            public String COFINS_CST_Saida          {get;set;}
+            public String COFINS_ALQ { get; set; }
+        public String COFINS_CSOSN   {get;set;} 
+            public String IPI_CST                   {get;set;}
+            public String IPI_ALQ                   {get;set;}
+            public String IPI_CSOSN { get; set; }
+
+    }
 }

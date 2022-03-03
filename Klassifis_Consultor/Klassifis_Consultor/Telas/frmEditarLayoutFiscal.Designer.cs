@@ -28,10 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.lblArquivo = new System.Windows.Forms.Label();
-            this.btnSelecionar = new System.Windows.Forms.Button();
-            this.txtArquivo = new System.Windows.Forms.TextBox();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAbrirExcel = new System.Windows.Forms.Button();
             this.btnEntradaManual = new System.Windows.Forms.Button();
             this.btnExportarExcel = new System.Windows.Forms.Button();
@@ -77,32 +74,6 @@
             this.gpbAtividade.SuspendLayout();
             this.gpbRegime.SuspendLayout();
             this.SuspendLayout();
-            // 
-            // lblArquivo
-            // 
-            this.lblArquivo.AutoSize = true;
-            this.lblArquivo.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold);
-            this.lblArquivo.Location = new System.Drawing.Point(9, 217);
-            this.lblArquivo.Name = "lblArquivo";
-            this.lblArquivo.Size = new System.Drawing.Size(62, 16);
-            this.lblArquivo.TabIndex = 93;
-            this.lblArquivo.Text = "Arquivo";
-            // 
-            // btnSelecionar
-            // 
-            this.btnSelecionar.Location = new System.Drawing.Point(308, 234);
-            this.btnSelecionar.Name = "btnSelecionar";
-            this.btnSelecionar.Size = new System.Drawing.Size(75, 23);
-            this.btnSelecionar.TabIndex = 92;
-            this.btnSelecionar.Text = "Selecionar";
-            this.btnSelecionar.UseVisualStyleBackColor = true;
-            // 
-            // txtArquivo
-            // 
-            this.txtArquivo.Location = new System.Drawing.Point(12, 236);
-            this.txtArquivo.Name = "txtArquivo";
-            this.txtArquivo.Size = new System.Drawing.Size(290, 20);
-            this.txtArquivo.TabIndex = 91;
             // 
             // btnAbrirExcel
             // 
@@ -188,22 +159,22 @@
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
             this.dgvProdutos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutos.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvProdutos.Location = new System.Drawing.Point(12, 262);
+            this.dgvProdutos.Location = new System.Drawing.Point(12, 232);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1226, 292);
+            this.dgvProdutos.Size = new System.Drawing.Size(1226, 322);
             this.dgvProdutos.TabIndex = 84;
             this.dgvProdutos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellEndEdit);
             this.dgvProdutos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvProdutos_CellValidating);
@@ -247,7 +218,7 @@
             this.gpbDadosDoCliente.Controls.Add(this.label2);
             this.gpbDadosDoCliente.Location = new System.Drawing.Point(11, 55);
             this.gpbDadosDoCliente.Name = "gpbDadosDoCliente";
-            this.gpbDadosDoCliente.Size = new System.Drawing.Size(764, 159);
+            this.gpbDadosDoCliente.Size = new System.Drawing.Size(764, 171);
             this.gpbDadosDoCliente.TabIndex = 94;
             this.gpbDadosDoCliente.TabStop = false;
             this.gpbDadosDoCliente.Text = "Dados do Cliente";
@@ -537,7 +508,7 @@
             // lsbRegras
             // 
             this.lsbRegras.FormattingEnabled = true;
-            this.lsbRegras.Location = new System.Drawing.Point(781, 90);
+            this.lsbRegras.Location = new System.Drawing.Point(781, 71);
             this.lsbRegras.Name = "lsbRegras";
             this.lsbRegras.Size = new System.Drawing.Size(457, 121);
             this.lsbRegras.TabIndex = 95;
@@ -546,7 +517,7 @@
             // 
             this.lblRegras.AutoSize = true;
             this.lblRegras.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblRegras.Location = new System.Drawing.Point(778, 71);
+            this.lblRegras.Location = new System.Drawing.Point(778, 52);
             this.lblRegras.Name = "lblRegras";
             this.lblRegras.Size = new System.Drawing.Size(128, 16);
             this.lblRegras.TabIndex = 103;
@@ -554,9 +525,9 @@
             // 
             // btnTabCest
             // 
-            this.btnTabCest.Location = new System.Drawing.Point(781, 217);
+            this.btnTabCest.Location = new System.Drawing.Point(781, 198);
             this.btnTabCest.Name = "btnTabCest";
-            this.btnTabCest.Size = new System.Drawing.Size(75, 36);
+            this.btnTabCest.Size = new System.Drawing.Size(75, 28);
             this.btnTabCest.TabIndex = 104;
             this.btnTabCest.Text = "Tab. CEST";
             this.btnTabCest.UseVisualStyleBackColor = true;
@@ -564,9 +535,9 @@
             // 
             // btnTipi
             // 
-            this.btnTipi.Location = new System.Drawing.Point(862, 217);
+            this.btnTipi.Location = new System.Drawing.Point(862, 198);
             this.btnTipi.Name = "btnTipi";
-            this.btnTipi.Size = new System.Drawing.Size(75, 36);
+            this.btnTipi.Size = new System.Drawing.Size(75, 28);
             this.btnTipi.TabIndex = 105;
             this.btnTipi.Text = "Tab. TIPI";
             this.btnTipi.UseVisualStyleBackColor = true;
@@ -582,9 +553,6 @@
             this.Controls.Add(this.lblRegras);
             this.Controls.Add(this.lsbRegras);
             this.Controls.Add(this.gpbDadosDoCliente);
-            this.Controls.Add(this.lblArquivo);
-            this.Controls.Add(this.btnSelecionar);
-            this.Controls.Add(this.txtArquivo);
             this.Controls.Add(this.btnAbrirExcel);
             this.Controls.Add(this.btnEntradaManual);
             this.Controls.Add(this.btnExportarExcel);
@@ -611,10 +579,6 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblArquivo;
-        private System.Windows.Forms.Button btnSelecionar;
-        private System.Windows.Forms.TextBox txtArquivo;
         private System.Windows.Forms.Button btnAbrirExcel;
         private System.Windows.Forms.Button btnEntradaManual;
         private System.Windows.Forms.Button btnExportarExcel;
