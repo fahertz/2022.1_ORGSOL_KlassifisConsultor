@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.lblArquivo = new System.Windows.Forms.Label();
             this.btnSelecionar = new System.Windows.Forms.Button();
             this.txtArquivo = new System.Windows.Forms.TextBox();
@@ -71,7 +71,7 @@
             this.lsbRegras = new System.Windows.Forms.ListBox();
             this.lblRegras = new System.Windows.Forms.Label();
             this.btnTabCest = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnTipi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.gpbDadosDoCliente.SuspendLayout();
             this.gpbAtividade.SuspendLayout();
@@ -188,11 +188,11 @@
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
             this.dgvProdutos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -562,21 +562,22 @@
             this.btnTabCest.UseVisualStyleBackColor = true;
             this.btnTabCest.Click += new System.EventHandler(this.btnTabCest_Click);
             // 
-            // button2
+            // btnTipi
             // 
-            this.button2.Location = new System.Drawing.Point(862, 217);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 36);
-            this.button2.TabIndex = 105;
-            this.button2.Text = "Tab. TIPI";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnTipi.Location = new System.Drawing.Point(862, 217);
+            this.btnTipi.Name = "btnTipi";
+            this.btnTipi.Size = new System.Drawing.Size(75, 36);
+            this.btnTipi.TabIndex = 105;
+            this.btnTipi.Text = "Tab. TIPI";
+            this.btnTipi.UseVisualStyleBackColor = true;
+            this.btnTipi.Click += new System.EventHandler(this.btnTipi_Click);
             // 
             // frmEditarLayoutFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 607);
-            this.Controls.Add(this.button2);
+            this.Controls.Add(this.btnTipi);
             this.Controls.Add(this.btnTabCest);
             this.Controls.Add(this.lblRegras);
             this.Controls.Add(this.lsbRegras);
@@ -653,6 +654,6 @@
         private System.Windows.Forms.ListBox lsbRegras;
         private System.Windows.Forms.Label lblRegras;
         private System.Windows.Forms.Button btnTabCest;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnTipi;
     }
 }

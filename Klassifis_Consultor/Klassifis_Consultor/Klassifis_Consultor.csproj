@@ -121,6 +121,12 @@
     <Compile Include="Telas\Tabelas\frmTabelaCest.Designer.cs">
       <DependentUpon>frmTabelaCest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaTipi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaTipi.Designer.cs">
+      <DependentUpon>frmTabelaTipi.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -154,6 +160,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Tabelas\frmTabelaCest.resx">
       <DependentUpon>frmTabelaCest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Tabelas\frmTabelaTipi.resx">
+      <DependentUpon>frmTabelaTipi.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="app.config" />
     <None Include="Connected Services\consultarCEP\AtendeClienteService.wsdl" />

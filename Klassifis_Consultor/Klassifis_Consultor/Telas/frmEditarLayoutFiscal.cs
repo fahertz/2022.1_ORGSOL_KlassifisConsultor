@@ -1235,11 +1235,36 @@ namespace Klassifis_Consultor.Telas
             this.Cursor = Cursors.Default;
         }
 
+
+        private void abrir_TabelaCest()
+        {
+            Application.Run(new frmTabelaCest());
+        }
+
         private void btnTabCest_Click(object sender, EventArgs e)
         {
-            frmTabelaCest form = new frmTabelaCest();            
-                form.Show();
-            
+            Thread t1 = new Thread(abrir_TabelaCest);
+            t1.SetApartmentState(ApartmentState.STA);
+            t1.Start();
+
+        }
+
+
+
+        private void abrir_TabelaTipi()
+        {
+            Application.Run(new frmTabelaTipi());
+        }
+     
+        private void btnTipi_Click(object sender, EventArgs e)
+        {
+            this.Cursor = Cursors.WaitCursor;            
+            Thread t1 = new Thread(abrir_TabelaTipi);
+            t1.SetApartmentState(ApartmentState.STA);
+            t1.Start();
+            Thread.Sleep(3000);
+            this.Cursor = Cursors.Default;
+
         }
 
         private void btnCancelar_Click(object sender, EventArgs e)

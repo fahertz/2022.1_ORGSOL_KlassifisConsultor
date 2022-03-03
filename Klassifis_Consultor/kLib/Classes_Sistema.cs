@@ -18,6 +18,18 @@ namespace kLib
 
     }
 
+    public class Tabela_Tipi
+    {
+            public String NCM                   {get; set;}
+            public String Categoria             {get; set;}
+            public String Descricao             {get; set;}
+            public String IPI                   {get; set;}
+            public String Inicio_Vigencia    {get; set;}
+            public String Fim_Vigencia       {get; set;}
+            public String UnTrib                 {get; set;}
+            public String UnTrib_Desc        {get; set;}          
+            public String Observacao          { get; set; }
+    }
 
 
 

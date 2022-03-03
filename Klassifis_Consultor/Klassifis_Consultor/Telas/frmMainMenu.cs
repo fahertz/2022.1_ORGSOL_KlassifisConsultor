@@ -62,10 +62,12 @@ namespace Klassifis_Consultor
 
         private void btnBaixarClassFiscal_Click(object sender, EventArgs e)
         {
+            
             Thread t1 = new Thread(abrir_BaixcarClassFiscal);
             t1.SetApartmentState(ApartmentState.STA);
             t1.Start();
             
+
         }
 
 
