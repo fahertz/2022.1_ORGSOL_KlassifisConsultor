@@ -1342,6 +1342,17 @@ namespace Klassifis_Consultor.Telas
             filtrar_Dados(dgvProdutos, txtFiltro.Text);
         }
 
+        private void dgvProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+
+            if (dgvProdutos.CurrentRow.Cells[3].Selected || dgvProdutos.CurrentRow.Cells[5].Selected) 
+            {
+                System.Diagnostics.Process.Start("https://portalunico.siscomex.gov.br/classif/#/sumario?perfil=publico");
+                Clipboard.SetText(dgvProdutos.CurrentCell.Value?.ToString());
+            }
+
+        }
+
         private void btnCancelar_Click(object sender, EventArgs e)
         {
 
