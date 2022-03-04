@@ -1315,7 +1315,32 @@ namespace Klassifis_Consultor.Telas
             this.Cursor = Cursors.Default;
 
         }
-   
+
+
+        private void filtrar_Dados(DataGridView _dgv, string filtro)
+        {
+            foreach (DataGridViewRow row in _dgv.Rows)
+            {
+                if (row.Cells[0].Value.ToString().ToUpper().Contains(filtro.ToUpper()) || row.Cells[1].Value.ToString().ToUpper().Contains(filtro.ToUpper())|| row.Cells[2].Value.ToString().ToUpper().Contains(filtro.ToUpper()))
+                {
+                    row.Visible = true;
+                }
+                else
+                {
+                    CurrencyManager cm = (CurrencyManager)BindingContext[_dgv.DataSource];
+                    cm.EndCurrentEdit();
+                    cm.ResumeBinding();
+                    cm.SuspendBinding();                    
+                    _dgv.ClearSelection();
+
+                    row.Visible = false;
+                }
+            }
+        }
+        private void txtFiltro_TextChanged(object sender, EventArgs e)
+        {
+            filtrar_Dados(dgvProdutos, txtFiltro.Text);
+        }
 
         private void btnCancelar_Click(object sender, EventArgs e)
         {

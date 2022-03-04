@@ -162,6 +162,8 @@ namespace Klassifis_Consultor.Telas
                 }
                 else
                 {
+                  
+
                     row.Visible = false;
                 }
             }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAbrirExcel = new System.Windows.Forms.Button();
             this.btnEntradaManual = new System.Windows.Forms.Button();
             this.btnExportarExcel = new System.Windows.Forms.Button();
@@ -69,6 +69,8 @@
             this.lblRegras = new System.Windows.Forms.Label();
             this.btnTabCest = new System.Windows.Forms.Button();
             this.btnTipi = new System.Windows.Forms.Button();
+            this.txtFiltro = new System.Windows.Forms.TextBox();
+            this.lblFiltro = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.gpbDadosDoCliente.SuspendLayout();
             this.gpbAtividade.SuspendLayout();
@@ -159,22 +161,22 @@
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
             this.dgvProdutos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutos.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvProdutos.Location = new System.Drawing.Point(12, 232);
+            this.dgvProdutos.Location = new System.Drawing.Point(12, 255);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowHeadersWidth = 51;
             this.dgvProdutos.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvProdutos.Size = new System.Drawing.Size(1226, 322);
+            this.dgvProdutos.Size = new System.Drawing.Size(1226, 299);
             this.dgvProdutos.TabIndex = 84;
             this.dgvProdutos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellEndEdit);
             this.dgvProdutos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvProdutos_CellValidating);
@@ -218,7 +220,7 @@
             this.gpbDadosDoCliente.Controls.Add(this.label2);
             this.gpbDadosDoCliente.Location = new System.Drawing.Point(11, 55);
             this.gpbDadosDoCliente.Name = "gpbDadosDoCliente";
-            this.gpbDadosDoCliente.Size = new System.Drawing.Size(764, 171);
+            this.gpbDadosDoCliente.Size = new System.Drawing.Size(764, 155);
             this.gpbDadosDoCliente.TabIndex = 94;
             this.gpbDadosDoCliente.TabStop = false;
             this.gpbDadosDoCliente.Text = "Dados do Cliente";
@@ -527,7 +529,7 @@
             // 
             this.btnTabCest.Location = new System.Drawing.Point(781, 198);
             this.btnTabCest.Name = "btnTabCest";
-            this.btnTabCest.Size = new System.Drawing.Size(75, 28);
+            this.btnTabCest.Size = new System.Drawing.Size(75, 51);
             this.btnTabCest.TabIndex = 104;
             this.btnTabCest.Text = "Tab. CEST";
             this.btnTabCest.UseVisualStyleBackColor = true;
@@ -537,17 +539,39 @@
             // 
             this.btnTipi.Location = new System.Drawing.Point(862, 198);
             this.btnTipi.Name = "btnTipi";
-            this.btnTipi.Size = new System.Drawing.Size(75, 28);
+            this.btnTipi.Size = new System.Drawing.Size(75, 51);
             this.btnTipi.TabIndex = 105;
             this.btnTipi.Text = "Tab. TIPI";
             this.btnTipi.UseVisualStyleBackColor = true;
             this.btnTipi.Click += new System.EventHandler(this.btnTipi_Click);
+            // 
+            // txtFiltro
+            // 
+            this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtFiltro.Location = new System.Drawing.Point(11, 229);
+            this.txtFiltro.Name = "txtFiltro";
+            this.txtFiltro.Size = new System.Drawing.Size(369, 20);
+            this.txtFiltro.TabIndex = 103;
+            this.txtFiltro.TabStop = false;
+            this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
+            // 
+            // lblFiltro
+            // 
+            this.lblFiltro.AutoSize = true;
+            this.lblFiltro.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblFiltro.Location = new System.Drawing.Point(12, 210);
+            this.lblFiltro.Name = "lblFiltro";
+            this.lblFiltro.Size = new System.Drawing.Size(47, 16);
+            this.lblFiltro.TabIndex = 103;
+            this.lblFiltro.Text = "Filtro";
             // 
             // frmEditarLayoutFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1250, 607);
+            this.Controls.Add(this.lblFiltro);
+            this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.btnTipi);
             this.Controls.Add(this.btnTabCest);
             this.Controls.Add(this.lblRegras);
@@ -619,5 +643,7 @@
         private System.Windows.Forms.Label lblRegras;
         private System.Windows.Forms.Button btnTabCest;
         private System.Windows.Forms.Button btnTipi;
+        private System.Windows.Forms.TextBox txtFiltro;
+        private System.Windows.Forms.Label lblFiltro;
     }
 }
