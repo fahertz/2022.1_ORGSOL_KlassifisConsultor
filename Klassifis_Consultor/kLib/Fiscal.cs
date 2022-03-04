@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace kLib
 {
@@ -10895,14 +10896,45 @@ namespace kLib
             public String PIS_CST_Entrada           {get;set;}
             public String PIS_CST_Saida             {get;set;}
             public String PIS_ALQ { get; set; }
-        public String PIS_CSOSN         {get;set;}
+            public String PIS_CSOSN         {get;set;}
             public String COFINS_CST_Entrada        {get;set;}
             public String COFINS_CST_Saida          {get;set;}
             public String COFINS_ALQ { get; set; }
-        public String COFINS_CSOSN   {get;set;} 
+            public String COFINS_CSOSN   {get;set;} 
             public String IPI_CST                   {get;set;}
             public String IPI_ALQ                   {get;set;}
             public String IPI_CSOSN { get; set; }
 
+
+        public static void configurar_Grid_LayoutFiscal(DataGridView _dgv)
+        {
+            _dgv.Invoke((MethodInvoker)delegate
+           {
+               _dgv.Columns.Add("Cod_Produto", "Cód. Produto");
+               _dgv.Columns.Add("Des_Produto", "Desc. Produto");
+               _dgv.Columns.Add("Cod_GTIN", "GTIN");
+               _dgv.Columns.Add("Cod_NCM", "NCM");
+               _dgv.Columns.Add("Cod_CEST", "CEST");
+               _dgv.Columns.Add("Cod_NCM_Ex", "NCM Ex");
+               _dgv.Columns.Add("ICMS_CST", "ICMS CST");
+               _dgv.Columns.Add("ICMS_ALQ", "ICMS Alq");
+               _dgv.Columns.Add("ICMS_MVA", "ICMS MVA");
+               _dgv.Columns.Add("ICMS_CSOSN", "ICMS CSOSN");
+               _dgv.Columns.Add("PIS_CST_Entrada", "PIS CST Entrada");
+               _dgv.Columns.Add("PIS_CST_Saida", "PIS CST Saída");
+               _dgv.Columns.Add("PIS_ALQ", "PIS Alq");
+               _dgv.Columns.Add("PIS_CSOSN", "PIS CSOSN");
+               _dgv.Columns.Add("COFINS_CST_Entrada", "COFINS CST Entrada");
+               _dgv.Columns.Add("COFINS_CST_Saida", "COFINS CST Saída");
+               _dgv.Columns.Add("COFINS_ALQ", "COFINS Alq");
+               _dgv.Columns.Add("COFINS_CSOSN", "COFINS CSOSN");
+               _dgv.Columns.Add("IPI_CST", "IPI CST");
+               _dgv.Columns.Add("IPI_ALQ", "IPI Alq");
+               _dgv.Columns.Add("IPI_CSOSN", "IPI CSOSN");
+           });
+        }
+
     }
+
+    
 }

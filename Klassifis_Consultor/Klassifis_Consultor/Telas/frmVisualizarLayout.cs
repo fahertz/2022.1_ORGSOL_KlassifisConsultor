@@ -23,6 +23,7 @@ namespace Klassifis_Consultor.Telas
         
         /////////////Instância
         Parametros_Excel pExcel = new Parametros_Excel();
+        DataTable dt;
         public string path_Produtos;
 
         /////////////Métodos internos do Form
@@ -31,7 +32,8 @@ namespace Klassifis_Consultor.Telas
         {
             StreamReader reader = new StreamReader(path_Produtos);
             string linhasDoArquivo = reader.ReadToEnd();
-            dgvProdutos.DataSource = (DataTable)JsonConvert.DeserializeObject(linhasDoArquivo, (typeof(DataTable)));
+            //dgvProdutos.DataSource = (DataTable)JsonConvert.DeserializeObject(linhasDoArquivo, (typeof(DataTable)));
+            dt = (DataTable)JsonConvert.DeserializeObject(linhasDoArquivo, (typeof(DataTable)));
 
         }
 
@@ -40,59 +42,61 @@ namespace Klassifis_Consultor.Telas
         {
             //Icon
             this.Icon = Properties.Resources.klassifis_logo_azulado;
+            Queue<Task> tasks = new Queue<Task>();
 
-                 
-            carregar_Layout_Produtos();
+            tasks.Enqueue(Task.Factory.StartNew(() => LayoutFiscal.configurar_Grid_LayoutFiscal(dgvProdutos)));
+            tasks.Enqueue(Task.Factory.StartNew(() => carregar_Layout_Produtos()));
+            Task.WaitAny(tasks.ToArray());
+            Task.Factory.StartNew(() => filtrar_Dados(dgvProdutos));
         }
 
+        //Configurar Grid
+        
+
+
         //Filtrar dados
-        private void filtrar_Dados()
+        private void filtrar_Dados(DataGridView _dgv)
         {
-            this.Cursor = Cursors.WaitCursor;
-            if (chkExato.Checked)
+            this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.WaitCursor; });
+                
+
+            var lista_Filtrada = from lista in dt.AsEnumerable()
+                                 select lista;
+            _dgv.Invoke((MethodInvoker)delegate
             {
-                foreach (DataGridViewRow row in dgvProdutos.Rows)
+                _dgv.Rows.Clear();
+                foreach (var item in lista_Filtrada)
                 {
-                    if (row.Cells[0].Value.ToString().Equals(txtFiltro.Text) || row.Cells[1].Value.ToString().Equals(txtFiltro.Text))
-                    {
-                        row.Visible = true;
-                    }
-                    else
-                    {
-                        CurrencyManager cm = (CurrencyManager)BindingContext[dgvProdutos.DataSource];
-                        cm.EndCurrentEdit();
-                        cm.ResumeBinding();
-                        cm.SuspendBinding();
-                        int i = row.Index;
-                        dgvProdutos.ClearSelection();
-                        row.Visible = false;
-                    }
+                    _dgv.Rows.Add(
+                         item["Cod_Produto"]
+                        , item["Cod_Produto"]
+                        , item["Des_Produto"]
+                        , item["Cod_GTIN"]
+                        , item["Cod_NCM"]
+                        , item["Cod_CEST"]
+                        , item["Cod_NCM_Ex"]
+                        , item["ICMS_CST"]
+                        , item["ICMS_ALQ"]
+                        , item["ICMS_MVA"]
+                        , item["ICMS_CSOSN"]
+                        , item["PIS_CST_Entrada"]
+                        , item["PIS_CST_Saida"]
+                        , item["PIS_ALQ"]
+                        , item["PIS_CSOSN"]
+                        , item["COFINS_CST_Entrada"]
+                        , item["COFINS_CST_Saida"]
+                        , item["COFINS_ALQ"]
+                        , item["COFINS_CSOSN"]
+                        , item["IPI_CST"]
+                        , item["IPI_ALQ"]
+                        , item["IPI_CSOSN"]
+                        );
                 }
-            }
-            else
-            {
-                foreach (DataGridViewRow row in dgvProdutos.Rows)
-                {
-                    if (row.Cells[0].Value.ToString().Contains(txtFiltro.Text) || row.Cells[1].Value.ToString().Contains(txtFiltro.Text))
-                    {
-                        row.Visible = true;
-                    }
-                    else
-                    {
-                        CurrencyManager cm = (CurrencyManager)BindingContext[dgvProdutos.DataSource];
-
-                        cm.EndCurrentEdit();
-                        cm.ResumeBinding();
-                        cm.SuspendBinding();
-                        int i = row.Index;
-                        dgvProdutos.ClearSelection();
-                        row.Visible = false;
-                    }
-                }
-            }
-            this.Cursor = Cursors.Default;
+            });
 
 
+            this.Invoke((MethodInvoker)delegate { this.Cursor = Cursors.Default; });
+          
         }
 
 
@@ -121,14 +125,14 @@ namespace Klassifis_Consultor.Telas
         //Botão pesqusiar
         private void btnPesquisar_Click(object sender, EventArgs e)
         {
-            filtrar_Dados();
+            filtrar_Dados(dgvProdutos);
         }
 
         private void txtFiltro_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                filtrar_Dados();
+                filtrar_Dados(dgvProdutos);
             }
         }
 
