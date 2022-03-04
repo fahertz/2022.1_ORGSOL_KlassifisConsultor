@@ -10880,5 +10880,13 @@ namespace Klassifis_Consultor.Telas.Tabelas
             this.Close();
         }
 
+        private void dgvDados_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (dgvDados.CurrentRow.Cells[3].Selected)
+            {
+                System.Diagnostics.Process.Start("https://portalunico.siscomex.gov.br/classif/#/sumario?perfil=publico");
+                Clipboard.SetText(dgvDados.CurrentCell.Value?.ToString());
+            }
+        }
     }
 }
