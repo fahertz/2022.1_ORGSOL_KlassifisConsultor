@@ -875,7 +875,7 @@ namespace Klassifis_Consultor.Telas
             //Table dados para o Produto
             DataTable dtProdutos = null;
             dtProdutos = ToDataTable(dgvProdutos);
-            MessageBox.Show(archive_Produtos);
+            //MessageBox.Show(archive_Produtos);
             //Escrevendo arquivo json Produtos                        
             StreamWriter writer_Produtos = new StreamWriter(folder + archive_Produtos);
             writer_Produtos.Close();
@@ -899,16 +899,35 @@ namespace Klassifis_Consultor.Telas
                     mm.Attachments.Add(new Attachment(folder + archive_Produtos));
                     
 
+                    //SmtpClient smtp = new SmtpClient();
+                    //smtp.Host = Email._smtphostname;
+
+                    //smtp.EnableSsl = true;
+                    //System.Net.NetworkCredential credentials = new System.Net.NetworkCredential();
+                    //credentials.UserName = Email._smtpusername;
+                    //credentials.Password = Email._password;
+
+                    //smtp.UseDefaultCredentials = true;
+                    //smtp.Credentials = credentials;
+                    //smtp.Port = Email._smtpport;
+                    //smtp.Send(mm);
+
+
+
                     SmtpClient smtp = new SmtpClient();
                     smtp.Host = Email._smtphostname;
 
-                    smtp.EnableSsl = true;
-                    System.Net.NetworkCredential credentials = new System.Net.NetworkCredential();
-                    credentials.UserName = Email._smtpusername;
-                    credentials.Password = Email._password;
+                    //smtp.EnableSsl = true;
+                    //System.Net.NetworkCredential credentials = new System.Net.NetworkCredential();
+                    //credentials.UserName = Email._smtpusername;
+                    //credentials.Password = Email._password;
+                    //smtp.Credentials = credentials;
 
-                    smtp.UseDefaultCredentials = true;
-                    smtp.Credentials = credentials;
+                    //Autenticação de Vàrios locais
+                    smtp.EnableSsl = true;
+                    smtp.UseDefaultCredentials = false;
+                    smtp.Credentials = new NetworkCredential(Email._smtpusername, Email._password);
+
                     smtp.Port = Email._smtpport;
                     smtp.Send(mm);
                 }

@@ -2,7 +2,7 @@
   {
     "Cod_Produto": "1",
     "Des_Produto": "Teste",
-    "Cod_GTIN": "1234567",
+    "Cod_GTIN": null,
     "Cod_NCM": null,
     "Cod_CEST": null,
     "Cod_NCM_Ex": null,
