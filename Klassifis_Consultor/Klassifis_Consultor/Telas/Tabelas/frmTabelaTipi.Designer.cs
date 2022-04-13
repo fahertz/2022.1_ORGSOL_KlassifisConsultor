@@ -46,9 +46,10 @@
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFechar.ForeColor = System.Drawing.Color.White;
-            this.btnFechar.Location = new System.Drawing.Point(779, 437);
+            this.btnFechar.Location = new System.Drawing.Point(1039, 538);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(91, 35);
+            this.btnFechar.Size = new System.Drawing.Size(121, 43);
             this.btnFechar.TabIndex = 97;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = false;
@@ -68,13 +69,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.dgvDados.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvDados.GridColor = System.Drawing.SystemColors.ButtonFace;
-            this.dgvDados.Location = new System.Drawing.Point(12, 97);
+            this.dgvDados.Location = new System.Drawing.Point(16, 119);
+            this.dgvDados.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvDados.Name = "dgvDados";
             this.dgvDados.ReadOnly = true;
             this.dgvDados.RowHeadersVisible = false;
             this.dgvDados.RowHeadersWidth = 51;
             this.dgvDados.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dgvDados.Size = new System.Drawing.Size(858, 334);
+            this.dgvDados.Size = new System.Drawing.Size(1144, 411);
             this.dgvDados.TabIndex = 96;
             this.dgvDados.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvDados_MouseDoubleClick);
             // 
@@ -82,19 +84,21 @@
             // 
             this.lblPesquisar.AutoSize = true;
             this.lblPesquisar.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPesquisar.Location = new System.Drawing.Point(9, 52);
+            this.lblPesquisar.Location = new System.Drawing.Point(12, 64);
+            this.lblPesquisar.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblPesquisar.Name = "lblPesquisar";
-            this.lblPesquisar.Size = new System.Drawing.Size(75, 16);
+            this.lblPesquisar.Size = new System.Drawing.Size(99, 21);
             this.lblPesquisar.TabIndex = 95;
             this.lblPesquisar.Text = "Pesquisar";
             // 
             // txtPesquisar
             // 
             this.txtPesquisar.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtPesquisar.Location = new System.Drawing.Point(12, 71);
+            this.txtPesquisar.Location = new System.Drawing.Point(16, 87);
+            this.txtPesquisar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txtPesquisar.MaxLength = 20;
             this.txtPesquisar.Name = "txtPesquisar";
-            this.txtPesquisar.Size = new System.Drawing.Size(384, 20);
+            this.txtPesquisar.Size = new System.Drawing.Size(511, 23);
             this.txtPesquisar.TabIndex = 94;
             this.txtPesquisar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPesquisar_KeyDown);
             // 
@@ -103,33 +107,36 @@
             this.lblTabelaTipi.AutoSize = true;
             this.lblTabelaTipi.BackColor = System.Drawing.Color.DarkGray;
             this.lblTabelaTipi.Font = new System.Drawing.Font("Century Schoolbook", 25F, System.Drawing.FontStyle.Bold);
-            this.lblTabelaTipi.Location = new System.Drawing.Point(12, 9);
+            this.lblTabelaTipi.Location = new System.Drawing.Point(16, 11);
+            this.lblTabelaTipi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTabelaTipi.Name = "lblTabelaTipi";
-            this.lblTabelaTipi.Size = new System.Drawing.Size(229, 40);
+            this.lblTabelaTipi.Size = new System.Drawing.Size(282, 50);
             this.lblTabelaTipi.TabIndex = 98;
             this.lblTabelaTipi.Text = "Tabela TIPI";
             // 
             // lblVigencia
             // 
-            this.lblVigencia.AutoSize = true;
-            this.lblVigencia.Location = new System.Drawing.Point(9, 437);
+            this.lblVigencia.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.lblVigencia.Location = new System.Drawing.Point(12, 538);
+            this.lblVigencia.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblVigencia.Name = "lblVigencia";
-            this.lblVigencia.Size = new System.Drawing.Size(361, 13);
+            this.lblVigencia.Size = new System.Drawing.Size(710, 25);
             this.lblVigencia.TabIndex = 99;
             this.lblVigencia.Text = "Atualizado: Junho de 2021 - Nota Técnica 2016.003 - v.2.00 - 01/07/2021";
             // 
             // frmTabelaTipi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 484);
+            this.ClientSize = new System.Drawing.Size(1176, 596);
             this.Controls.Add(this.lblVigencia);
             this.Controls.Add(this.lblTabelaTipi);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.dgvDados);
             this.Controls.Add(this.lblPesquisar);
             this.Controls.Add(this.txtPesquisar);
-            this.MinimumSize = new System.Drawing.Size(898, 523);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(1191, 633);
             this.Name = "frmTabelaTipi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Klassifis CO";

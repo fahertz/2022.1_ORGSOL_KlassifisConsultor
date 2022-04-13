@@ -1,0 +1,4 @@
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\bin\x86\Release\kLib.dll
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\x86\Release\kLib.csproj.AssemblyReference.cache
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\x86\Release\kLib.csproj.CoreCompileInputs.cache
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\x86\Release\kLib.dll

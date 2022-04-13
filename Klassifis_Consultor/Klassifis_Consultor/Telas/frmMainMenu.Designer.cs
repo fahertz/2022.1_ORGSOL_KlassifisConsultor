@@ -37,10 +37,9 @@
             // btnBaixarClassFiscal
             // 
             this.btnBaixarClassFiscal.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.btnBaixarClassFiscal.Location = new System.Drawing.Point(13, 33);
-            this.btnBaixarClassFiscal.Margin = new System.Windows.Forms.Padding(4);
+            this.btnBaixarClassFiscal.Location = new System.Drawing.Point(10, 27);
             this.btnBaixarClassFiscal.Name = "btnBaixarClassFiscal";
-            this.btnBaixarClassFiscal.Size = new System.Drawing.Size(327, 75);
+            this.btnBaixarClassFiscal.Size = new System.Drawing.Size(245, 61);
             this.btnBaixarClassFiscal.TabIndex = 2;
             this.btnBaixarClassFiscal.Text = "Baixar Classificação Fiscal";
             this.btnBaixarClassFiscal.UseVisualStyleBackColor = true;
@@ -49,10 +48,9 @@
             // frmListaDeClassificacoes
             // 
             this.frmListaDeClassificacoes.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.frmListaDeClassificacoes.Location = new System.Drawing.Point(13, 116);
-            this.frmListaDeClassificacoes.Margin = new System.Windows.Forms.Padding(4);
+            this.frmListaDeClassificacoes.Location = new System.Drawing.Point(10, 94);
             this.frmListaDeClassificacoes.Name = "frmListaDeClassificacoes";
-            this.frmListaDeClassificacoes.Size = new System.Drawing.Size(327, 75);
+            this.frmListaDeClassificacoes.Size = new System.Drawing.Size(245, 61);
             this.frmListaDeClassificacoes.TabIndex = 4;
             this.frmListaDeClassificacoes.Text = "Classificações baixadas";
             this.frmListaDeClassificacoes.UseVisualStyleBackColor = true;
@@ -61,10 +59,9 @@
             // btnLayoutsEnvados
             // 
             this.btnLayoutsEnvados.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLayoutsEnvados.Location = new System.Drawing.Point(13, 198);
-            this.btnLayoutsEnvados.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLayoutsEnvados.Location = new System.Drawing.Point(10, 161);
             this.btnLayoutsEnvados.Name = "btnLayoutsEnvados";
-            this.btnLayoutsEnvados.Size = new System.Drawing.Size(327, 75);
+            this.btnLayoutsEnvados.Size = new System.Drawing.Size(245, 61);
             this.btnLayoutsEnvados.TabIndex = 6;
             this.btnLayoutsEnvados.Text = "Classificações Enviadas";
             this.btnLayoutsEnvados.UseVisualStyleBackColor = true;
@@ -74,9 +71,10 @@
             // 
             this.btnFechar.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnFechar.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.btnFechar.Location = new System.Drawing.Point(776, 259);
+            this.btnFechar.Location = new System.Drawing.Point(561, 210);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnFechar.Name = "btnFechar";
-            this.btnFechar.Size = new System.Drawing.Size(94, 45);
+            this.btnFechar.Size = new System.Drawing.Size(91, 37);
             this.btnFechar.TabIndex = 7;
             this.btnFechar.Text = "Fechar";
             this.btnFechar.UseVisualStyleBackColor = true;
@@ -84,17 +82,16 @@
             // 
             // frmMainMenu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(882, 316);
+            this.ClientSize = new System.Drawing.Size(660, 250);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnLayoutsEnvados);
             this.Controls.Add(this.frmListaDeClassificacoes);
             this.Controls.Add(this.btnBaixarClassFiscal);
-            this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(898, 355);
-            this.MinimumSize = new System.Drawing.Size(898, 355);
+            this.MaximumSize = new System.Drawing.Size(678, 297);
+            this.MinimumSize = new System.Drawing.Size(678, 297);
             this.Name = "frmMainMenu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Klassifis Consultor";

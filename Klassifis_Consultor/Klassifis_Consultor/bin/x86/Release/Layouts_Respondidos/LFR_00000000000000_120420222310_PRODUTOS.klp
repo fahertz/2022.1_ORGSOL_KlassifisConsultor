@@ -1,0 +1,25 @@
+﻿[
+  {
+    "Cod_Produto": "1",
+    "Des_Produto": "Editado",
+    "Cod_GTIN": null,
+    "Cod_NCM": null,
+    "Cod_CEST": null,
+    "Cod_NCM_Ex": null,
+    "ICMS_CST": null,
+    "ICMS_ALQ": null,
+    "ICMS_MVA": null,
+    "ICMS_CSOSN": null,
+    "PIS_CST_Entrada": "99",
+    "PIS_CST_Saida": "49",
+    "PIS_ALQ": "0,00",
+    "PIS_CSOSN": null,
+    "COFINS_CST_Entrada": "99",
+    "COFINS_CST_Saida": "49",
+    "COFINS_ALQ": "0,00",
+    "COFINS_CSOSN": null,
+    "IPI_CST": null,
+    "IPI_ALQ": null,
+    "IPI_CSOSN": null
+  }
+]

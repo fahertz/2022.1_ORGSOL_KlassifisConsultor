@@ -10,3 +10,9 @@ C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consult
 C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Release\kLib.pdb
 C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\bin\Release\kLib.dll
 C:\Users\fahel\Documents\Organiza_Solutions\Klassifis_Software\Klassifis_Consultor\Klassifis_Consultor\kLib\bin\Release\kLib.pdb
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\bin\Release\kLib.dll
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\bin\Release\kLib.pdb
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Release\kLib.csproj.AssemblyReference.cache
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Release\kLib.csproj.CoreCompileInputs.cache
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Release\kLib.dll
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\kLib\obj\Release\kLib.pdb

@@ -191,7 +191,7 @@
             this.lblEnviarClassificacaoFiscal.Font = new System.Drawing.Font("Century Schoolbook", 25F, System.Drawing.FontStyle.Bold);
             this.lblEnviarClassificacaoFiscal.Location = new System.Drawing.Point(12, 12);
             this.lblEnviarClassificacaoFiscal.Name = "lblEnviarClassificacaoFiscal";
-            this.lblEnviarClassificacaoFiscal.Size = new System.Drawing.Size(384, 40);
+            this.lblEnviarClassificacaoFiscal.Size = new System.Drawing.Size(474, 50);
             this.lblEnviarClassificacaoFiscal.TabIndex = 83;
             this.lblEnviarClassificacaoFiscal.Text = "Editar Layout Fiscal";
             // 
@@ -240,7 +240,7 @@
             this.txtIE.Location = new System.Drawing.Point(8, 125);
             this.txtIE.MaxLength = 20;
             this.txtIE.Name = "txtIE";
-            this.txtIE.Size = new System.Drawing.Size(168, 20);
+            this.txtIE.Size = new System.Drawing.Size(168, 23);
             this.txtIE.TabIndex = 2;
             // 
             // lblIE
@@ -249,7 +249,7 @@
             this.lblIE.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblIE.Location = new System.Drawing.Point(5, 106);
             this.lblIE.Name = "lblIE";
-            this.lblIE.Size = new System.Drawing.Size(170, 16);
+            this.lblIE.Size = new System.Drawing.Size(225, 21);
             this.lblIE.TabIndex = 102;
             this.lblIE.Text = "Inscrição Estadual (I.E.)";
             // 
@@ -259,7 +259,7 @@
             this.lblContato.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblContato.Location = new System.Drawing.Point(661, 19);
             this.lblContato.Name = "lblContato";
-            this.lblContato.Size = new System.Drawing.Size(62, 16);
+            this.lblContato.Size = new System.Drawing.Size(79, 21);
             this.lblContato.TabIndex = 101;
             this.lblContato.Text = "Contato";
             // 
@@ -276,7 +276,7 @@
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtEmail.Location = new System.Drawing.Point(446, 38);
             this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(212, 20);
+            this.txtEmail.Size = new System.Drawing.Size(212, 23);
             this.txtEmail.TabIndex = 6;
             // 
             // lblEmail
@@ -285,7 +285,7 @@
             this.lblEmail.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEmail.Location = new System.Drawing.Point(443, 19);
             this.lblEmail.Name = "lblEmail";
-            this.lblEmail.Size = new System.Drawing.Size(47, 16);
+            this.lblEmail.Size = new System.Drawing.Size(61, 21);
             this.lblEmail.TabIndex = 99;
             this.lblEmail.Text = "Email";
             // 
@@ -308,7 +308,7 @@
             this.rdbVarejo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbVarejo.Location = new System.Drawing.Point(7, 68);
             this.rdbVarejo.Name = "rdbVarejo";
-            this.rdbVarejo.Size = new System.Drawing.Size(55, 17);
+            this.rdbVarejo.Size = new System.Drawing.Size(70, 21);
             this.rdbVarejo.TabIndex = 2;
             this.rdbVarejo.Text = "Varejo";
             this.rdbVarejo.UseVisualStyleBackColor = true;
@@ -319,7 +319,7 @@
             this.rdbComercio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbComercio.Location = new System.Drawing.Point(7, 45);
             this.rdbComercio.Name = "rdbComercio";
-            this.rdbComercio.Size = new System.Drawing.Size(69, 17);
+            this.rdbComercio.Size = new System.Drawing.Size(88, 21);
             this.rdbComercio.TabIndex = 1;
             this.rdbComercio.Text = "Comércio";
             this.rdbComercio.UseVisualStyleBackColor = true;
@@ -331,7 +331,7 @@
             this.rdbAtacado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbAtacado.Location = new System.Drawing.Point(7, 22);
             this.rdbAtacado.Name = "rdbAtacado";
-            this.rdbAtacado.Size = new System.Drawing.Size(65, 17);
+            this.rdbAtacado.Size = new System.Drawing.Size(81, 21);
             this.rdbAtacado.TabIndex = 0;
             this.rdbAtacado.TabStop = true;
             this.rdbAtacado.Text = "Atacado";
@@ -356,7 +356,7 @@
             this.rdbReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbReal.Location = new System.Drawing.Point(7, 68);
             this.rdbReal.Name = "rdbReal";
-            this.rdbReal.Size = new System.Drawing.Size(77, 17);
+            this.rdbReal.Size = new System.Drawing.Size(98, 21);
             this.rdbReal.TabIndex = 2;
             this.rdbReal.Text = "Lucro Real";
             this.rdbReal.UseVisualStyleBackColor = true;
@@ -367,7 +367,7 @@
             this.rdbPresumido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbPresumido.Location = new System.Drawing.Point(7, 45);
             this.rdbPresumido.Name = "rdbPresumido";
-            this.rdbPresumido.Size = new System.Drawing.Size(104, 17);
+            this.rdbPresumido.Size = new System.Drawing.Size(136, 21);
             this.rdbPresumido.TabIndex = 1;
             this.rdbPresumido.Text = "Lucro Presumido";
             this.rdbPresumido.UseVisualStyleBackColor = true;
@@ -379,7 +379,7 @@
             this.rdbSimples.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbSimples.Location = new System.Drawing.Point(7, 22);
             this.rdbSimples.Name = "rdbSimples";
-            this.rdbSimples.Size = new System.Drawing.Size(106, 17);
+            this.rdbSimples.Size = new System.Drawing.Size(137, 21);
             this.rdbSimples.TabIndex = 0;
             this.rdbSimples.TabStop = true;
             this.rdbSimples.Text = "Simples Nacional";
@@ -391,7 +391,7 @@
             this.lblCNAE.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCNAE.Location = new System.Drawing.Point(5, 62);
             this.lblCNAE.Name = "lblCNAE";
-            this.lblCNAE.Size = new System.Drawing.Size(47, 16);
+            this.lblCNAE.Size = new System.Drawing.Size(63, 21);
             this.lblCNAE.TabIndex = 94;
             this.lblCNAE.Text = "CNAE";
             // 
@@ -409,7 +409,7 @@
             this.lblCNPJ.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCNPJ.Location = new System.Drawing.Point(5, 16);
             this.lblCNPJ.Name = "lblCNPJ";
-            this.lblCNPJ.Size = new System.Drawing.Size(53, 16);
+            this.lblCNPJ.Size = new System.Drawing.Size(70, 21);
             this.lblCNPJ.TabIndex = 90;
             this.lblCNPJ.Text = "CNPJ*";
             // 
@@ -426,7 +426,7 @@
             this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCidade.Location = new System.Drawing.Point(606, 81);
             this.txtCidade.Name = "txtCidade";
-            this.txtCidade.Size = new System.Drawing.Size(146, 20);
+            this.txtCidade.Size = new System.Drawing.Size(146, 23);
             this.txtCidade.TabIndex = 82;
             this.txtCidade.TabStop = false;
             // 
@@ -436,7 +436,7 @@
             this.lblCEP.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCEP.Location = new System.Drawing.Point(380, 19);
             this.lblCEP.Name = "lblCEP";
-            this.lblCEP.Size = new System.Drawing.Size(43, 16);
+            this.lblCEP.Size = new System.Drawing.Size(58, 21);
             this.lblCEP.TabIndex = 78;
             this.lblCEP.Text = "CEP*";
             // 
@@ -445,7 +445,7 @@
             this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtBairro.Location = new System.Drawing.Point(383, 81);
             this.txtBairro.Name = "txtBairro";
-            this.txtBairro.Size = new System.Drawing.Size(185, 20);
+            this.txtBairro.Size = new System.Drawing.Size(185, 23);
             this.txtBairro.TabIndex = 86;
             this.txtBairro.TabStop = false;
             // 
@@ -455,7 +455,7 @@
             this.lblBairro.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBairro.Location = new System.Drawing.Point(380, 62);
             this.lblBairro.Name = "lblBairro";
-            this.lblBairro.Size = new System.Drawing.Size(52, 16);
+            this.lblBairro.Size = new System.Drawing.Size(67, 21);
             this.lblBairro.TabIndex = 85;
             this.lblBairro.Text = "Bairro";
             // 
@@ -464,7 +464,7 @@
             this.txtLogradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtLogradouro.Location = new System.Drawing.Point(383, 125);
             this.txtLogradouro.Name = "txtLogradouro";
-            this.txtLogradouro.Size = new System.Drawing.Size(369, 20);
+            this.txtLogradouro.Size = new System.Drawing.Size(369, 23);
             this.txtLogradouro.TabIndex = 84;
             this.txtLogradouro.TabStop = false;
             // 
@@ -474,7 +474,7 @@
             this.lblLogradouro.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblLogradouro.Location = new System.Drawing.Point(380, 106);
             this.lblLogradouro.Name = "lblLogradouro";
-            this.lblLogradouro.Size = new System.Drawing.Size(86, 16);
+            this.lblLogradouro.Size = new System.Drawing.Size(113, 21);
             this.lblLogradouro.TabIndex = 83;
             this.lblLogradouro.Text = "Logradouro";
             // 
@@ -484,7 +484,7 @@
             this.txtUF.Location = new System.Drawing.Point(574, 81);
             this.txtUF.MaxLength = 2;
             this.txtUF.Name = "txtUF";
-            this.txtUF.Size = new System.Drawing.Size(26, 20);
+            this.txtUF.Size = new System.Drawing.Size(26, 23);
             this.txtUF.TabIndex = 80;
             this.txtUF.TabStop = false;
             // 
@@ -494,7 +494,7 @@
             this.lblCidade.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblCidade.Location = new System.Drawing.Point(600, 62);
             this.lblCidade.Name = "lblCidade";
-            this.lblCidade.Size = new System.Drawing.Size(53, 16);
+            this.lblCidade.Size = new System.Drawing.Size(71, 21);
             this.lblCidade.TabIndex = 81;
             this.lblCidade.Text = "Cidade";
             // 
@@ -504,7 +504,7 @@
             this.label2.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(570, 62);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(27, 16);
+            this.label2.Size = new System.Drawing.Size(36, 21);
             this.label2.TabIndex = 79;
             this.label2.Text = "UF";
             // 
@@ -522,7 +522,7 @@
             this.lblRegras.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblRegras.Location = new System.Drawing.Point(778, 52);
             this.lblRegras.Name = "lblRegras";
-            this.lblRegras.Size = new System.Drawing.Size(128, 16);
+            this.lblRegras.Size = new System.Drawing.Size(165, 21);
             this.lblRegras.TabIndex = 103;
             this.lblRegras.Text = "Regras Utilizadas";
             // 
@@ -551,7 +551,7 @@
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtFiltro.Location = new System.Drawing.Point(11, 229);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(369, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(369, 23);
             this.txtFiltro.TabIndex = 103;
             this.txtFiltro.TabStop = false;
             this.txtFiltro.TextChanged += new System.EventHandler(this.txtFiltro_TextChanged);
@@ -562,7 +562,7 @@
             this.lblFiltro.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblFiltro.Location = new System.Drawing.Point(12, 210);
             this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(47, 16);
+            this.lblFiltro.Size = new System.Drawing.Size(60, 21);
             this.lblFiltro.TabIndex = 103;
             this.lblFiltro.Text = "Filtro";
             // 
