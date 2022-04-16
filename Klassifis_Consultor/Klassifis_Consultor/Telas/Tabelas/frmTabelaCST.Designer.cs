@@ -65,7 +65,7 @@
             this.btnFechar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnFechar.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFechar.ForeColor = System.Drawing.Color.White;
-            this.btnFechar.Location = new System.Drawing.Point(319, 394);
+            this.btnFechar.Location = new System.Drawing.Point(404, 454);
             this.btnFechar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(121, 43);
@@ -78,10 +78,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(456, 450);
+            this.ClientSize = new System.Drawing.Size(538, 510);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnLayoutsEnvados);
             this.Controls.Add(this.lblTabelaCST);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(556, 557);
+            this.MinimumSize = new System.Drawing.Size(556, 557);
             this.Name = "frmTabelaCST";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Klassifis Consultor";
