@@ -123,11 +123,17 @@
     <Compile Include="Telas\frmVisualizarLayout.Designer.cs">
       <DependentUpon>frmVisualizarLayout.cs</DependentUpon>
     </Compile>
-    <Compile Include="Telas\Tabelas\frmTabelaCest.cs">
+    <Compile Include="Telas\Tabelas\frmTabelaCST.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Telas\Tabelas\frmTabelaCest.Designer.cs">
-      <DependentUpon>frmTabelaCest.cs</DependentUpon>
+    <Compile Include="Telas\Tabelas\frmTabelaCST.Designer.cs">
+      <DependentUpon>frmTabelaCST.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaCST_PisCofins.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaCST_PisCofins.Designer.cs">
+      <DependentUpon>frmTabelaCST_PisCofins.cs</DependentUpon>
     </Compile>
     <Compile Include="Telas\Tabelas\frmTabelaTipi.cs">
       <SubType>Form</SubType>
@@ -166,8 +172,11 @@
     <EmbeddedResource Include="Telas\frmVisualizarLayout.resx">
       <DependentUpon>frmVisualizarLayout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Telas\Tabelas\frmTabelaCest.resx">
-      <DependentUpon>frmTabelaCest.cs</DependentUpon>
+    <EmbeddedResource Include="Telas\Tabelas\frmTabelaCST.resx">
+      <DependentUpon>frmTabelaCST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Tabelas\frmTabelaCST_PisCofins.resx">
+      <DependentUpon>frmTabelaCST_PisCofins.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Tabelas\frmTabelaTipi.resx">
       <DependentUpon>frmTabelaTipi.cs</DependentUpon>

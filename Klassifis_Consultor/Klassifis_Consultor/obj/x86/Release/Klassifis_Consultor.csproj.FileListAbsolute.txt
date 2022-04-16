@@ -15,9 +15,10 @@ C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consulto
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.frmListaLayoutFiscal.resources
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.frmMainMenu.resources
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.frmVisualizarForms.resources
-C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.Tabelas.frmTabelaCest.resources
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.Tabelas.frmTabelaTipi.resources
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.csproj.GenerateResource.cache
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.csproj.CoreCompileInputs.cache
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.csproj.CopyComplete
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.exe
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.Tabelas.frmTabelaCST.resources
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.Tabelas.frmTabelaCST_PisCofins.resources

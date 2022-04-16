@@ -259,7 +259,7 @@ namespace Klassifis_Consultor.Telas
 
         private void abrir_TabelaCest()
         {
-            Application.Run(new frmTabelaCest());
+            Application.Run(new frmTabelaCST_PisCofins());
         }
 
         private void btnTabCest_Click(object sender, EventArgs e)

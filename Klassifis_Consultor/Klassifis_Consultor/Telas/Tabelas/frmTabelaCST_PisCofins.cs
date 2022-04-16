@@ -11,9 +11,9 @@ using kLib;
 
 namespace Klassifis_Consultor.Telas.Tabelas
 {
-    public partial class frmTabelaCest : Form
+    public partial class frmTabelaCST_PisCofins : Form
     {
-        public frmTabelaCest()
+        public frmTabelaCST_PisCofins()
         {
             InitializeComponent();
         }
