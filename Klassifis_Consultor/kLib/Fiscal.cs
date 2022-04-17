@@ -11044,8 +11044,6 @@ Lista_Descricao_Tipi.Add(new Descricao_TIPI { idCategoria = 97, nameCategoria = 
                             retorno = desc.ncmCategoria;
                         }
 
-
-
                     }
 
                     if (x < HerbertLevenshteinAlgorithm.Compare(descricao.ToUpper(), desc.nameCategoria.Remove(0, 10)))
@@ -11054,6 +11052,14 @@ Lista_Descricao_Tipi.Add(new Descricao_TIPI { idCategoria = 97, nameCategoria = 
                         retorno = desc.ncmCategoria;
                     }
 
+                }
+                else
+                {
+                    if (x < HerbertLevenshteinAlgorithm.Compare(descricao.ToUpper(), desc.nameCategoria))
+                    {
+                        x = HerbertLevenshteinAlgorithm.Compare(descricao.ToUpper(), desc.nameCategoria);
+                        retorno = desc.ncmCategoria;
+                    }
                 }
             }
             return retorno;
