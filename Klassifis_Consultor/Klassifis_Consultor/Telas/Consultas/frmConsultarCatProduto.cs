@@ -33,9 +33,7 @@ namespace Klassifis_Consultor.Telas.Consultas
         //Carregar Categorias de Produto com base na tabela tipi
         private void carregar_CatFiscal()
         {
-
-            fiscal.carregar_CatProduto();
-            var categorias = from item in fiscal.Lista_CategoriaTipi
+            var categorias = from item in Fiscal.Lista_CategoriaTipi
                              select new { item.idCategoria, item.nameCategoria };
             dgvDados.Columns.Add("Cod_Categoria", "Código");
             dgvDados.Columns.Add("Des_Categoria", "Descrição Categoria");
@@ -50,7 +48,7 @@ namespace Klassifis_Consultor.Telas.Consultas
         private void filtrar_Dados()
         {
             dgvDados.Rows.Clear();
-            var categorias = from item in fiscal.Lista_CategoriaTipi
+            var categorias = from item in Fiscal.Lista_CategoriaTipi
                              where item.nameCategoria.Contains(txtPesquisar.Text.ToUpper()) || item.idCategoria.ToString().Equals(txtPesquisar.Text)
                              select new { item.idCategoria, item.nameCategoria };
 

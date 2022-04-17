@@ -90,12 +90,17 @@ namespace Klassifis_Consultor.Telas
                         );
                 }
             }
-            _dgv.Sort(_dgv.Columns[2], ListSortDirection.Descending);
+            _dgv.Sort(_dgv.Columns["Data_Hora"], ListSortDirection.Descending);
+            //_dgv.CurrentRow.Selected = false;
+            //_dgv.Rows[0].Selected = true;
+
+
+
         }
 
-        
+
         /////////////////Funções dos componentes internos do form
-        
+
         //Load do form
         private void frmListaLayoutFiscal_Load(object sender, EventArgs e)
         {

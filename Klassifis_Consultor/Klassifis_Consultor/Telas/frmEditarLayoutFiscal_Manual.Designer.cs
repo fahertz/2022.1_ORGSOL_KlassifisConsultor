@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.gpbIPI = new System.Windows.Forms.GroupBox();
-            this.txtIPI_CST = new System.Windows.Forms.TextBox();
-            this.lblIPI_CST = new System.Windows.Forms.Label();
+            this.txtIPI_CST_Entrada = new System.Windows.Forms.TextBox();
+            this.lblIPI_CST_Entrada = new System.Windows.Forms.Label();
             this.lblIPI_Alq = new System.Windows.Forms.Label();
             this.txtIPI_CSOSN = new System.Windows.Forms.TextBox();
             this.txtIPI_Alq = new System.Windows.Forms.TextBox();
@@ -83,6 +83,8 @@
             this.txtCodCat_Produto = new System.Windows.Forms.TextBox();
             this.lblCatProduto = new System.Windows.Forms.Label();
             this.btnCatProduto = new System.Windows.Forms.Button();
+            this.txtIPI_CST_Saida = new System.Windows.Forms.TextBox();
+            this.lblIPI_CST_Saida = new System.Windows.Forms.Label();
             this.gpbIPI.SuspendLayout();
             this.gpbCOFINS.SuspendLayout();
             this.gpbPIS.SuspendLayout();
@@ -92,43 +94,45 @@
             // 
             // gpbIPI
             // 
-            this.gpbIPI.Controls.Add(this.txtIPI_CST);
-            this.gpbIPI.Controls.Add(this.lblIPI_CST);
+            this.gpbIPI.Controls.Add(this.txtIPI_CST_Saida);
+            this.gpbIPI.Controls.Add(this.lblIPI_CST_Saida);
+            this.gpbIPI.Controls.Add(this.txtIPI_CST_Entrada);
+            this.gpbIPI.Controls.Add(this.lblIPI_CST_Entrada);
             this.gpbIPI.Controls.Add(this.lblIPI_Alq);
             this.gpbIPI.Controls.Add(this.txtIPI_CSOSN);
             this.gpbIPI.Controls.Add(this.txtIPI_Alq);
             this.gpbIPI.Controls.Add(this.lblIPI_CSOSN);
             this.gpbIPI.Location = new System.Drawing.Point(867, 128);
-            this.gpbIPI.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbIPI.Margin = new System.Windows.Forms.Padding(4);
             this.gpbIPI.Name = "gpbIPI";
-            this.gpbIPI.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbIPI.Padding = new System.Windows.Forms.Padding(4);
             this.gpbIPI.Size = new System.Drawing.Size(401, 145);
             this.gpbIPI.TabIndex = 142;
             this.gpbIPI.TabStop = false;
             this.gpbIPI.Text = "IPI";
             // 
-            // txtIPI_CST
+            // txtIPI_CST_Entrada
             // 
-            this.txtIPI_CST.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtIPI_CST.Location = new System.Drawing.Point(8, 46);
-            this.txtIPI_CST.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.txtIPI_CST.MaxLength = 14;
-            this.txtIPI_CST.Name = "txtIPI_CST";
-            this.txtIPI_CST.Size = new System.Drawing.Size(184, 23);
-            this.txtIPI_CST.TabIndex = 0;
-            this.txtIPI_CST.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.aceita_Numeros);
-            this.txtIPI_CST.Validating += new System.ComponentModel.CancelEventHandler(this.txtIPI_CST_Validating);
+            this.txtIPI_CST_Entrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtIPI_CST_Entrada.Location = new System.Drawing.Point(8, 46);
+            this.txtIPI_CST_Entrada.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIPI_CST_Entrada.MaxLength = 14;
+            this.txtIPI_CST_Entrada.Name = "txtIPI_CST_Entrada";
+            this.txtIPI_CST_Entrada.Size = new System.Drawing.Size(184, 23);
+            this.txtIPI_CST_Entrada.TabIndex = 0;
+            this.txtIPI_CST_Entrada.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.aceita_Numeros);
+            this.txtIPI_CST_Entrada.Validating += new System.ComponentModel.CancelEventHandler(this.txtIPI_CST_Validating);
             // 
-            // lblIPI_CST
+            // lblIPI_CST_Entrada
             // 
-            this.lblIPI_CST.AutoSize = true;
-            this.lblIPI_CST.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIPI_CST.Location = new System.Drawing.Point(4, 22);
-            this.lblIPI_CST.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.lblIPI_CST.Name = "lblIPI_CST";
-            this.lblIPI_CST.Size = new System.Drawing.Size(46, 21);
-            this.lblIPI_CST.TabIndex = 99;
-            this.lblIPI_CST.Text = "CST";
+            this.lblIPI_CST_Entrada.AutoSize = true;
+            this.lblIPI_CST_Entrada.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPI_CST_Entrada.Location = new System.Drawing.Point(4, 22);
+            this.lblIPI_CST_Entrada.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIPI_CST_Entrada.Name = "lblIPI_CST_Entrada";
+            this.lblIPI_CST_Entrada.Size = new System.Drawing.Size(46, 21);
+            this.lblIPI_CST_Entrada.TabIndex = 99;
+            this.lblIPI_CST_Entrada.Text = "CST";
             // 
             // lblIPI_Alq
             // 
@@ -144,8 +148,8 @@
             // txtIPI_CSOSN
             // 
             this.txtIPI_CSOSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.txtIPI_CSOSN.Location = new System.Drawing.Point(201, 46);
-            this.txtIPI_CSOSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIPI_CSOSN.Location = new System.Drawing.Point(200, 100);
+            this.txtIPI_CSOSN.Margin = new System.Windows.Forms.Padding(4);
             this.txtIPI_CSOSN.MaxLength = 8;
             this.txtIPI_CSOSN.Name = "txtIPI_CSOSN";
             this.txtIPI_CSOSN.Size = new System.Drawing.Size(184, 23);
@@ -157,7 +161,7 @@
             // 
             this.txtIPI_Alq.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtIPI_Alq.Location = new System.Drawing.Point(8, 100);
-            this.txtIPI_Alq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIPI_Alq.Margin = new System.Windows.Forms.Padding(4);
             this.txtIPI_Alq.MaxLength = 8;
             this.txtIPI_Alq.Name = "txtIPI_Alq";
             this.txtIPI_Alq.Size = new System.Drawing.Size(184, 23);
@@ -169,7 +173,7 @@
             // 
             this.lblIPI_CSOSN.AutoSize = true;
             this.lblIPI_CSOSN.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblIPI_CSOSN.Location = new System.Drawing.Point(197, 22);
+            this.lblIPI_CSOSN.Location = new System.Drawing.Point(196, 76);
             this.lblIPI_CSOSN.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblIPI_CSOSN.Name = "lblIPI_CSOSN";
             this.lblIPI_CSOSN.Size = new System.Drawing.Size(73, 21);
@@ -187,9 +191,9 @@
             this.gpbCOFINS.Controls.Add(this.txtCOFINS_Alq);
             this.gpbCOFINS.Controls.Add(this.lblCOFINS_CSOSN);
             this.gpbCOFINS.Location = new System.Drawing.Point(445, 281);
-            this.gpbCOFINS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbCOFINS.Margin = new System.Windows.Forms.Padding(4);
             this.gpbCOFINS.Name = "gpbCOFINS";
-            this.gpbCOFINS.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbCOFINS.Padding = new System.Windows.Forms.Padding(4);
             this.gpbCOFINS.Size = new System.Drawing.Size(401, 145);
             this.gpbCOFINS.TabIndex = 141;
             this.gpbCOFINS.TabStop = false;
@@ -199,7 +203,7 @@
             // 
             this.txtCOFINS_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCOFINS_CST_Saida.Location = new System.Drawing.Point(201, 46);
-            this.txtCOFINS_CST_Saida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCOFINS_CST_Saida.Margin = new System.Windows.Forms.Padding(4);
             this.txtCOFINS_CST_Saida.MaxLength = 14;
             this.txtCOFINS_CST_Saida.Name = "txtCOFINS_CST_Saida";
             this.txtCOFINS_CST_Saida.Size = new System.Drawing.Size(184, 23);
@@ -221,7 +225,7 @@
             // 
             this.txtCOFINS_CST_Entrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCOFINS_CST_Entrada.Location = new System.Drawing.Point(8, 46);
-            this.txtCOFINS_CST_Entrada.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCOFINS_CST_Entrada.Margin = new System.Windows.Forms.Padding(4);
             this.txtCOFINS_CST_Entrada.MaxLength = 14;
             this.txtCOFINS_CST_Entrada.Name = "txtCOFINS_CST_Entrada";
             this.txtCOFINS_CST_Entrada.Size = new System.Drawing.Size(184, 23);
@@ -255,7 +259,7 @@
             // 
             this.txtCOFINS_CSOSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCOFINS_CSOSN.Location = new System.Drawing.Point(201, 100);
-            this.txtCOFINS_CSOSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCOFINS_CSOSN.Margin = new System.Windows.Forms.Padding(4);
             this.txtCOFINS_CSOSN.MaxLength = 8;
             this.txtCOFINS_CSOSN.Name = "txtCOFINS_CSOSN";
             this.txtCOFINS_CSOSN.Size = new System.Drawing.Size(184, 23);
@@ -267,7 +271,7 @@
             // 
             this.txtCOFINS_Alq.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCOFINS_Alq.Location = new System.Drawing.Point(8, 100);
-            this.txtCOFINS_Alq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCOFINS_Alq.Margin = new System.Windows.Forms.Padding(4);
             this.txtCOFINS_Alq.MaxLength = 8;
             this.txtCOFINS_Alq.Name = "txtCOFINS_Alq";
             this.txtCOFINS_Alq.Size = new System.Drawing.Size(184, 23);
@@ -297,9 +301,9 @@
             this.gpbPIS.Controls.Add(this.txtPIS_Alq);
             this.gpbPIS.Controls.Add(this.lblPIS_CSOSN);
             this.gpbPIS.Location = new System.Drawing.Point(25, 281);
-            this.gpbPIS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbPIS.Margin = new System.Windows.Forms.Padding(4);
             this.gpbPIS.Name = "gpbPIS";
-            this.gpbPIS.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbPIS.Padding = new System.Windows.Forms.Padding(4);
             this.gpbPIS.Size = new System.Drawing.Size(401, 145);
             this.gpbPIS.TabIndex = 140;
             this.gpbPIS.TabStop = false;
@@ -309,7 +313,7 @@
             // 
             this.txtPIS_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtPIS_CST_Saida.Location = new System.Drawing.Point(201, 46);
-            this.txtPIS_CST_Saida.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPIS_CST_Saida.Margin = new System.Windows.Forms.Padding(4);
             this.txtPIS_CST_Saida.MaxLength = 14;
             this.txtPIS_CST_Saida.Name = "txtPIS_CST_Saida";
             this.txtPIS_CST_Saida.Size = new System.Drawing.Size(184, 23);
@@ -331,7 +335,7 @@
             // 
             this.txtPIS_CST_Entrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtPIS_CST_Entrada.Location = new System.Drawing.Point(8, 46);
-            this.txtPIS_CST_Entrada.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPIS_CST_Entrada.Margin = new System.Windows.Forms.Padding(4);
             this.txtPIS_CST_Entrada.MaxLength = 14;
             this.txtPIS_CST_Entrada.Name = "txtPIS_CST_Entrada";
             this.txtPIS_CST_Entrada.Size = new System.Drawing.Size(184, 23);
@@ -365,7 +369,7 @@
             // 
             this.txtPIS_CSOSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtPIS_CSOSN.Location = new System.Drawing.Point(201, 100);
-            this.txtPIS_CSOSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPIS_CSOSN.Margin = new System.Windows.Forms.Padding(4);
             this.txtPIS_CSOSN.MaxLength = 8;
             this.txtPIS_CSOSN.Name = "txtPIS_CSOSN";
             this.txtPIS_CSOSN.Size = new System.Drawing.Size(184, 23);
@@ -377,7 +381,7 @@
             // 
             this.txtPIS_Alq.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtPIS_Alq.Location = new System.Drawing.Point(8, 100);
-            this.txtPIS_Alq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtPIS_Alq.Margin = new System.Windows.Forms.Padding(4);
             this.txtPIS_Alq.MaxLength = 8;
             this.txtPIS_Alq.Name = "txtPIS_Alq";
             this.txtPIS_Alq.Size = new System.Drawing.Size(184, 23);
@@ -407,9 +411,9 @@
             this.gpbICMS.Controls.Add(this.txtICMS_Alq);
             this.gpbICMS.Controls.Add(this.lblICMS_CSOSN);
             this.gpbICMS.Location = new System.Drawing.Point(445, 128);
-            this.gpbICMS.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbICMS.Margin = new System.Windows.Forms.Padding(4);
             this.gpbICMS.Name = "gpbICMS";
-            this.gpbICMS.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbICMS.Padding = new System.Windows.Forms.Padding(4);
             this.gpbICMS.Size = new System.Drawing.Size(401, 145);
             this.gpbICMS.TabIndex = 139;
             this.gpbICMS.TabStop = false;
@@ -419,7 +423,7 @@
             // 
             this.txtICMS_CST.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtICMS_CST.Location = new System.Drawing.Point(8, 46);
-            this.txtICMS_CST.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtICMS_CST.Margin = new System.Windows.Forms.Padding(4);
             this.txtICMS_CST.MaxLength = 14;
             this.txtICMS_CST.Name = "txtICMS_CST";
             this.txtICMS_CST.Size = new System.Drawing.Size(184, 23);
@@ -431,7 +435,7 @@
             // 
             this.txtICMS_MVA.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtICMS_MVA.Location = new System.Drawing.Point(201, 46);
-            this.txtICMS_MVA.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtICMS_MVA.Margin = new System.Windows.Forms.Padding(4);
             this.txtICMS_MVA.MaxLength = 7;
             this.txtICMS_MVA.Name = "txtICMS_MVA";
             this.txtICMS_MVA.Size = new System.Drawing.Size(184, 23);
@@ -476,7 +480,7 @@
             // 
             this.txtICMS_CSOSN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtICMS_CSOSN.Location = new System.Drawing.Point(201, 100);
-            this.txtICMS_CSOSN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtICMS_CSOSN.Margin = new System.Windows.Forms.Padding(4);
             this.txtICMS_CSOSN.MaxLength = 8;
             this.txtICMS_CSOSN.Name = "txtICMS_CSOSN";
             this.txtICMS_CSOSN.Size = new System.Drawing.Size(184, 23);
@@ -488,7 +492,7 @@
             // 
             this.txtICMS_Alq.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtICMS_Alq.Location = new System.Drawing.Point(8, 100);
-            this.txtICMS_Alq.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtICMS_Alq.Margin = new System.Windows.Forms.Padding(4);
             this.txtICMS_Alq.MaxLength = 8;
             this.txtICMS_Alq.Name = "txtICMS_Alq";
             this.txtICMS_Alq.Size = new System.Drawing.Size(184, 23);
@@ -518,9 +522,9 @@
             this.gpbCodigosProduto.Controls.Add(this.txtCod_NCM);
             this.gpbCodigosProduto.Controls.Add(this.lblCod_NCM_Ex);
             this.gpbCodigosProduto.Location = new System.Drawing.Point(25, 128);
-            this.gpbCodigosProduto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbCodigosProduto.Margin = new System.Windows.Forms.Padding(4);
             this.gpbCodigosProduto.Name = "gpbCodigosProduto";
-            this.gpbCodigosProduto.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbCodigosProduto.Padding = new System.Windows.Forms.Padding(4);
             this.gpbCodigosProduto.Size = new System.Drawing.Size(401, 145);
             this.gpbCodigosProduto.TabIndex = 138;
             this.gpbCodigosProduto.TabStop = false;
@@ -530,7 +534,7 @@
             // 
             this.txtCod_GTIN.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCod_GTIN.Location = new System.Drawing.Point(8, 46);
-            this.txtCod_GTIN.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCod_GTIN.Margin = new System.Windows.Forms.Padding(4);
             this.txtCod_GTIN.MaxLength = 14;
             this.txtCod_GTIN.Name = "txtCod_GTIN";
             this.txtCod_GTIN.Size = new System.Drawing.Size(184, 23);
@@ -541,7 +545,7 @@
             // 
             this.txtCod_CEST.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCod_CEST.Location = new System.Drawing.Point(201, 46);
-            this.txtCod_CEST.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCod_CEST.Margin = new System.Windows.Forms.Padding(4);
             this.txtCod_CEST.MaxLength = 7;
             this.txtCod_CEST.Name = "txtCod_CEST";
             this.txtCod_CEST.Size = new System.Drawing.Size(184, 23);
@@ -586,7 +590,7 @@
             // 
             this.txtCod_NCM_Ex.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCod_NCM_Ex.Location = new System.Drawing.Point(201, 100);
-            this.txtCod_NCM_Ex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCod_NCM_Ex.Margin = new System.Windows.Forms.Padding(4);
             this.txtCod_NCM_Ex.MaxLength = 8;
             this.txtCod_NCM_Ex.Name = "txtCod_NCM_Ex";
             this.txtCod_NCM_Ex.Size = new System.Drawing.Size(184, 23);
@@ -598,7 +602,7 @@
             // 
             this.txtCod_NCM.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCod_NCM.Location = new System.Drawing.Point(8, 100);
-            this.txtCod_NCM.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCod_NCM.Margin = new System.Windows.Forms.Padding(4);
             this.txtCod_NCM.MaxLength = 8;
             this.txtCod_NCM.Name = "txtCod_NCM";
             this.txtCod_NCM.Size = new System.Drawing.Size(184, 23);
@@ -621,7 +625,7 @@
             // 
             this.txtDesc_Produto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtDesc_Produto.Location = new System.Drawing.Point(160, 96);
-            this.txtDesc_Produto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtDesc_Produto.Margin = new System.Windows.Forms.Padding(4);
             this.txtDesc_Produto.MaxLength = 100;
             this.txtDesc_Produto.Name = "txtDesc_Produto";
             this.txtDesc_Produto.Size = new System.Drawing.Size(477, 23);
@@ -654,7 +658,7 @@
             // 
             this.txtCod_Produto.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCod_Produto.Location = new System.Drawing.Point(25, 96);
-            this.txtCod_Produto.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCod_Produto.Margin = new System.Windows.Forms.Padding(4);
             this.txtCod_Produto.MaxLength = 14;
             this.txtCod_Produto.Name = "txtCod_Produto";
             this.txtCod_Produto.Size = new System.Drawing.Size(121, 23);
@@ -680,7 +684,7 @@
             this.btnFechar.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFechar.ForeColor = System.Drawing.Color.White;
             this.btnFechar.Location = new System.Drawing.Point(1161, 384);
-            this.btnFechar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnFechar.Margin = new System.Windows.Forms.Padding(4);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(121, 43);
             this.btnFechar.TabIndex = 134;
@@ -691,7 +695,7 @@
             // btnTipi
             // 
             this.btnTipi.Location = new System.Drawing.Point(405, 53);
-            this.btnTipi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTipi.Margin = new System.Windows.Forms.Padding(4);
             this.btnTipi.Name = "btnTipi";
             this.btnTipi.Size = new System.Drawing.Size(100, 34);
             this.btnTipi.TabIndex = 144;
@@ -702,7 +706,7 @@
             // btnTabCest
             // 
             this.btnTabCest.Location = new System.Drawing.Point(405, 11);
-            this.btnTabCest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTabCest.Margin = new System.Windows.Forms.Padding(4);
             this.btnTabCest.Name = "btnTabCest";
             this.btnTabCest.Size = new System.Drawing.Size(100, 34);
             this.btnTabCest.TabIndex = 143;
@@ -750,6 +754,28 @@
             this.btnCatProduto.UseVisualStyleBackColor = true;
             this.btnCatProduto.Click += new System.EventHandler(this.btnCatProduto_Click);
             // 
+            // txtIPI_CST_Saida
+            // 
+            this.txtIPI_CST_Saida.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.txtIPI_CST_Saida.Location = new System.Drawing.Point(200, 46);
+            this.txtIPI_CST_Saida.Margin = new System.Windows.Forms.Padding(4);
+            this.txtIPI_CST_Saida.MaxLength = 14;
+            this.txtIPI_CST_Saida.Name = "txtIPI_CST_Saida";
+            this.txtIPI_CST_Saida.Size = new System.Drawing.Size(184, 23);
+            this.txtIPI_CST_Saida.TabIndex = 106;
+            this.txtIPI_CST_Saida.Validating += new System.ComponentModel.CancelEventHandler(this.txtIPI_CST_Saida_Validating);
+            // 
+            // lblIPI_CST_Saida
+            // 
+            this.lblIPI_CST_Saida.AutoSize = true;
+            this.lblIPI_CST_Saida.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblIPI_CST_Saida.Location = new System.Drawing.Point(196, 22);
+            this.lblIPI_CST_Saida.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblIPI_CST_Saida.Name = "lblIPI_CST_Saida";
+            this.lblIPI_CST_Saida.Size = new System.Drawing.Size(124, 26);
+            this.lblIPI_CST_Saida.TabIndex = 107;
+            this.lblIPI_CST_Saida.Text = "CST Saída";
+            // 
             // frmEditarLayoutFiscal_Manual
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -772,7 +798,7 @@
             this.Controls.Add(this.txtCod_Produto);
             this.Controls.Add(this.lblCod_Produto);
             this.Controls.Add(this.btnFechar);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1294, 479);
             this.Name = "frmEditarLayoutFiscal_Manual";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -796,8 +822,8 @@
         #endregion
 
         private System.Windows.Forms.GroupBox gpbIPI;
-        public System.Windows.Forms.TextBox txtIPI_CST;
-        private System.Windows.Forms.Label lblIPI_CST;
+        public System.Windows.Forms.TextBox txtIPI_CST_Entrada;
+        private System.Windows.Forms.Label lblIPI_CST_Entrada;
         private System.Windows.Forms.Label lblIPI_Alq;
         public System.Windows.Forms.TextBox txtIPI_CSOSN;
         public System.Windows.Forms.TextBox txtIPI_Alq;
@@ -850,5 +876,7 @@
         public System.Windows.Forms.TextBox txtCodCat_Produto;
         private System.Windows.Forms.Label lblCatProduto;
         private System.Windows.Forms.Button btnCatProduto;
+        public System.Windows.Forms.TextBox txtIPI_CST_Saida;
+        private System.Windows.Forms.Label lblIPI_CST_Saida;
     }
 }

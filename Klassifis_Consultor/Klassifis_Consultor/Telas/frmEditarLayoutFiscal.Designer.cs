@@ -72,6 +72,7 @@
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.lblFiltro = new System.Windows.Forms.Label();
             this.btnLevenshtein = new System.Windows.Forms.Button();
+            this.rdbIndustria = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.gpbDadosDoCliente.SuspendLayout();
             this.gpbAtividade.SuspendLayout();
@@ -186,7 +187,6 @@
             this.dgvProdutos.Size = new System.Drawing.Size(1635, 368);
             this.dgvProdutos.TabIndex = 84;
             this.dgvProdutos.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvProdutos_CellEndEdit);
-            this.dgvProdutos.CellValidating += new System.Windows.Forms.DataGridViewCellValidatingEventHandler(this.dgvProdutos_CellValidating);
             this.dgvProdutos.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dgvProdutos_KeyDown);
             this.dgvProdutos.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.dgvProdutos_KeyPress);
             this.dgvProdutos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.dgvProdutos_MouseDoubleClick);
@@ -308,15 +308,16 @@
             // 
             // gpbAtividade
             // 
+            this.gpbAtividade.Controls.Add(this.rdbIndustria);
             this.gpbAtividade.Controls.Add(this.rdbVarejo);
             this.gpbAtividade.Controls.Add(this.rdbComercio);
             this.gpbAtividade.Controls.Add(this.rdbAtacado);
             this.gpbAtividade.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gpbAtividade.Location = new System.Drawing.Point(164, 20);
+            this.gpbAtividade.Location = new System.Drawing.Point(334, 20);
             this.gpbAtividade.Margin = new System.Windows.Forms.Padding(4);
             this.gpbAtividade.Name = "gpbAtividade";
             this.gpbAtividade.Padding = new System.Windows.Forms.Padding(4);
-            this.gpbAtividade.Size = new System.Drawing.Size(165, 112);
+            this.gpbAtividade.Size = new System.Drawing.Size(165, 147);
             this.gpbAtividade.TabIndex = 3;
             this.gpbAtividade.TabStop = false;
             this.gpbAtividade.Text = "Atividade";
@@ -365,7 +366,7 @@
             this.gpbRegime.Controls.Add(this.rdbPresumido);
             this.gpbRegime.Controls.Add(this.rdbSimples);
             this.gpbRegime.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold);
-            this.gpbRegime.Location = new System.Drawing.Point(337, 20);
+            this.gpbRegime.Location = new System.Drawing.Point(162, 19);
             this.gpbRegime.Margin = new System.Windows.Forms.Padding(4);
             this.gpbRegime.Name = "gpbRegime";
             this.gpbRegime.Padding = new System.Windows.Forms.Padding(4);
@@ -624,6 +625,18 @@
             this.btnLevenshtein.UseVisualStyleBackColor = true;
             this.btnLevenshtein.Click += new System.EventHandler(this.btnLevenshtein_Click);
             // 
+            // rdbIndustria
+            // 
+            this.rdbIndustria.AutoSize = true;
+            this.rdbIndustria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.rdbIndustria.Location = new System.Drawing.Point(9, 110);
+            this.rdbIndustria.Margin = new System.Windows.Forms.Padding(4);
+            this.rdbIndustria.Name = "rdbIndustria";
+            this.rdbIndustria.Size = new System.Drawing.Size(83, 21);
+            this.rdbIndustria.TabIndex = 3;
+            this.rdbIndustria.Text = "Indústria";
+            this.rdbIndustria.UseVisualStyleBackColor = true;
+            // 
             // frmEditarLayoutFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -707,5 +720,6 @@
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.Button btnLevenshtein;
+        private System.Windows.Forms.RadioButton rdbIndustria;
     }
 }

@@ -21,7 +21,7 @@ namespace Klassifis_Consultor.Telas
             InitializeComponent();
         }
         //////////////////////////// Instância        
-
+        Fiscal fiscal = new Fiscal();
         //Variáveis Text box
         private String mMessage, mTittle;
         private MessageBoxButtons mButton;
@@ -97,7 +97,8 @@ namespace Klassifis_Consultor.Telas
 
         private void ncm_Validation(TextBox textbox, Label label)
         {
-            if (!textbox.Text.Trim().Equals(String.Empty)) {
+            if (!textbox.Text.Trim().Equals(String.Empty))
+            {
                 if (textbox.Text.Length != 8)
                 {
                     mMessage = "O NCM deve ter 8 dígitos.";
@@ -108,28 +109,51 @@ namespace Klassifis_Consultor.Telas
                     textbox.ForeColor = Color.Red;
                     label.ForeColor = Color.Red;
                     textbox.Focus();
+                    return;
                 }
-                else if (!textbox.Text.Equals(String.Empty) && Fiscal.Validar_NCM(textbox.Text) != true)
+
+                if (txtCodCat_Produto.Text.Length > 0)
                 {
-                    mMessage = "NCM incorreto, para dúvidas verifique a tabela TIPI.";
-                    mTittle = "Klassifis warming";
-                    mButton = MessageBoxButtons.OK;
-                    mIcon = MessageBoxIcon.Error;
-                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
-                    textbox.ForeColor = Color.Red;
-                    label.ForeColor = Color.Red;
-                    btnTipi_Click(btnTipi, new EventArgs());
-                    textbox.Focus();
-                }
-                else
-                {
-                    if (textbox.ForeColor == Color.Red)
+                    if (fiscal.validar_NCM_Categoria(textbox.Text,Convert.ToInt32(txtCodCat_Produto.Text)) == true)
                     {
                         textbox.ForeColor = Color.Black;
                         label.ForeColor = Color.Black;
                         textbox.Focus();
                     }
+                    else
+                    {
+                        mMessage = "O código NCM não existe para a categoria";
+                        mTittle = "Klassifis validation";
+                        mButton = MessageBoxButtons.OK;
+                        mIcon = MessageBoxIcon.Error;
+                        MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                        textbox.ForeColor = Color.Red;
+                        label.ForeColor = Color.Red;
+                        //btnTipi_Click(btnTipi, new EventArgs());
+                        textbox.Focus();
+                    }
                 }
+                else
+                {
+                    if (fiscal.validar_NCM(textbox.Text))
+                    {
+                        textbox.ForeColor = Color.Black;
+                        label.ForeColor = Color.Black;
+                        textbox.Focus();
+                    }
+                    else
+                    {
+                        mMessage = "O código NCM não existe";
+                        mTittle = "Klassifis validation";
+                        mButton = MessageBoxButtons.OK;
+                        mIcon = MessageBoxIcon.Error;
+                        MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                        textbox.ForeColor = Color.Red;
+                        label.ForeColor = Color.Red;
+                        btnTipi_Click(btnTipi, new EventArgs());
+                        textbox.Focus();
+                    }
+                }            
             }
         }
 
@@ -200,7 +224,12 @@ namespace Klassifis_Consultor.Telas
         //////////////////IPI
         private void txtIPI_CST_Validating(object sender, CancelEventArgs e)
         {
-            cst_Validation(txtIPI_CST, lblIPI_CST);
+            cst_Validation(txtIPI_CST_Entrada, lblIPI_CST_Entrada);
+        }
+
+        private void txtIPI_CST_Saida_Validating(object sender, CancelEventArgs e)
+        {
+            cst_Validation(txtIPI_CST_Saida, lblIPI_CST_Saida);
         }
 
         private void txtIPI_CSOSN_Validating(object sender, CancelEventArgs e)

@@ -1,4 +1,5 @@
 ﻿using Klassifis_Consultor.Telas;
+using kLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -20,7 +21,7 @@ namespace Klassifis_Consultor
         }
 
         ////////////////////////////Instância
-          
+        Fiscal fiscal = new Fiscal(); 
         //Variáveis da caixa de texto
         String mMessage;
         String mTittle;
@@ -44,7 +45,13 @@ namespace Klassifis_Consultor
             //Background
             this.BackgroundImage = Properties.Resources.klassifis_main_menu;
             this.BackgroundImageLayout = ImageLayout.Stretch;
-            
+
+
+
+            //Carregando variáveis estáticas
+            fiscal.carregar_CatProduto();
+            fiscal.carregar_DescTipi();
+
         }
 
         //Load do form

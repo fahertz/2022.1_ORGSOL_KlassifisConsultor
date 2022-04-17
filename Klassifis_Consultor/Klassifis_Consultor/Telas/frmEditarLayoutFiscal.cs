@@ -61,6 +61,9 @@ namespace Klassifis_Consultor.Telas
         private void configuracoes_Iniciais()
         {
 
+
+
+
             //Icon
             this.Icon = Properties.Resources.klassifis_logo_azulado;
 
@@ -103,8 +106,23 @@ namespace Klassifis_Consultor.Telas
                 }
             }
 
+            //A categoria do Produto não pode ser alterada manualmente, só pelo código
+            dgvProdutos.Columns["Cat_Produto"].ReadOnly = true;
+
+            dgvProdutos.Columns["Des_Produto"].Width = 200;
+            dgvProdutos.Columns["CodCat_Produto"].Width = 80;
+            dgvProdutos.Columns["Cat_Produto"].Width = 300;
 
 
+            dgvProdutos.Columns["PIS_CST_Entrada"].ReadOnly = true;
+            dgvProdutos.Columns["PIS_CST_Saida"].ReadOnly = true     ;
+            dgvProdutos.Columns["PIS_ALQ"].ReadOnly = true              ;
+            dgvProdutos.Columns["COFINS_CST_Entrada"].ReadOnly = true  ;
+            dgvProdutos.Columns["COFINS_CST_Saida"].ReadOnly = true    ;
+            dgvProdutos.Columns["COFINS_ALQ"].ReadOnly = true           ;
+
+            //Carrega dados do Cliente
+            carregar_Cliente(sPathCliente);
 
             int flg_Tipo;
             string tipo_Empresa;
@@ -125,6 +143,33 @@ namespace Klassifis_Consultor.Telas
                 tipo_Empresa = "Lucro Real";
             }
 
+            int flg_Ramo=0;
+            string ramo_Empresa=null;
+
+            //Verifica a atividade do clientes
+            if (rdbAtacado.Checked)
+            {
+                flg_Ramo = 1;
+                ramo_Empresa = "Atacado";
+            }
+            else if (rdbComercio.Checked)
+            {
+                flg_Ramo = 2;
+                ramo_Empresa = "Comercio";
+            }
+            else if (rdbVarejo.Checked)
+            {
+                flg_Ramo = 3;
+                ramo_Empresa = "Varejo";
+            }
+
+            else if (rdbIndustria.Checked)
+            {
+                flg_Ramo = 4;
+                ramo_Empresa = "Indústria";
+            }
+
+
             foreach (DataGridViewRow row in dgvProdutos.Rows)
             {
 
@@ -137,24 +182,29 @@ namespace Klassifis_Consultor.Telas
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["COFINS_CST_Entrada"])].Value = Fiscal.COFINS_CST_Entrada(flg_Tipo);
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["COFINS_CST_Saida"])].Value = Fiscal.COFINS_CST_Saida(flg_Tipo);
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["COFINS_Alq"])].Value = Fiscal.COFINS_Aliquota(flg_Tipo).ToString().mascarar_Double();
+
+                row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["IPI_CST_Entrada"])].Value = Fiscal.IPI_CST_Entrada(flg_Ramo);
+                row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["IPI_CST_Saida"])].Value = Fiscal.IPI_CST_Saida(flg_Ramo);
+                row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["IPI_CSOSN"])].Value = Fiscal.IPI_CSOSN_Saida(flg_Ramo);
+
                 
+
             }
 
 
-            //Carregar a Categoria do Produto
-            fiscal.carregar_CatProduto();
+            
 
 
             lsbRegras.Items.Add(tipo_Empresa + " PIS E/S " + Fiscal.PIS_CST_Entrada(flg_Tipo) + "/" + Fiscal.PIS_CST_Saida(flg_Tipo) + " com Alíquota de " + Fiscal.PIS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
             lsbRegras.Items.Add(tipo_Empresa + " COFINS E/S " + Fiscal.COFINS_CST_Entrada(flg_Tipo) + "/" + Fiscal.COFINS_CST_Entrada(flg_Tipo) + " com Alíquota de " + Fiscal.COFINS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
+            if (flg_Ramo != 4)
+            lsbRegras.Items.Add(ramo_Empresa + "IPI E/S" + Fiscal.IPI_CST_Entrada(flg_Ramo) +"/"+ Fiscal.IPI_CST_Saida(flg_Ramo));
             //lsbRegras.Items.Add(tipo_Empresa + " NCM calculado de acordo com a aproximação de Levenstain";
 
 
 
 
-            //Carrega dados do Cliente
-            carregar_Cliente(sPathCliente);
-
+       
             
             Task.Factory.StartNew(() => buscar_CEP(mtxCEP.Text));
             Task.Factory.StartNew(() => validar_Dados(dgvProdutos));
@@ -180,7 +230,7 @@ namespace Klassifis_Consultor.Telas
                foreach (DataGridViewRow row in _dgv.Rows)
                {
 
-                   if (!row.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Value.ToString().Equals(String.Empty) && Fiscal.Validar_NCM(row.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Value.ToString()) != true)
+                   if (!row.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Value.ToString().Equals(String.Empty) && fiscal.validar_NCM(row.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Value.ToString()) != true)
                    {
                        row.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Style.BackColor = Color.Red;
                    }
@@ -189,11 +239,11 @@ namespace Klassifis_Consultor.Telas
                        row.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Style.BackColor = Color.White;
                    }
 
-                   if (!row.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Value.ToString().Equals(String.Empty) && Fiscal.Validar_NCM(row.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Value.ToString()) != true)
+                   if (!row.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Value.ToString().Equals(String.Empty) && fiscal.validar_NCM(row.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Value.ToString()) != true)
                    {
                        row.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Style.BackColor = Color.Red;
                    }
-                   else 
+                   else
                    {
                        row.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Style.BackColor = Color.White;
                    }
@@ -332,9 +382,13 @@ namespace Klassifis_Consultor.Telas
             }
 
         }
+
+
+
         //Validações dentro do Grid View
         private void dgvProdutos_CellEndEdit(object sender, DataGridViewCellEventArgs e)
         {
+            //As validações do Klassifis Consultor são diferente das do Klassifis Cliente, apesar de possuírem semelhanças não cole uma na outra
 
             //0     Cod_Produto    
             //1     Des_Produto
@@ -359,16 +413,17 @@ namespace Klassifis_Consultor.Telas
             //18    COFINS_ALQ
             //19    COFINS_CSOSN
 
-            //20    IPI_CST
-            //21    IPI_ALQ
-            //22    IPI_CSOSN
+            //20    IPI_CST_Entrada
+            //21    IPI_CST_Saida
+            //22    IPI_ALQ
+            //23    IPI_CSOSN
 
 
-            // [0] Validiação se o Produto foi preenchido
-            if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_Produto"].Index].Value != null)
+            //Verifica se o código do produto foi inserido
+            if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_Produto"].Index].Value?.ToString().Length > 0)
             {
                 //Validação
-                //[0] -- Validação do Código
+                //[0] -- Validação de Código, o código do produto não pode ser repetido
                 if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_Produto"].Index].Selected)
                 {
                     int flg_Cor = 0;
@@ -407,7 +462,7 @@ namespace Klassifis_Consultor.Telas
                     if (!dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["CodCat_Produto"].Index].Value.ToString().Equals(String.Empty))
                     {
 
-                        var filtro = from item in fiscal.Lista_CategoriaTipi
+                        var filtro = from item in Fiscal.Lista_CategoriaTipi
                                      where item.idCategoria.ToString() == dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["CodCat_Produto"].Index].Value.ToString()
                                      select item.nameCategoria;
 
@@ -432,7 +487,6 @@ namespace Klassifis_Consultor.Telas
                     }
                 }
 
-
                 //Validação
                 // [4] Validação do código GTIN
                 if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_GTIN"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_GTIN"].Index].Value?.ToString().Trim().Length < 7)
@@ -441,7 +495,8 @@ namespace Klassifis_Consultor.Telas
                     mTittle = "Klassifis validation";
                     mButton = MessageBoxButtons.OK;
                     mIcon = MessageBoxIcon.Error;
-
+                    if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
+                        erros++;
                     dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
                     MessageBox.Show(mMessage, mTittle, mButton, mIcon);
 
@@ -453,7 +508,6 @@ namespace Klassifis_Consultor.Telas
                     dgvProdutos.CurrentCell.Style.BackColor = Color.White;
                 }
 
-                //Validação
                 // [5] Validação NCM
                 if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Value?.ToString().Trim().Length != 8)
                 {
@@ -469,16 +523,56 @@ namespace Klassifis_Consultor.Telas
                 }
                 else if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Selected)
                 {
-                    if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
-                        erros--;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+
+                    if (dgvProdutos.CurrentRow.Cells["CodCat_Produto"].Value?.ToString().Length > 0) {
+                        if (fiscal.validar_NCM_Categoria(dgvProdutos.CurrentRow.Cells["Cod_NCM"].Value.ToString(),Convert.ToInt32(dgvProdutos.CurrentRow.Cells["CodCat_Produto"].Value.ToString())) == true)
+                        {
+                            if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
+                                erros--;
+                            dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                        }
+                        else
+                        {
+                            mMessage = "O código NCM não existe para a categoria";
+                            mTittle = "Klassifis validation";
+                            mButton = MessageBoxButtons.OK;
+                            mIcon = MessageBoxIcon.Error;
+                            if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
+                                erros++;
+                            dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                            MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                        }
+                    }
+                    else
+                    {
+                        if (fiscal.validar_NCM(dgvProdutos.CurrentRow.Cells["Cod_NCM"].Value.ToString()))
+                        {
+                            if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
+                                erros--;
+                            dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                        }
+                        else
+                        {
+                            mMessage = "O código NCM não existe";
+                            mTittle = "Klassifis validation";
+                            mButton = MessageBoxButtons.OK;
+                            mIcon = MessageBoxIcon.Error;
+                            if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
+                                erros++;
+                            dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                            MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                        }
+                    }
+
+
+                   
                 }
 
                 //Validação
                 // [6] Validação do Cest
                 if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_CEST"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_CEST"].Index].Value?.ToString().Trim().Length != 7)
                 {
-                    mMessage = "CEST inválido.";
+                    mMessage = "O código CEST precisa ter 7 dígitos.";
                     mTittle = "Klassifis validation";
                     mButton = MessageBoxButtons.OK;
                     mIcon = MessageBoxIcon.Error;
@@ -494,9 +588,9 @@ namespace Klassifis_Consultor.Telas
                     dgvProdutos.CurrentCell.Style.BackColor = Color.White;
                 }
 
-                //Validação
+
                 // [7] Validação NCM
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_NCM"].Index].Value?.ToString().Trim().Length != 8)
+                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Value?.ToString().Trim().Length != 8)
                 {
                     mMessage = "O código NCM precisa ter que 8 valores";
                     mTittle = "Klassifis validation";
@@ -510,9 +604,50 @@ namespace Klassifis_Consultor.Telas
                 }
                 else if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["Cod_NCM_Ex"].Index].Selected)
                 {
-                    if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
-                        erros--;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+
+                    if (dgvProdutos.CurrentRow.Cells["CodCat_Produto"].Value?.ToString().Length > 0)
+                    {
+                        if (fiscal.validar_NCM_Categoria(dgvProdutos.CurrentRow.Cells["Cod_NCM_Ex"].Value.ToString(), Convert.ToInt32(dgvProdutos.CurrentRow.Cells["CodCat_Produto"].Value.ToString())) == true)
+                        {
+                            if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
+                                erros--;
+                            dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                        }
+                        else
+                        {
+                            mMessage = "O código NCM não existe para a categoria";
+                            mTittle = "Klassifis validation";
+                            mButton = MessageBoxButtons.OK;
+                            mIcon = MessageBoxIcon.Error;
+                            if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
+                                erros++;
+                            dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                            MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                        }
+                    }
+                    else
+                    {
+                        if (fiscal.validar_NCM(dgvProdutos.CurrentRow.Cells["Cod_NCM"].Value.ToString()))
+                        {
+                            if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
+                                erros--;
+                            dgvProdutos.CurrentCell.Style.BackColor = Color.White;
+                        }
+                        else
+                        {
+                            mMessage = "O código NCM não existe";
+                            mTittle = "Klassifis validation";
+                            mButton = MessageBoxButtons.OK;
+                            mIcon = MessageBoxIcon.Error;
+                            if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
+                                erros++;
+                            dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
+                            MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                        }
+                    }
+
+
+
                 }
 
                 //Validação
@@ -583,217 +718,14 @@ namespace Klassifis_Consultor.Telas
 
 
                 }
-                //Validação
-                // [12] Validação do CST de Entrada PIS
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_CST_Entrada"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_CST_Entrada"].Index].Value?.ToString().Trim().Length != 2)
-                {
-                    mMessage = "CST inválido.";
-                    mTittle = "Klassifis validation";
-                    mButton = MessageBoxButtons.OK;
-                    mIcon = MessageBoxIcon.Error;
-                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
-                    if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
-                        erros++;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
-                }
-                else if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_CST_Entrada"].Index].Selected)
-                {
-                    if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
-                        erros--;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
-                }
 
-                //Validação
-                //[13] Validação do CST de Saída PIS
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_CST_Saida"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_CST_Saida"].Index].Value?.ToString().Trim().Length != 2)
-                {
-                    mMessage = "CST inválido.";
-                    mTittle = "Klassifis validation";
-                    mButton = MessageBoxButtons.OK;
-                    mIcon = MessageBoxIcon.Error;
-                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
-                    if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
-                        erros++;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
-                }
-                else if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_CST_Saida"].Index].Selected)
-                {
-                    if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
-                        erros--;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
-                }
-
-                //Valor
-                // [14] Validação da Alíquota de PIS
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_ALQ"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_ALQ"].Index].Value?.ToString().Trim() != String.Empty)
-                {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
-                    {
-                        dgvProdutos.CurrentCell.Value = "0,00";
-                    }
-
-                    else
-                    {
-                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
-                    }
-
-
-                }
-
-                //Valor
-                // [15] Validação do CSOSN de PIS
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_CSOSN"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["PIS_CSOSN"].Index].Value?.ToString().Trim() != String.Empty)
-                {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
-                    {
-                        dgvProdutos.CurrentCell.Value = "0,00";
-                    }
-
-                    else
-                    {
-                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
-                    }
-
-
-                }
-
-                //Validação
-                // [16] Validação do CST de Entraada COFINS
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CST_Entrada"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CST_Entrada"].Index].Value?.ToString().Trim().Length != 2)
-                {
-                    mMessage = "CST inválido.";
-                    mTittle = "Klassifis validation";
-                    mButton = MessageBoxButtons.OK;
-                    mIcon = MessageBoxIcon.Error;
-                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
-                    if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
-                        erros++;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
-                }
-
-                else if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CST_Entrada"].Index].Selected)
-                {
-                    if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
-                        erros--;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
-                }
-
-                //Validação
-                // [17] Validação do CST de Saida COFINS
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CST_Saida"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CST_Saida"].Index].Value?.ToString().Trim().Length != 2)
-                {
-                    mMessage = "CST inválido.";
-                    mTittle = "Klassifis validation";
-                    mButton = MessageBoxButtons.OK;
-                    mIcon = MessageBoxIcon.Error;
-                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
-                    if (dgvProdutos.CurrentCell.Style.BackColor != Color.Red)
-                        erros++;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
-                }
-                else if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CST_Saida"].Index].Selected)
-                {
-                    if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
-                        erros--;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
-                }
-
-                //Valor
-                // [18] Validação da Alíquota de Cofins
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_ALQ"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_ALQ"].Index].Value?.ToString().Trim() != String.Empty)
-                {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
-                    {
-                        dgvProdutos.CurrentCell.Value = "0,00";
-                    }
-
-                    else
-                    {
-                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
-                    }
-
-
-                }
-
-                //Valor
-                // [19] Validação do CSOSN de Cofins
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CSOSN"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CSOSN"].Index].Value?.ToString().Trim() != String.Empty)
-                {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
-                    {
-                        dgvProdutos.CurrentCell.Value = "0,00";
-                    }
-
-                    else
-                    {
-                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
-                    }
-
-
-                }
-
-                //Validação
-                // [20] Validação do CST de IPI
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST"].Index].Value?.ToString().Trim().Length != 2)
-                {
-                    mMessage = "CST inválido.";
-                    mTittle = "Klassifis validation";
-                    mButton = MessageBoxButtons.OK;
-                    mIcon = MessageBoxIcon.Error;
-                    MessageBox.Show(mMessage, mTittle, mButton, mIcon);
-                    if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
-                        erros++;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.Red;
-                }
-                else if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST"].Index].Selected)
-                {
-                    if (dgvProdutos.CurrentCell.Style.BackColor == Color.Red)
-                        erros--;
-                    dgvProdutos.CurrentCell.Style.BackColor = Color.White;
-                }
-
-
-                //Valor
-                // [21] Validação da Alíquota de IPI
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_ALQ"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_ALQ"].Index].Value?.ToString().Trim() != String.Empty)
-                {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
-                    {
-                        dgvProdutos.CurrentCell.Value = "0,00";
-                    }
-
-                    else
-                    {
-                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
-                    }
-
-
-                }
-
-                //Valor
-                // [22] Validação do CSOSN de IPI
-                if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CSOSN"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CSOSN"].Index].Value?.ToString().Trim() != String.Empty)
-                {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
-                    {
-                        dgvProdutos.CurrentCell.Value = "0,00";
-                    }
-
-                    else
-                    {
-                        dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
-                    }
-
-                }
-
-
-
-
+                //PIS e COFINS são validados pelo Sistema, com exceção do CSOSN
             }
+
             else
             {
 
-                mMessage = "Preencha o código do produto";
+                mMessage = "O código do produto não pode estar vazio";
                 mTittle = "Klassifis validation";
                 mButton = MessageBoxButtons.OK;
                 mIcon = MessageBoxIcon.Error;
@@ -808,12 +740,20 @@ namespace Klassifis_Consultor.Telas
 
             }
 
+
+
+
+
+            MessageBox.Show("Erros: " + erros);
         }
 
-        private void dgvProdutos_CellValidating(object sender, DataGridViewCellValidatingEventArgs e)
-        {
 
-        }
+
+
+
+
+
+    
 
         private void btnExportarExcel_Click(object sender, EventArgs e)
         {
@@ -858,7 +798,8 @@ namespace Klassifis_Consultor.Telas
             form.txtCOFINS_Alq.Text = dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_ALQ"].Index].Value.ToString();
             form.txtCOFINS_CSOSN.Text = dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CSOSN"].Index].Value.ToString();
 
-            form.txtIPI_CST.Text = dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST"].Index].Value.ToString();
+            form.txtIPI_CST_Entrada.Text = dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST_Entrada"].Index].Value.ToString();
+            form.txtIPI_CST_Saida.Text = dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST_Saida"].Index].Value.ToString();
             form.txtIPI_Alq.Text = dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_ALQ"].Index].Value.ToString();
             form.txtIPI_CSOSN.Text = dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CSOSN"].Index].Value.ToString();
             form.ShowDialog();
@@ -888,7 +829,8 @@ namespace Klassifis_Consultor.Telas
             dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_ALQ"].Index].Value = form.txtCOFINS_Alq.Text;
             dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["COFINS_CSOSN"].Index].Value = form.txtCOFINS_CSOSN.Text;
             
-            dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST"].Index].Value = form.txtIPI_CST.Text;
+            dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST_Entrada"].Index].Value = form.txtIPI_CST_Entrada.Text;
+            dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CST_Saida"].Index].Value = form.txtIPI_CST_Saida.Text;
             dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_ALQ"].Index].Value = form.txtIPI_Alq.Text;
             dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["IPI_CSOSN"].Index].Value = form.txtIPI_CSOSN.Text;
 
@@ -1292,7 +1234,7 @@ namespace Klassifis_Consultor.Telas
 
             //IPI
             index_Coluna = 20;
-            nome_Coluna = "IPI_CST";
+            nome_Coluna = "IPI_CST_Entrada";
             if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
             {
                 mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
@@ -1302,10 +1244,9 @@ namespace Klassifis_Consultor.Telas
                 MessageBox.Show(mMessage, mTittle, mButton, mIcon);
                 return false;
             }
-
-
+            //IPI
             index_Coluna = 21;
-            nome_Coluna = "IPI_ALQ";
+            nome_Coluna = "IPI_CST_Saida";
             if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
             {
                 mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
@@ -1317,6 +1258,18 @@ namespace Klassifis_Consultor.Telas
             }
 
             index_Coluna = 22;
+            nome_Coluna = "IPI_ALQ";
+            if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
+            {
+                mMessage = "Descrição da coluna " + index_Coluna + " inválida, correta = " + nome_Coluna;
+                mTittle = "Autacont Information";
+                mButton = MessageBoxButtons.OK;
+                mIcon = MessageBoxIcon.Error;
+                MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+                return false;
+            }
+
+            index_Coluna = 23;
             nome_Coluna = "IPI_CSOSN";
             if (_dgv.Columns[index_Coluna].Name.ToString() != nome_Coluna)
             {
@@ -1413,7 +1366,7 @@ namespace Klassifis_Consultor.Telas
 
             }
             //Valida o Layout, verifica se corresponde às 19 casas      
-            if (validar_Layout(21, dgvProdutos) == true)
+            if (validar_Layout(24, dgvProdutos) == true)
             {
                 
                 Enviar_Email(btnEnviar, new EventArgs(), dgvProdutos, Email._smtpusername);
@@ -1487,7 +1440,7 @@ namespace Klassifis_Consultor.Telas
 
                 form.ShowDialog();
 
-                if (form.dgvDados.SelectedRows != null && form.iControle == 0)
+                if (form.dgvDados.CurrentRow != null && form.iControle == 0)
                 {
                     int index = Convert.ToInt32(form.dgvDados.CurrentRow.Cells[0].Value);
                     string sindex = form.dgvDados.CurrentRow.Cells[1].Value.ToString();
@@ -1562,6 +1515,10 @@ namespace Klassifis_Consultor.Telas
                 else if (Convert.ToInt32(dr["Atividade_Cliente"].ToString()) == 3)
                 {
                     rdbVarejo.Checked = true;
+                }
+                else if (Convert.ToInt32(dr["Atividade_Cliente"].ToString()) == 4)
+                {
+                    rdbIndustria.Checked = true;
                 }
 
                 //Pega o CNAE do cliente
