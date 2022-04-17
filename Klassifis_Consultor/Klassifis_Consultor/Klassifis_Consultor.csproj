@@ -79,6 +79,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Reference.svcmap</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Consultas\frmConsultarCatProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Consultas\frmConsultarCatProduto.Designer.cs">
+      <DependentUpon>frmConsultarCatProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\frmBaixarClassificacaoFiscal.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -151,6 +157,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Telas\Consultas\frmConsultarCatProduto.resx">
+      <DependentUpon>frmConsultarCatProduto.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Telas\frmBaixarClassificacaoFiscal.resx">
       <DependentUpon>frmBaixarClassificacaoFiscal.cs</DependentUpon>
     </EmbeddedResource>

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Klassifis_Consultor.Telas.Consultas;
 using Klassifis_Consultor.Telas.Tabelas;
 using kLib;
 
@@ -36,6 +37,9 @@ namespace Klassifis_Consultor.Telas
         {
             //Icon
             this.Icon = Properties.Resources.klassifis_logo_azulado;
+
+            txtCat_Produto.ReadOnly = true;
+            txtCodCat_Produto.ReadOnly = true;
         }
         
         
@@ -259,7 +263,7 @@ namespace Klassifis_Consultor.Telas
 
         private void abrir_TabelaCest()
         {
-            Application.Run(new frmTabelaCST_PisCofins());
+            Application.Run(new frmTabelaCST());
         }
 
         private void btnTabCest_Click(object sender, EventArgs e)
@@ -288,6 +292,20 @@ namespace Klassifis_Consultor.Telas
 
         }
 
+        private void btnCatProduto_Click(object sender, EventArgs e)
+        {
+            frmConsultarCatProduto form = new frmConsultarCatProduto();
+
+            form.ShowDialog();
+
+            if (form.dgvDados.SelectedRows != null && form.iControle == 0)
+            {
+                int index = Convert.ToInt32(form.dgvDados.CurrentRow.Cells[0].Value);
+                string sindex = form.dgvDados.CurrentRow.Cells[1].Value.ToString();
+                txtCodCat_Produto.Text = index.ToString();
+                txtCat_Produto.Text = sindex;
+            }
+        }
 
         private void txtCOFINS_CSOSN_Validating(object sender, CancelEventArgs e)
         {

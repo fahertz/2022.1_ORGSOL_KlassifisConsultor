@@ -10888,5 +10888,10 @@ namespace Klassifis_Consultor.Telas.Tabelas
                 Clipboard.SetText(dgvDados.CurrentCell.Value?.ToString());
             }
         }
+
+        private void txtPesquisar_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

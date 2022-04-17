@@ -71,6 +71,7 @@
             this.btnTipi = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.lblFiltro = new System.Windows.Forms.Label();
+            this.btnLevenshtein = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.gpbDadosDoCliente.SuspendLayout();
             this.gpbAtividade.SuspendLayout();
@@ -86,7 +87,7 @@
             this.btnAbrirExcel.Font = new System.Drawing.Font("Century Schoolbook", 7F, System.Drawing.FontStyle.Bold);
             this.btnAbrirExcel.ForeColor = System.Drawing.Color.White;
             this.btnAbrirExcel.Location = new System.Drawing.Point(181, 689);
-            this.btnAbrirExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnAbrirExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnAbrirExcel.Name = "btnAbrirExcel";
             this.btnAbrirExcel.Size = new System.Drawing.Size(156, 30);
             this.btnAbrirExcel.TabIndex = 90;
@@ -103,7 +104,7 @@
             this.btnEntradaManual.Font = new System.Drawing.Font("Century Schoolbook", 7F, System.Drawing.FontStyle.Bold);
             this.btnEntradaManual.ForeColor = System.Drawing.Color.White;
             this.btnEntradaManual.Location = new System.Drawing.Point(345, 689);
-            this.btnEntradaManual.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEntradaManual.Margin = new System.Windows.Forms.Padding(4);
             this.btnEntradaManual.Name = "btnEntradaManual";
             this.btnEntradaManual.Size = new System.Drawing.Size(156, 30);
             this.btnEntradaManual.TabIndex = 89;
@@ -120,7 +121,7 @@
             this.btnExportarExcel.Font = new System.Drawing.Font("Century Schoolbook", 7F, System.Drawing.FontStyle.Bold);
             this.btnExportarExcel.ForeColor = System.Drawing.Color.White;
             this.btnExportarExcel.Location = new System.Drawing.Point(17, 689);
-            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnExportarExcel.Margin = new System.Windows.Forms.Padding(4);
             this.btnExportarExcel.Name = "btnExportarExcel";
             this.btnExportarExcel.Size = new System.Drawing.Size(156, 30);
             this.btnExportarExcel.TabIndex = 88;
@@ -137,7 +138,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.ForeColor = System.Drawing.Color.White;
             this.btnCancelar.Location = new System.Drawing.Point(1401, 689);
-            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCancelar.Margin = new System.Windows.Forms.Padding(4);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(121, 43);
             this.btnCancelar.TabIndex = 86;
@@ -154,7 +155,7 @@
             this.btnEnviar.Font = new System.Drawing.Font("Century Schoolbook", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEnviar.ForeColor = System.Drawing.Color.White;
             this.btnEnviar.Location = new System.Drawing.Point(1531, 689);
-            this.btnEnviar.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEnviar.Margin = new System.Windows.Forms.Padding(4);
             this.btnEnviar.Name = "btnEnviar";
             this.btnEnviar.Size = new System.Drawing.Size(121, 43);
             this.btnEnviar.TabIndex = 85;
@@ -177,7 +178,7 @@
             this.dgvProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvProdutos.GridColor = System.Drawing.SystemColors.ButtonFace;
             this.dgvProdutos.Location = new System.Drawing.Point(16, 314);
-            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.dgvProdutos.Margin = new System.Windows.Forms.Padding(4);
             this.dgvProdutos.Name = "dgvProdutos";
             this.dgvProdutos.RowHeadersVisible = false;
             this.dgvProdutos.RowHeadersWidth = 51;
@@ -227,9 +228,9 @@
             this.gpbDadosDoCliente.Controls.Add(this.lblCidade);
             this.gpbDadosDoCliente.Controls.Add(this.label2);
             this.gpbDadosDoCliente.Location = new System.Drawing.Point(15, 68);
-            this.gpbDadosDoCliente.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbDadosDoCliente.Margin = new System.Windows.Forms.Padding(4);
             this.gpbDadosDoCliente.Name = "gpbDadosDoCliente";
-            this.gpbDadosDoCliente.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbDadosDoCliente.Padding = new System.Windows.Forms.Padding(4);
             this.gpbDadosDoCliente.Size = new System.Drawing.Size(1019, 191);
             this.gpbDadosDoCliente.TabIndex = 94;
             this.gpbDadosDoCliente.TabStop = false;
@@ -238,7 +239,7 @@
             // mtxCNAE
             // 
             this.mtxCNAE.Location = new System.Drawing.Point(11, 100);
-            this.mtxCNAE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxCNAE.Margin = new System.Windows.Forms.Padding(4);
             this.mtxCNAE.Mask = "0000-0/00";
             this.mtxCNAE.Name = "mtxCNAE";
             this.mtxCNAE.Size = new System.Drawing.Size(84, 22);
@@ -248,7 +249,7 @@
             // 
             this.txtIE.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtIE.Location = new System.Drawing.Point(11, 154);
-            this.txtIE.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtIE.Margin = new System.Windows.Forms.Padding(4);
             this.txtIE.MaxLength = 20;
             this.txtIE.Name = "txtIE";
             this.txtIE.Size = new System.Drawing.Size(223, 23);
@@ -279,7 +280,7 @@
             // mtxContato
             // 
             this.mtxContato.Location = new System.Drawing.Point(885, 47);
-            this.mtxContato.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxContato.Margin = new System.Windows.Forms.Padding(4);
             this.mtxContato.Mask = "(99) 00000-0000";
             this.mtxContato.Name = "mtxContato";
             this.mtxContato.Size = new System.Drawing.Size(116, 22);
@@ -289,7 +290,7 @@
             // 
             this.txtEmail.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtEmail.Location = new System.Drawing.Point(595, 47);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
             this.txtEmail.Name = "txtEmail";
             this.txtEmail.Size = new System.Drawing.Size(281, 23);
             this.txtEmail.TabIndex = 6;
@@ -312,9 +313,9 @@
             this.gpbAtividade.Controls.Add(this.rdbAtacado);
             this.gpbAtividade.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold);
             this.gpbAtividade.Location = new System.Drawing.Point(164, 20);
-            this.gpbAtividade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbAtividade.Margin = new System.Windows.Forms.Padding(4);
             this.gpbAtividade.Name = "gpbAtividade";
-            this.gpbAtividade.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbAtividade.Padding = new System.Windows.Forms.Padding(4);
             this.gpbAtividade.Size = new System.Drawing.Size(165, 112);
             this.gpbAtividade.TabIndex = 3;
             this.gpbAtividade.TabStop = false;
@@ -325,7 +326,7 @@
             this.rdbVarejo.AutoSize = true;
             this.rdbVarejo.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbVarejo.Location = new System.Drawing.Point(9, 84);
-            this.rdbVarejo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbVarejo.Margin = new System.Windows.Forms.Padding(4);
             this.rdbVarejo.Name = "rdbVarejo";
             this.rdbVarejo.Size = new System.Drawing.Size(70, 21);
             this.rdbVarejo.TabIndex = 2;
@@ -337,7 +338,7 @@
             this.rdbComercio.AutoSize = true;
             this.rdbComercio.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbComercio.Location = new System.Drawing.Point(9, 55);
-            this.rdbComercio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbComercio.Margin = new System.Windows.Forms.Padding(4);
             this.rdbComercio.Name = "rdbComercio";
             this.rdbComercio.Size = new System.Drawing.Size(88, 21);
             this.rdbComercio.TabIndex = 1;
@@ -350,7 +351,7 @@
             this.rdbAtacado.Checked = true;
             this.rdbAtacado.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbAtacado.Location = new System.Drawing.Point(9, 27);
-            this.rdbAtacado.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbAtacado.Margin = new System.Windows.Forms.Padding(4);
             this.rdbAtacado.Name = "rdbAtacado";
             this.rdbAtacado.Size = new System.Drawing.Size(81, 21);
             this.rdbAtacado.TabIndex = 0;
@@ -365,9 +366,9 @@
             this.gpbRegime.Controls.Add(this.rdbSimples);
             this.gpbRegime.Font = new System.Drawing.Font("Century Schoolbook", 9.75F, System.Drawing.FontStyle.Bold);
             this.gpbRegime.Location = new System.Drawing.Point(337, 20);
-            this.gpbRegime.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbRegime.Margin = new System.Windows.Forms.Padding(4);
             this.gpbRegime.Name = "gpbRegime";
-            this.gpbRegime.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.gpbRegime.Padding = new System.Windows.Forms.Padding(4);
             this.gpbRegime.Size = new System.Drawing.Size(165, 112);
             this.gpbRegime.TabIndex = 4;
             this.gpbRegime.TabStop = false;
@@ -378,7 +379,7 @@
             this.rdbReal.AutoSize = true;
             this.rdbReal.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbReal.Location = new System.Drawing.Point(9, 84);
-            this.rdbReal.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbReal.Margin = new System.Windows.Forms.Padding(4);
             this.rdbReal.Name = "rdbReal";
             this.rdbReal.Size = new System.Drawing.Size(98, 21);
             this.rdbReal.TabIndex = 2;
@@ -390,7 +391,7 @@
             this.rdbPresumido.AutoSize = true;
             this.rdbPresumido.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbPresumido.Location = new System.Drawing.Point(9, 55);
-            this.rdbPresumido.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbPresumido.Margin = new System.Windows.Forms.Padding(4);
             this.rdbPresumido.Name = "rdbPresumido";
             this.rdbPresumido.Size = new System.Drawing.Size(136, 21);
             this.rdbPresumido.TabIndex = 1;
@@ -403,7 +404,7 @@
             this.rdbSimples.Checked = true;
             this.rdbSimples.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.rdbSimples.Location = new System.Drawing.Point(9, 27);
-            this.rdbSimples.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdbSimples.Margin = new System.Windows.Forms.Padding(4);
             this.rdbSimples.Name = "rdbSimples";
             this.rdbSimples.Size = new System.Drawing.Size(137, 21);
             this.rdbSimples.TabIndex = 0;
@@ -425,7 +426,7 @@
             // mtxCNPJ
             // 
             this.mtxCNPJ.Location = new System.Drawing.Point(9, 43);
-            this.mtxCNPJ.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxCNPJ.Margin = new System.Windows.Forms.Padding(4);
             this.mtxCNPJ.Mask = "00.000.000/0000-00";
             this.mtxCNPJ.Name = "mtxCNPJ";
             this.mtxCNPJ.Size = new System.Drawing.Size(145, 22);
@@ -445,7 +446,7 @@
             // mtxCEP
             // 
             this.mtxCEP.Location = new System.Drawing.Point(511, 47);
-            this.mtxCEP.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.mtxCEP.Margin = new System.Windows.Forms.Padding(4);
             this.mtxCEP.Mask = "00000-000";
             this.mtxCEP.Name = "mtxCEP";
             this.mtxCEP.Size = new System.Drawing.Size(75, 22);
@@ -455,7 +456,7 @@
             // 
             this.txtCidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtCidade.Location = new System.Drawing.Point(808, 100);
-            this.txtCidade.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtCidade.Margin = new System.Windows.Forms.Padding(4);
             this.txtCidade.Name = "txtCidade";
             this.txtCidade.Size = new System.Drawing.Size(193, 23);
             this.txtCidade.TabIndex = 82;
@@ -476,7 +477,7 @@
             // 
             this.txtBairro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtBairro.Location = new System.Drawing.Point(511, 100);
-            this.txtBairro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtBairro.Margin = new System.Windows.Forms.Padding(4);
             this.txtBairro.Name = "txtBairro";
             this.txtBairro.Size = new System.Drawing.Size(245, 23);
             this.txtBairro.TabIndex = 86;
@@ -497,7 +498,7 @@
             // 
             this.txtLogradouro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtLogradouro.Location = new System.Drawing.Point(511, 154);
-            this.txtLogradouro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtLogradouro.Margin = new System.Windows.Forms.Padding(4);
             this.txtLogradouro.Name = "txtLogradouro";
             this.txtLogradouro.Size = new System.Drawing.Size(491, 23);
             this.txtLogradouro.TabIndex = 84;
@@ -518,7 +519,7 @@
             // 
             this.txtUF.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtUF.Location = new System.Drawing.Point(765, 100);
-            this.txtUF.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtUF.Margin = new System.Windows.Forms.Padding(4);
             this.txtUF.MaxLength = 2;
             this.txtUF.Name = "txtUF";
             this.txtUF.Size = new System.Drawing.Size(33, 23);
@@ -552,7 +553,7 @@
             this.lsbRegras.FormattingEnabled = true;
             this.lsbRegras.ItemHeight = 16;
             this.lsbRegras.Location = new System.Drawing.Point(1041, 87);
-            this.lsbRegras.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.lsbRegras.Margin = new System.Windows.Forms.Padding(4);
             this.lsbRegras.Name = "lsbRegras";
             this.lsbRegras.Size = new System.Drawing.Size(608, 148);
             this.lsbRegras.TabIndex = 95;
@@ -571,7 +572,7 @@
             // btnTabCest
             // 
             this.btnTabCest.Location = new System.Drawing.Point(1041, 244);
-            this.btnTabCest.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTabCest.Margin = new System.Windows.Forms.Padding(4);
             this.btnTabCest.Name = "btnTabCest";
             this.btnTabCest.Size = new System.Drawing.Size(100, 63);
             this.btnTabCest.TabIndex = 104;
@@ -582,7 +583,7 @@
             // btnTipi
             // 
             this.btnTipi.Location = new System.Drawing.Point(1149, 244);
-            this.btnTipi.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTipi.Margin = new System.Windows.Forms.Padding(4);
             this.btnTipi.Name = "btnTipi";
             this.btnTipi.Size = new System.Drawing.Size(100, 63);
             this.btnTipi.TabIndex = 105;
@@ -594,7 +595,7 @@
             // 
             this.txtFiltro.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
             this.txtFiltro.Location = new System.Drawing.Point(15, 282);
-            this.txtFiltro.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFiltro.Margin = new System.Windows.Forms.Padding(4);
             this.txtFiltro.Name = "txtFiltro";
             this.txtFiltro.Size = new System.Drawing.Size(491, 23);
             this.txtFiltro.TabIndex = 103;
@@ -612,11 +613,23 @@
             this.lblFiltro.TabIndex = 103;
             this.lblFiltro.Text = "Filtro";
             // 
+            // btnLevenshtein
+            // 
+            this.btnLevenshtein.Location = new System.Drawing.Point(1257, 244);
+            this.btnLevenshtein.Margin = new System.Windows.Forms.Padding(4);
+            this.btnLevenshtein.Name = "btnLevenshtein";
+            this.btnLevenshtein.Size = new System.Drawing.Size(100, 63);
+            this.btnLevenshtein.TabIndex = 106;
+            this.btnLevenshtein.Text = "Levenshtein";
+            this.btnLevenshtein.UseVisualStyleBackColor = true;
+            this.btnLevenshtein.Click += new System.EventHandler(this.btnLevenshtein_Click);
+            // 
             // frmEditarLayoutFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1667, 747);
+            this.Controls.Add(this.btnLevenshtein);
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.txtFiltro);
             this.Controls.Add(this.btnTipi);
@@ -631,7 +644,7 @@
             this.Controls.Add(this.btnEnviar);
             this.Controls.Add(this.dgvProdutos);
             this.Controls.Add(this.lblEnviarClassificacaoFiscal);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(1065, 784);
             this.Name = "frmEditarLayoutFiscal";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -693,5 +706,6 @@
         private System.Windows.Forms.Button btnTipi;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Label lblFiltro;
+        private System.Windows.Forms.Button btnLevenshtein;
     }
 }
