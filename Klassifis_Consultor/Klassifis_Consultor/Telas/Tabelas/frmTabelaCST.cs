@@ -36,15 +36,24 @@ namespace Klassifis_Consultor.Telas.Tabelas
         {
             Application.Run(new frmTabelaCST_PisCofins());
         }
-
-        private void btnLayoutsEnvados_Click(object sender, EventArgs e)
+        private void btnCST_PIS_COFINS_Click(object sender, EventArgs e)
         {
             Thread tAbrirTabela_PisCofins = new Thread(new ThreadStart(abrir_TabelaCST_PisCofins));
             tAbrirTabela_PisCofins.SetApartmentState(ApartmentState.STA);
             tAbrirTabela_PisCofins.Start();
         }
 
-
+        //Abrir tabelas de IPI
+        private void abrir_TabelaCST_Ipi()
+        {
+            Application.Run(new frmTabelaCST_Ipi());
+        }
+        private void btnCST_IPI_Click(object sender, EventArgs e)
+        {
+            Thread tAbrirTabela_Ipi = new Thread(new ThreadStart(abrir_TabelaCST_Ipi));
+            tAbrirTabela_Ipi.SetApartmentState(ApartmentState.STA);
+            tAbrirTabela_Ipi.Start();
+        }
 
         //Fecha o form
         private void btnFechar_Click(object sender, EventArgs e)
@@ -52,6 +61,6 @@ namespace Klassifis_Consultor.Telas.Tabelas
             this.Close();
         }
 
-      
+       
     }
 }

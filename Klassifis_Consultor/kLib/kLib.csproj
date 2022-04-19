@@ -56,6 +56,7 @@
     <Compile Include="Classes_Sistema.cs" />
     <Compile Include="Email.cs" />
     <Compile Include="Fiscal.cs" />
+    <Compile Include="Fiscal_Tabelas.cs" />
     <Compile Include="Funcoes_Sistema.cs" />
     <Compile Include="Parametros_Excel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

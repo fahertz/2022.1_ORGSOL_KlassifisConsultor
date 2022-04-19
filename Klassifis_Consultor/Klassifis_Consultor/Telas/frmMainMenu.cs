@@ -21,7 +21,7 @@ namespace Klassifis_Consultor
         }
 
         ////////////////////////////Instância
-        Fiscal fiscal = new Fiscal(); 
+        Fiscal_Tabelas Tabelas_Fiscais = new Fiscal_Tabelas(); 
         //Variáveis da caixa de texto
         String mMessage;
         String mTittle;
@@ -49,8 +49,11 @@ namespace Klassifis_Consultor
 
 
             //Carregando variáveis estáticas
-            fiscal.carregar_CatProduto();
-            fiscal.carregar_DescTipi();
+            Tabelas_Fiscais.carregar_CatProduto();
+            Tabelas_Fiscais.carregar_DescTipi();
+            Task.Factory.StartNew(() => Tabelas_Fiscais.carregar_Tabela_Tipi());
+            Task.Factory.StartNew(() => Tabelas_Fiscais.carregar_Tabela_CST_Pis_Cofins());
+            Task.Factory.StartNew(() => Tabelas_Fiscais.carregar_Tabela_CST_Ipi());
 
         }
 

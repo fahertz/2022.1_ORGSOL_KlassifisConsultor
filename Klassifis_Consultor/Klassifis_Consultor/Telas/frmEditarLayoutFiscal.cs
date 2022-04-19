@@ -121,6 +121,13 @@ namespace Klassifis_Consultor.Telas
             dgvProdutos.Columns["COFINS_CST_Saida"].ReadOnly = true    ;
             dgvProdutos.Columns["COFINS_ALQ"].ReadOnly = true           ;
 
+            dgvProdutos.Columns["IPI_CST_Entrada"].ReadOnly = true;
+            dgvProdutos.Columns["IPI_CST_Saida"].ReadOnly = true;
+            dgvProdutos.Columns["IPI_Alq"].ReadOnly = true;
+            dgvProdutos.Columns["IPI_CSOSN"].ReadOnly = true;
+
+
+
             //Carrega dados do Cliente
             carregar_Cliente(sPathCliente);
 
@@ -195,11 +202,12 @@ namespace Klassifis_Consultor.Telas
             
 
 
-            lsbRegras.Items.Add(tipo_Empresa + " PIS E/S " + Fiscal.PIS_CST_Entrada(flg_Tipo) + "/" + Fiscal.PIS_CST_Saida(flg_Tipo) + " com Alíquota de " + Fiscal.PIS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
-            lsbRegras.Items.Add(tipo_Empresa + " COFINS E/S " + Fiscal.COFINS_CST_Entrada(flg_Tipo) + "/" + Fiscal.COFINS_CST_Entrada(flg_Tipo) + " com Alíquota de " + Fiscal.COFINS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
+            lsbRegras.Items.Add("Tipo: "+tipo_Empresa + " PIS E/S " + Fiscal.PIS_CST_Entrada(flg_Tipo) + "/" + Fiscal.PIS_CST_Saida(flg_Tipo) + " com Alíquota de " + Fiscal.PIS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
+            lsbRegras.Items.Add("Tipo: "+tipo_Empresa + " COFINS E/S " + Fiscal.COFINS_CST_Entrada(flg_Tipo) + "/" + Fiscal.COFINS_CST_Entrada(flg_Tipo) + " com Alíquota de " + Fiscal.COFINS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
+            //Bloqueio para indústria, não vai tipificar
             if (flg_Ramo != 4)
-            lsbRegras.Items.Add(ramo_Empresa + "IPI E/S" + Fiscal.IPI_CST_Entrada(flg_Ramo) +"/"+ Fiscal.IPI_CST_Saida(flg_Ramo));
-            //lsbRegras.Items.Add(tipo_Empresa + " NCM calculado de acordo com a aproximação de Levenstain";
+            lsbRegras.Items.Add("Ramo: "+ramo_Empresa + " IPI E/S " + Fiscal.IPI_CST_Entrada(flg_Ramo) +"/"+ Fiscal.IPI_CST_Saida(flg_Ramo) +" e CSOSN "+Fiscal.IPI_CSOSN_Saida(flg_Ramo));
+            
 
 
 
@@ -744,7 +752,7 @@ namespace Klassifis_Consultor.Telas
 
 
 
-            MessageBox.Show("Erros: " + erros);
+            //MessageBox.Show("Erros: " + erros);
         }
 
 
@@ -1466,7 +1474,9 @@ namespace Klassifis_Consultor.Telas
             this.Cursor = Cursors.WaitCursor;
             foreach(DataGridViewRow row in dgvProdutos.Rows)
             {
-               row.Cells["Cod_NCM"].Value = fiscal.classificar_NCM(row.Cells[dgvProdutos.Columns["Des_Produto"].Index].Value.ToString(), Convert.ToInt32(row.Cells[dgvProdutos.Columns["CodCat_Produto"].Index].Value));
+                String ncm = fiscal.classificar_NCM(row.Cells[dgvProdutos.Columns["Des_Produto"].Index].Value.ToString(), Convert.ToInt32(row.Cells[dgvProdutos.Columns["CodCat_Produto"].Index].Value));
+                row.Cells["Cod_NCM"].Value = ncm;
+                row.Cells["IPI_ALQ"].Value = fiscal.calcular_ALQ_IPI(ncm);
 
             }
             this.Cursor = Cursors.Default;

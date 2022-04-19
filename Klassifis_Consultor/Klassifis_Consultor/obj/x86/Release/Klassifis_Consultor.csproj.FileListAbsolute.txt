@@ -23,3 +23,4 @@ C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consulto
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.Tabelas.frmTabelaCST.resources
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.Tabelas.frmTabelaCST_PisCofins.resources
 C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.Consultas.frmConsultarCatProduto.resources
+C:\Users\fahel\OneDrive\Documents\Trabalho\Organiza_Solutions\Klassifis_Consultor\Klassifis_Consultor\Klassifis_Consultor\obj\x86\Release\Klassifis_Consultor.Telas.Tabelas.frmTabelaCST_Ipi.resources

@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             this.lblTabelaCST = new System.Windows.Forms.Label();
-            this.btnLayoutsEnvados = new System.Windows.Forms.Button();
+            this.btnCST_PIS_COFINS = new System.Windows.Forms.Button();
             this.btnFechar = new System.Windows.Forms.Button();
+            this.btnCST_IPI = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // lblTabelaCST
@@ -45,17 +46,17 @@
             this.lblTabelaCST.TabIndex = 85;
             this.lblTabelaCST.Text = "Tabelas de CST";
             // 
-            // btnLayoutsEnvados
+            // btnCST_PIS_COFINS
             // 
-            this.btnLayoutsEnvados.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
-            this.btnLayoutsEnvados.Location = new System.Drawing.Point(13, 75);
-            this.btnLayoutsEnvados.Margin = new System.Windows.Forms.Padding(4);
-            this.btnLayoutsEnvados.Name = "btnLayoutsEnvados";
-            this.btnLayoutsEnvados.Size = new System.Drawing.Size(358, 75);
-            this.btnLayoutsEnvados.TabIndex = 86;
-            this.btnLayoutsEnvados.Text = "Tabela CST de PIS e COFINS";
-            this.btnLayoutsEnvados.UseVisualStyleBackColor = true;
-            this.btnLayoutsEnvados.Click += new System.EventHandler(this.btnLayoutsEnvados_Click);
+            this.btnCST_PIS_COFINS.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCST_PIS_COFINS.Location = new System.Drawing.Point(13, 75);
+            this.btnCST_PIS_COFINS.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCST_PIS_COFINS.Name = "btnCST_PIS_COFINS";
+            this.btnCST_PIS_COFINS.Size = new System.Drawing.Size(358, 75);
+            this.btnCST_PIS_COFINS.TabIndex = 86;
+            this.btnCST_PIS_COFINS.Text = "Tabela CST de PIS e COFINS";
+            this.btnCST_PIS_COFINS.UseVisualStyleBackColor = true;
+            this.btnCST_PIS_COFINS.Click += new System.EventHandler(this.btnCST_PIS_COFINS_Click);
             // 
             // btnFechar
             // 
@@ -74,13 +75,26 @@
             this.btnFechar.UseVisualStyleBackColor = false;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
+            // btnCST_IPI
+            // 
+            this.btnCST_IPI.Font = new System.Drawing.Font("Bookman Old Style", 10F, System.Drawing.FontStyle.Bold);
+            this.btnCST_IPI.Location = new System.Drawing.Point(13, 158);
+            this.btnCST_IPI.Margin = new System.Windows.Forms.Padding(4);
+            this.btnCST_IPI.Name = "btnCST_IPI";
+            this.btnCST_IPI.Size = new System.Drawing.Size(358, 75);
+            this.btnCST_IPI.TabIndex = 95;
+            this.btnCST_IPI.Text = "Tabela CST de IPI";
+            this.btnCST_IPI.UseVisualStyleBackColor = true;
+            this.btnCST_IPI.Click += new System.EventHandler(this.btnCST_IPI_Click);
+            // 
             // frmTabelaCST
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(538, 510);
+            this.Controls.Add(this.btnCST_IPI);
             this.Controls.Add(this.btnFechar);
-            this.Controls.Add(this.btnLayoutsEnvados);
+            this.Controls.Add(this.btnCST_PIS_COFINS);
             this.Controls.Add(this.lblTabelaCST);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(556, 557);
@@ -97,7 +111,8 @@
         #endregion
 
         private System.Windows.Forms.Label lblTabelaCST;
-        private System.Windows.Forms.Button btnLayoutsEnvados;
+        private System.Windows.Forms.Button btnCST_PIS_COFINS;
         private System.Windows.Forms.Button btnFechar;
+        private System.Windows.Forms.Button btnCST_IPI;
     }
 }

@@ -135,6 +135,12 @@
     <Compile Include="Telas\Tabelas\frmTabelaCST.Designer.cs">
       <DependentUpon>frmTabelaCST.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaCST_Ipi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaCST_Ipi.Designer.cs">
+      <DependentUpon>frmTabelaCST_Ipi.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Tabelas\frmTabelaCST_PisCofins.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -183,6 +189,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Tabelas\frmTabelaCST.resx">
       <DependentUpon>frmTabelaCST.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Tabelas\frmTabelaCST_Ipi.resx">
+      <DependentUpon>frmTabelaCST_Ipi.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Tabelas\frmTabelaCST_PisCofins.resx">
       <DependentUpon>frmTabelaCST_PisCofins.cs</DependentUpon>
