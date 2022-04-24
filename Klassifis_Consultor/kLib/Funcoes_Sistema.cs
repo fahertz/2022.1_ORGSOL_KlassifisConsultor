@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using System.Windows.Forms;
 namespace kLib
 {
     public static class Funcoes_Sistema
@@ -19,10 +19,17 @@ namespace kLib
 
         public static string mascarar_Double(this String str)
         {
+            
             if (str != String.Empty && Convert.ToDouble(str) != 0)
-            {
-                string converter = str.Replace(".", ",");
-                string numero = Convert.ToDouble(converter).ToString("#.#0");
+            {                
+                string converter = str.Replace(".", ",");               
+                string numero = null;
+                
+                if (Convert.ToDouble(converter) < 1)
+                 numero = "0"+Convert.ToDouble(converter).ToString("#.#0");
+                else                
+                    numero = Convert.ToDouble(converter).ToString("#.#0");
+                
                 return numero;
             }
             else

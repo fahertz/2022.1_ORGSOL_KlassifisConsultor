@@ -129,6 +129,18 @@
     <Compile Include="Telas\frmVisualizarLayout.Designer.cs">
       <DependentUpon>frmVisualizarLayout.cs</DependentUpon>
     </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaCSOSN.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaCSOSN.Designer.cs">
+      <DependentUpon>frmTabelaCSOSN.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaCSOSN_IPI.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Telas\Tabelas\frmTabelaCSOSN_IPI.Designer.cs">
+      <DependentUpon>frmTabelaCSOSN_IPI.cs</DependentUpon>
+    </Compile>
     <Compile Include="Telas\Tabelas\frmTabelaCST.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -186,6 +198,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\frmVisualizarLayout.resx">
       <DependentUpon>frmVisualizarLayout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Tabelas\frmTabelaCSOSN.resx">
+      <DependentUpon>frmTabelaCSOSN.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Telas\Tabelas\frmTabelaCSOSN_IPI.resx">
+      <DependentUpon>frmTabelaCSOSN_IPI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Telas\Tabelas\frmTabelaCST.resx">
       <DependentUpon>frmTabelaCST.cs</DependentUpon>

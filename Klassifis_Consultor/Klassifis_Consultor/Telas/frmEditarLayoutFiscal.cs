@@ -85,6 +85,7 @@ namespace Klassifis_Consultor.Telas
             rdbAtacado.Enabled = false;
             rdbComercio.Enabled = false;
             rdbVarejo.Enabled = false;
+            rdbIndustria.Enabled = false;
             rdbSimples.Enabled = false;
             rdbPresumido.Enabled = false;
             rdbReal.Enabled = false;
@@ -184,6 +185,7 @@ namespace Klassifis_Consultor.Telas
 
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["PIS_CST_Entrada"])].Value = Fiscal.PIS_CST_Entrada(flg_Tipo);
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["PIS_CST_Saida"])].Value = Fiscal.PIS_CST_Saida(flg_Tipo);
+                //MessageBox.Show(Fiscal.PIS_Aliquota(flg_Tipo).ToString().mascarar_Double());
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["PIS_Alq"])].Value = Fiscal.PIS_Aliquota(flg_Tipo).ToString().mascarar_Double();
                                                       
                 row.Cells[dgvProdutos.Columns.IndexOf(dgvProdutos.Columns["COFINS_CST_Entrada"])].Value = Fiscal.COFINS_CST_Entrada(flg_Tipo);
@@ -202,11 +204,16 @@ namespace Klassifis_Consultor.Telas
             
 
 
-            lsbRegras.Items.Add("Tipo: "+tipo_Empresa + " PIS E/S " + Fiscal.PIS_CST_Entrada(flg_Tipo) + "/" + Fiscal.PIS_CST_Saida(flg_Tipo) + " com Alíquota de " + Fiscal.PIS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
-            lsbRegras.Items.Add("Tipo: "+tipo_Empresa + " COFINS E/S " + Fiscal.COFINS_CST_Entrada(flg_Tipo) + "/" + Fiscal.COFINS_CST_Entrada(flg_Tipo) + " com Alíquota de " + Fiscal.COFINS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
+            lsbRegras.Items.Add("Tipo: "+tipo_Empresa + " CST PIS E/S " + Fiscal.PIS_CST_Entrada(flg_Tipo) + "/" + Fiscal.PIS_CST_Saida(flg_Tipo) + " com Alíquota de " + Fiscal.PIS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
+            lsbRegras.Items.Add("Tipo: "+tipo_Empresa + " CST COFINS E/S " + Fiscal.COFINS_CST_Entrada(flg_Tipo) + "/" + Fiscal.COFINS_CST_Entrada(flg_Tipo) + " com Alíquota de " + Fiscal.COFINS_Aliquota(flg_Tipo).ToString()).ToString().mascarar_Double();
             //Bloqueio para indústria, não vai tipificar
-            if (flg_Ramo != 4)
-            lsbRegras.Items.Add("Ramo: "+ramo_Empresa + " IPI E/S " + Fiscal.IPI_CST_Entrada(flg_Ramo) +"/"+ Fiscal.IPI_CST_Saida(flg_Ramo) +" e CSOSN "+Fiscal.IPI_CSOSN_Saida(flg_Ramo));
+            if (flg_Ramo == 1)
+            lsbRegras.Items.Add("Ramo: "+ramo_Empresa + " CST IPI E/S " + Fiscal.IPI_CST_Entrada(flg_Ramo) +"/"+ Fiscal.IPI_CST_Saida(flg_Ramo) +" e CSOSN "+Fiscal.IPI_CSOSN_Saida(flg_Ramo));
+            else if (flg_Ramo != 4)
+            {
+                lsbRegras.Items.Add("Ramo: " + ramo_Empresa + " CST IPI E/S " + Fiscal.IPI_CST_Entrada(flg_Ramo) + "/" + Fiscal.IPI_CST_Saida(flg_Ramo));
+            }
+
             
 
 
@@ -682,12 +689,13 @@ namespace Klassifis_Consultor.Telas
                 // [9] Validação da Alíquota de ICMS
                 if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["ICMS_ALQ"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["ICMS_ALQ"].Index].Value?.ToString().Trim() != String.Empty)
                 {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    if (Convert.ToDouble(dgvProdutos.CurrentCell.Value) == 0)
                     {
                         dgvProdutos.CurrentCell.Value = "0,00";
                     }
                     else
                     {
+                        //MessageBox.Show(dgvProdutos.CurrentCell.Value.ToString().mascarar_Double());
                         dgvProdutos.CurrentCell.Value = dgvProdutos.CurrentCell.Value.ToString().mascarar_Double();
                     }
 
@@ -697,7 +705,7 @@ namespace Klassifis_Consultor.Telas
                 // [10] Validação do MVA de ICMS
                 if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["ICMS_MVA"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["ICMS_MVA"].Index].Value?.ToString().Trim() != String.Empty)
                 {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    if (Convert.ToDouble(dgvProdutos.CurrentCell.Value) == 0)
                     {
                         dgvProdutos.CurrentCell.Value = "0,00";
                     }
@@ -714,7 +722,7 @@ namespace Klassifis_Consultor.Telas
                 // [11] Validação do CSOSN de ICMS
                 if (dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["ICMS_CSOSN"].Index].Selected && dgvProdutos.CurrentRow.Cells[dgvProdutos.Columns["ICMS_CSOSN"].Index].Value?.ToString().Trim() != String.Empty)
                 {
-                    if (Convert.ToInt32(dgvProdutos.CurrentCell.Value) == 0)
+                    if (Convert.ToDouble(dgvProdutos.CurrentCell.Value) == 0)
                     {
                         dgvProdutos.CurrentCell.Value = "0,00";
                     }
@@ -1382,7 +1390,7 @@ namespace Klassifis_Consultor.Telas
             this.Cursor = Cursors.Default;
         }
 
-
+        //Tabelas de Consulta
         private void abrir_TabelaCest()
         {
             Application.Run(new frmTabelaCST());
@@ -1414,6 +1422,17 @@ namespace Klassifis_Consultor.Telas
 
         }
 
+        private void abrir_Tabela_CSOSN()
+        {
+            Application.Run(new frmTabelaCSOSN());
+        }
+
+        private void btnTabCSOSN_Click(object sender, EventArgs e)
+        {
+            Thread tAbrir_Tabela_CSOSN = new Thread(abrir_Tabela_CSOSN);
+            tAbrir_Tabela_CSOSN.SetApartmentState(ApartmentState.STA);
+            tAbrir_Tabela_CSOSN.Start();
+        }
 
         private void filtrar_Dados(DataGridView _dgv, string filtro)
         {
@@ -1482,6 +1501,7 @@ namespace Klassifis_Consultor.Telas
             this.Cursor = Cursors.Default;
         }
 
+      
         private void btnCancelar_Click(object sender, EventArgs e)
         {
 

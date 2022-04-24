@@ -65,7 +65,7 @@ namespace Klassifis_Consultor.Telas.Tabelas
             _dgv.Rows.Clear();
                 txtPesquisar.Invoke((MethodInvoker)delegate { Pesquisa = txtPesquisar.Text; });
                 var lista_Filtrada = from Cest in Fiscal.Lista_Tabela_CST_Pis_Cofins
-                                     where Cest.Id.Contains(Pesquisa) || Cest.Descricao.Contains(Pesquisa)
+                                     where Cest.Id.Contains(Pesquisa.ToUpper()) || Cest.Descricao.ToUpper().Contains(Pesquisa.ToUpper())
                                      select Cest;
 
             _dgv.Invoke((MethodInvoker)delegate

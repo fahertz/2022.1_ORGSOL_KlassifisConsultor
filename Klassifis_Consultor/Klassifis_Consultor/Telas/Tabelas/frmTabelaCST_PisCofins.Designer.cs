@@ -123,11 +123,9 @@
             this.Controls.Add(this.lblPesquisar);
             this.Controls.Add(this.txtPesquisar);
             this.Controls.Add(this.lblTabelaCST_PisCofins);
-            this.HelpButton = true;
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(959, 614);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(959, 614);
             this.Name = "frmTabelaCST_PisCofins";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

@@ -262,13 +262,19 @@ namespace kLib
             public String Observacao { get; set; }
         }
 
+        public class Tabela_CSOSN_Ipi
+        {
+            public String Id { get; set; }
+            public String Descricao { get; set; }
+        }
+
         //Listas estáticas referentes ao NCM
         public static List<Categoria_TIPI> Lista_CategoriaTipi = new List<Categoria_TIPI>();
         public static List<Descricao_TIPI> Lista_Descricao_Tipi = new List<Descricao_TIPI>();
         public static List<Tabela_Tipi> Lista_Tabela_Tipi = new List<Tabela_Tipi>();
         public static List<Tabela_CST_Pis_Cofins> Lista_Tabela_CST_Pis_Cofins = new List<Tabela_CST_Pis_Cofins>();
         public static List<Tabela_CST_Ipi> Lista_Tabela_CST_Ipi = new List<Tabela_CST_Ipi>();
-
+        public static List<Tabela_CSOSN_Ipi> Lista_Tabela_CSOSN_Ipi = new List<Tabela_CSOSN_Ipi>();
 
 
 

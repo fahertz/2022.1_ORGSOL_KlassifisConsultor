@@ -15,12 +15,6 @@
     {
         "Entry"
         {
-        "MsmKey" = "8:_024F5BAE63594F93A80AF0AE88CB8228"
-        "OwnerKey" = "8:_UNDEFINED"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
         "MsmKey" = "8:_06C209D32F074F0F98C9109BE1B40AFA"
         "OwnerKey" = "8:_UNDEFINED"
         "MsmSig" = "8:_UNDEFINED"
@@ -28,19 +22,19 @@
         "Entry"
         {
         "MsmKey" = "8:_68F5C06E5757F7F3AC7A2110188A99D2"
-        "OwnerKey" = "8:_024F5BAE63594F93A80AF0AE88CB8228"
+        "OwnerKey" = "8:_A41B22A10F29491AABC9F63A69F2B276"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_73335FCCC1ADA1B00A9EE2A29ED958A7"
-        "OwnerKey" = "8:_024F5BAE63594F93A80AF0AE88CB8228"
+        "OwnerKey" = "8:_A41B22A10F29491AABC9F63A69F2B276"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_821C9F323EF524D475DD9618C307E568"
-        "OwnerKey" = "8:_024F5BAE63594F93A80AF0AE88CB8228"
+        "OwnerKey" = "8:_A41B22A10F29491AABC9F63A69F2B276"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -51,20 +45,20 @@
         }
         "Entry"
         {
-        "MsmKey" = "8:_DA2739D251001D9A5D314D4644222707"
-        "OwnerKey" = "8:_024F5BAE63594F93A80AF0AE88CB8228"
+        "MsmKey" = "8:_A41B22A10F29491AABC9F63A69F2B276"
+        "OwnerKey" = "8:_UNDEFINED"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_EC2E1AB10389E82209F4FDEE7EC08C86"
+        "OwnerKey" = "8:_A41B22A10F29491AABC9F63A69F2B276"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_73335FCCC1ADA1B00A9EE2A29ED958A7"
-        "MsmSig" = "8:_UNDEFINED"
-        }
-        "Entry"
-        {
-        "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_024F5BAE63594F93A80AF0AE88CB8228"
+        "OwnerKey" = "8:_A41B22A10F29491AABC9F63A69F2B276"
         "MsmSig" = "8:_UNDEFINED"
         }
         "Entry"
@@ -82,7 +76,13 @@
         "Entry"
         {
         "MsmKey" = "8:_UNDEFINED"
-        "OwnerKey" = "8:_DA2739D251001D9A5D314D4644222707"
+        "OwnerKey" = "8:_EC2E1AB10389E82209F4FDEE7EC08C86"
+        "MsmSig" = "8:_UNDEFINED"
+        }
+        "Entry"
+        {
+        "MsmKey" = "8:_UNDEFINED"
+        "OwnerKey" = "8:_73335FCCC1ADA1B00A9EE2A29ED958A7"
         "MsmSig" = "8:_UNDEFINED"
         }
     }
@@ -313,14 +313,14 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             }
-            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_DA2739D251001D9A5D314D4644222707"
+            "{9F6F8455-1EF1-4B85-886A-4223BCC8E7F7}:_EC2E1AB10389E82209F4FDEE7EC08C86"
             {
             "AssemblyRegister" = "3:1"
             "AssemblyIsInGAC" = "11:FALSE"
-            "AssemblyAsmDisplayName" = "8:kLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=x86"
+            "AssemblyAsmDisplayName" = "8:kLib, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL"
                 "ScatterAssemblies"
                 {
-                    "_DA2739D251001D9A5D314D4644222707"
+                    "_EC2E1AB10389E82209F4FDEE7EC08C86"
                     {
                     "Name" = "8:kLib.dll"
                     "Attributes" = "3:512"
@@ -363,7 +363,7 @@
             }
             "{3C67513D-01DD-4637-8A68-80971EB9504F}:_51860B8E82FA4161A9E78074F846899F"
             {
-            "DefaultLocation" = "8:[ProgramFilesFolder][Manufacturer]\\[ProductName]"
+            "DefaultLocation" = "8:[ProgramFiles64Folder][Manufacturer]\\[ProductName]"
             "Name" = "8:#1925"
             "AlwaysCreate" = "11:FALSE"
             "Condition" = "8:"
@@ -400,15 +400,15 @@
         {
         "Name" = "8:Microsoft Visual Studio"
         "ProductName" = "8:Klassifis CO"
-        "ProductCode" = "8:{653F6B0F-38E8-47C1-83D1-56E8B7784A0C}"
-        "PackageCode" = "8:{C104C824-9DB7-45D9-9D1E-0FFAB4C01BB2}"
+        "ProductCode" = "8:{5D879F05-FC86-4253-B8E4-115454FA8FFE}"
+        "PackageCode" = "8:{96CB5F65-F25C-4D1C-B93A-AA8E1F654910}"
         "UpgradeCode" = "8:{6E21B8A5-40DA-41DD-AAFB-EA23D5E2AF55}"
         "AspNetVersion" = "8:4.0.30319.0"
         "RestartWWWService" = "11:FALSE"
         "RemovePreviousVersions" = "11:FALSE"
         "DetectNewerInstalledVersion" = "11:TRUE"
         "InstallAllUsers" = "11:FALSE"
-        "ProductVersion" = "8:1.0.1"
+        "ProductVersion" = "8:1.3"
         "Manufacturer" = "8:Organiza Solutions"
         "ARPHELPTELEPHONE" = "8:"
         "ARPHELPLINK" = "8:"
@@ -422,7 +422,7 @@
         "ARPIconIndex" = "3:0"
         "SearchPath" = "8:"
         "UseSystemSearchPath" = "11:TRUE"
-        "TargetPlatform" = "3:0"
+        "TargetPlatform" = "3:1"
         "PreBuildEvent" = "8:"
         "PostBuildEvent" = "8:"
         "RunPostBuildEvent" = "3:0"
@@ -521,7 +521,7 @@
         }
         "Shortcut"
         {
-            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_CD56FE3D9C174BD28D675E73545E1534"
+            "{970C0BB2-C7D0-45D7-ABFA-7EC378858BC0}:_4DEAC7A933A44BDDA924E1D804E8F121"
             {
             "Name" = "8:Klassifis CO"
             "Arguments" = "8:"
@@ -529,7 +529,7 @@
             "ShowCmd" = "3:1"
             "IconIndex" = "3:0"
             "Transitive" = "11:FALSE"
-            "Target" = "8:_024F5BAE63594F93A80AF0AE88CB8228"
+            "Target" = "8:_A41B22A10F29491AABC9F63A69F2B276"
             "Folder" = "8:_EF45C23308E34600B34A51B4325741CB"
             "WorkingFolder" = "8:_51860B8E82FA4161A9E78074F846899F"
             "Icon" = "8:_915D84504B984BB6802BFF9143EEA357"
@@ -934,9 +934,9 @@
         }
         "ProjectOutput"
         {
-            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_024F5BAE63594F93A80AF0AE88CB8228"
+            "{5259A561-127C-4D43-A0A1-72F10C7B3BF8}:_A41B22A10F29491AABC9F63A69F2B276"
             {
-            "SourcePath" = "8:..\\Klassifis_Consultor\\obj\\x86\\Release\\Klassifis_Consultor.exe"
+            "SourcePath" = "8:..\\Klassifis_Consultor\\obj\\x64\\Release\\Klassifis_Consultor.exe"
             "TargetName" = "8:"
             "Tag" = "8:"
             "Folder" = "8:_51860B8E82FA4161A9E78074F846899F"
@@ -954,7 +954,7 @@
             "IsDependency" = "11:FALSE"
             "IsolateTo" = "8:"
             "ProjectOutputGroupRegister" = "3:1"
-            "OutputConfiguration" = "8:Release|x86"
+            "OutputConfiguration" = "8:Release|x64"
             "OutputGroupCanonicalName" = "8:Built"
             "OutputProjectGuid" = "8:{3B371C60-08D7-4427-9484-6D090454DD17}"
             "ShowKeyOutput" = "11:TRUE"

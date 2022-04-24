@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnAbrirExcel = new System.Windows.Forms.Button();
             this.btnEntradaManual = new System.Windows.Forms.Button();
             this.btnExportarExcel = new System.Windows.Forms.Button();
@@ -45,6 +45,7 @@
             this.txtEmail = new System.Windows.Forms.TextBox();
             this.lblEmail = new System.Windows.Forms.Label();
             this.gpbAtividade = new System.Windows.Forms.GroupBox();
+            this.rdbIndustria = new System.Windows.Forms.RadioButton();
             this.rdbVarejo = new System.Windows.Forms.RadioButton();
             this.rdbComercio = new System.Windows.Forms.RadioButton();
             this.rdbAtacado = new System.Windows.Forms.RadioButton();
@@ -68,11 +69,11 @@
             this.lsbRegras = new System.Windows.Forms.ListBox();
             this.lblRegras = new System.Windows.Forms.Label();
             this.btnTabCest = new System.Windows.Forms.Button();
-            this.btnTipi = new System.Windows.Forms.Button();
+            this.btnTabTipi = new System.Windows.Forms.Button();
             this.txtFiltro = new System.Windows.Forms.TextBox();
             this.lblFiltro = new System.Windows.Forms.Label();
             this.btnLevenshtein = new System.Windows.Forms.Button();
-            this.rdbIndustria = new System.Windows.Forms.RadioButton();
+            this.btnTabCSOSN = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvProdutos)).BeginInit();
             this.gpbDadosDoCliente.SuspendLayout();
             this.gpbAtividade.SuspendLayout();
@@ -168,11 +169,11 @@
             // 
             this.dgvProdutos.AllowUserToAddRows = false;
             this.dgvProdutos.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle2.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvProdutos.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
             this.dgvProdutos.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -321,6 +322,18 @@
             this.gpbAtividade.TabIndex = 3;
             this.gpbAtividade.TabStop = false;
             this.gpbAtividade.Text = "Atividade";
+            // 
+            // rdbIndustria
+            // 
+            this.rdbIndustria.AutoSize = true;
+            this.rdbIndustria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
+            this.rdbIndustria.Location = new System.Drawing.Point(9, 110);
+            this.rdbIndustria.Margin = new System.Windows.Forms.Padding(4);
+            this.rdbIndustria.Name = "rdbIndustria";
+            this.rdbIndustria.Size = new System.Drawing.Size(83, 21);
+            this.rdbIndustria.TabIndex = 3;
+            this.rdbIndustria.Text = "Indústria";
+            this.rdbIndustria.UseVisualStyleBackColor = true;
             // 
             // rdbVarejo
             // 
@@ -581,16 +594,16 @@
             this.btnTabCest.UseVisualStyleBackColor = true;
             this.btnTabCest.Click += new System.EventHandler(this.btnTabCest_Click);
             // 
-            // btnTipi
+            // btnTabTipi
             // 
-            this.btnTipi.Location = new System.Drawing.Point(1149, 244);
-            this.btnTipi.Margin = new System.Windows.Forms.Padding(4);
-            this.btnTipi.Name = "btnTipi";
-            this.btnTipi.Size = new System.Drawing.Size(100, 63);
-            this.btnTipi.TabIndex = 105;
-            this.btnTipi.Text = "Tab. TIPI";
-            this.btnTipi.UseVisualStyleBackColor = true;
-            this.btnTipi.Click += new System.EventHandler(this.btnTipi_Click);
+            this.btnTabTipi.Location = new System.Drawing.Point(1149, 244);
+            this.btnTabTipi.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTabTipi.Name = "btnTabTipi";
+            this.btnTabTipi.Size = new System.Drawing.Size(100, 63);
+            this.btnTabTipi.TabIndex = 105;
+            this.btnTabTipi.Text = "Tab. TIPI";
+            this.btnTabTipi.UseVisualStyleBackColor = true;
+            this.btnTabTipi.Click += new System.EventHandler(this.btnTipi_Click);
             // 
             // txtFiltro
             // 
@@ -616,7 +629,7 @@
             // 
             // btnLevenshtein
             // 
-            this.btnLevenshtein.Location = new System.Drawing.Point(1257, 244);
+            this.btnLevenshtein.Location = new System.Drawing.Point(1549, 244);
             this.btnLevenshtein.Margin = new System.Windows.Forms.Padding(4);
             this.btnLevenshtein.Name = "btnLevenshtein";
             this.btnLevenshtein.Size = new System.Drawing.Size(100, 63);
@@ -625,27 +638,27 @@
             this.btnLevenshtein.UseVisualStyleBackColor = true;
             this.btnLevenshtein.Click += new System.EventHandler(this.btnLevenshtein_Click);
             // 
-            // rdbIndustria
+            // btnTabCSOSN
             // 
-            this.rdbIndustria.AutoSize = true;
-            this.rdbIndustria.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.rdbIndustria.Location = new System.Drawing.Point(9, 110);
-            this.rdbIndustria.Margin = new System.Windows.Forms.Padding(4);
-            this.rdbIndustria.Name = "rdbIndustria";
-            this.rdbIndustria.Size = new System.Drawing.Size(83, 21);
-            this.rdbIndustria.TabIndex = 3;
-            this.rdbIndustria.Text = "Indústria";
-            this.rdbIndustria.UseVisualStyleBackColor = true;
+            this.btnTabCSOSN.Location = new System.Drawing.Point(1257, 244);
+            this.btnTabCSOSN.Margin = new System.Windows.Forms.Padding(4);
+            this.btnTabCSOSN.Name = "btnTabCSOSN";
+            this.btnTabCSOSN.Size = new System.Drawing.Size(100, 63);
+            this.btnTabCSOSN.TabIndex = 107;
+            this.btnTabCSOSN.Text = "Tab. CSOSN";
+            this.btnTabCSOSN.UseVisualStyleBackColor = true;
+            this.btnTabCSOSN.Click += new System.EventHandler(this.btnTabCSOSN_Click);
             // 
             // frmEditarLayoutFiscal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1667, 747);
+            this.Controls.Add(this.btnTabCSOSN);
             this.Controls.Add(this.btnLevenshtein);
             this.Controls.Add(this.lblFiltro);
             this.Controls.Add(this.txtFiltro);
-            this.Controls.Add(this.btnTipi);
+            this.Controls.Add(this.btnTabTipi);
             this.Controls.Add(this.btnTabCest);
             this.Controls.Add(this.lblRegras);
             this.Controls.Add(this.lsbRegras);
@@ -716,10 +729,11 @@
         private System.Windows.Forms.ListBox lsbRegras;
         private System.Windows.Forms.Label lblRegras;
         private System.Windows.Forms.Button btnTabCest;
-        private System.Windows.Forms.Button btnTipi;
+        private System.Windows.Forms.Button btnTabTipi;
         private System.Windows.Forms.TextBox txtFiltro;
         private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.Button btnLevenshtein;
         private System.Windows.Forms.RadioButton rdbIndustria;
+        private System.Windows.Forms.Button btnTabCSOSN;
     }
 }

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.btnFechar = new System.Windows.Forms.Button();
             this.dgvDados = new System.Windows.Forms.DataGridView();
             this.lblPesquisar = new System.Windows.Forms.Label();
@@ -58,11 +58,11 @@
             // 
             this.dgvDados.AllowUserToAddRows = false;
             this.dgvDados.AllowUserToDeleteRows = false;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.Black;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.Color.Blue;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.Color.White;
-            this.dgvDados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.Color.Blue;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.White;
+            this.dgvDados.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgvDados.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
@@ -109,7 +109,7 @@
             this.lblTabelaCST_Ipi.Location = new System.Drawing.Point(4, 12);
             this.lblTabelaCST_Ipi.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.lblTabelaCST_Ipi.Name = "lblTabelaCST_Ipi";
-            this.lblTabelaCST_Ipi.Size = new System.Drawing.Size(524, 63);
+            this.lblTabelaCST_Ipi.Size = new System.Drawing.Size(419, 50);
             this.lblTabelaCST_Ipi.TabIndex = 94;
             this.lblTabelaCST_Ipi.Text = "Tabela CST de IPI";
             // 
@@ -125,7 +125,6 @@
             this.Controls.Add(this.lblTabelaCST_Ipi);
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(962, 623);
-            this.MinimizeBox = false;
             this.MinimumSize = new System.Drawing.Size(962, 623);
             this.Name = "frmTabelaCST_Ipi";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

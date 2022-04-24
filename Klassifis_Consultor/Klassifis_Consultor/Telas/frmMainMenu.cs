@@ -38,6 +38,14 @@ namespace Klassifis_Consultor
         //Configurações Iniciais
         private void configuracoes_Iniciais()
         {
+
+            mMessage = "Klassifis Software versão consultor (v1.3) - Versão Testes";
+            mTittle = "Bem vindo!!";
+            mButton = MessageBoxButtons.OK;
+            mIcon = MessageBoxIcon.Information;
+            MessageBox.Show(mMessage, mTittle, mButton, mIcon);
+
+
             //Icon
             this.Icon = Properties.Resources.klassifis_logo_azulado;
 
@@ -54,6 +62,7 @@ namespace Klassifis_Consultor
             Task.Factory.StartNew(() => Tabelas_Fiscais.carregar_Tabela_Tipi());
             Task.Factory.StartNew(() => Tabelas_Fiscais.carregar_Tabela_CST_Pis_Cofins());
             Task.Factory.StartNew(() => Tabelas_Fiscais.carregar_Tabela_CST_Ipi());
+            Task.Factory.StartNew(() => Tabelas_Fiscais.carregar_Tabela_CSOSN_Ipi());
 
         }
 
